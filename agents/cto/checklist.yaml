@@ -1,0 +1,16 @@
+items:
+  - id: cto_prompt_quality
+    category: "Prompt Quality"
+    description: "CTO prompt contains required operating sections."
+    severity: critical
+    check: prompt_quality
+  - id: cto_knowledge_sources
+    category: "Knowledge"
+    description: "CTO knowledge source manifest is valid."
+    severity: critical
+    check: knowledge_sources
+  - id: cto_tool_safety
+    category: "Safety"
+    description: "CTO agent exposes only safe local tools."
+    severity: critical
+    check: tool_safety

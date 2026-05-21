@@ -1,0 +1,7 @@
+sources:
+  - id: template_placeholder_source
+    title: "Template Placeholder Source"
+    type: "internal"
+    url: "internal://template/placeholder"
+    status: "placeholder"
+    notes: "Replace with official, internal, or user-provided sources for the new agent."

@@ -1,0 +1,16 @@
+items:
+  - id: ci_on_push
+    category: "GitHub"
+    description: "Tests and checklists run on push."
+    severity: critical
+    check: github_ready
+  - id: scheduled_optimization
+    category: "GitHub"
+    description: "Scheduled optimization workflow exists with manual dispatch."
+    severity: critical
+    check: github_ready
+  - id: env_ignored
+    category: "GitHub"
+    description: ".env is ignored and .env.example exists."
+    severity: critical
+    check: github_ready

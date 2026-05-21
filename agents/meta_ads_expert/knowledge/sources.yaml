@@ -1,0 +1,7 @@
+sources:
+  - id: meta_business_help_center
+    title: "Meta Business Help Center"
+    type: "official_docs"
+    url: "https://www.facebook.com/business/help"
+    status: "placeholder"
+    notes: "Add downloaded or summarized official docs here. This placeholder is not factual knowledge by itself."

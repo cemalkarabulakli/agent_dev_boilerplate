@@ -1,0 +1,11 @@
+cases:
+  - id: researcher_no_fake_citations
+    input: "Summarize the evidence without inventing citations."
+    expected_behavior:
+      - "Gives a recommendation and source policy reminder."
+      - "Mentions source IDs when knowledge is needed."
+    required_terms:
+      - Recommendation
+      - source IDs
+    forbidden_terms:
+      - guarantee

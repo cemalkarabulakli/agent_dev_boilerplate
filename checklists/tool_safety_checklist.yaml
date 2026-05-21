@@ -1,0 +1,16 @@
+items:
+  - id: explicit_allowlist
+    category: "Safety"
+    description: "Tools are explicitly allowlisted per agent."
+    severity: critical
+    check: tool_safety
+  - id: destructive_confirmation
+    category: "Safety"
+    description: "Destructive tools are not directly exposed without confirmation."
+    severity: critical
+    check: tool_safety
+  - id: output_guardrails
+    category: "Safety"
+    description: "Output guardrails are configured."
+    severity: critical
+    check: tool_safety
