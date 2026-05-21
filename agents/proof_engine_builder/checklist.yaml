@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "proof_engine_builder_structure",
+      "category": "Agent",
+      "description": "Proof Engine Builder structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "pricing_guarantee_optimizer_required_sections",
+      "input": "Improves pricing, packaging, payment plans, and risk reversal.",
+      "required_sections": [
+        "Pricing & Guarantee Review",
+        "Current Price",
+        "Recommendation"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

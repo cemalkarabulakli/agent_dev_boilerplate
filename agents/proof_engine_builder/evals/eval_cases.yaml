@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "proof_engine_builder_required_sections",
+      "input": "Designs a system for creating proof ethically.",
+      "required_sections": [
+        "Proof Engine",
+        "Proof Assets Needed",
+        "Ethical Claims Rules"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

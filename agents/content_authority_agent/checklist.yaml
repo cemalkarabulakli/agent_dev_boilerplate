@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "content_authority_agent_structure",
+      "category": "Agent",
+      "description": "Content Authority Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

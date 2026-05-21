@@ -1,0 +1,151 @@
+{
+  "items": [
+    {
+      "id": "high_ticket_offer_checklist_agent_structure",
+      "category": "Repository",
+      "description": "Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    },
+    {
+      "id": "high_ticket_offer_checklist_prompt_quality",
+      "category": "Prompt",
+      "description": "Prompt contains required sections",
+      "severity": "critical",
+      "check": "prompt_quality"
+    },
+    {
+      "id": "high_ticket_offer_checklist_ethical_guardrails",
+      "category": "Ethics",
+      "description": "Ethical guardrails exist",
+      "severity": "critical",
+      "check": "ethical_guardrails"
+    },
+    {
+      "id": "high_ticket_offer_checklist_mock_mode",
+      "category": "Runtime",
+      "description": "Agents default to mock mode",
+      "severity": "critical",
+      "check": "mock_mode"
+    },
+    {
+      "id": "high_ticket_offer_checklist_context_compaction",
+      "category": "Context",
+      "description": "Context compaction exists",
+      "severity": "critical",
+      "check": "context_compaction"
+    },
+    {
+      "id": "high_ticket_offer_checklist_business_context_schema",
+      "category": "Business Context",
+      "description": "Business context schema is valid",
+      "severity": "critical",
+      "check": "business_context_schema"
+    },
+    {
+      "id": "high_ticket_offer_checklist_github_ready",
+      "category": "GitHub",
+      "description": "GitHub readiness files exist",
+      "severity": "critical",
+      "check": "github_ready"
+    },
+    {
+      "id": "high_ticket_offer_checklist_1",
+      "category": "Business Quality",
+      "description": "target customer is specific",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_2",
+      "category": "Business Quality",
+      "description": "painful problem is clear",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_3",
+      "category": "Business Quality",
+      "description": "dream outcome is clear",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_4",
+      "category": "Business Quality",
+      "description": "unique mechanism exists",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_5",
+      "category": "Business Quality",
+      "description": "offer is concrete",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_6",
+      "category": "Business Quality",
+      "description": "offer has measurable transformation",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_7",
+      "category": "Business Quality",
+      "description": "value stack is visible",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_8",
+      "category": "Business Quality",
+      "description": "price has justification",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_9",
+      "category": "Business Quality",
+      "description": "objections are addressed",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_10",
+      "category": "Business Quality",
+      "description": "proof is requested or included",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_11",
+      "category": "Business Quality",
+      "description": "guarantee is realistic",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_12",
+      "category": "Business Quality",
+      "description": "next step is clear",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_13",
+      "category": "Business Quality",
+      "description": "no fake claims",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "high_ticket_offer_checklist_14",
+      "category": "Business Quality",
+      "description": "no fake testimonials",
+      "severity": "info",
+      "check": "documented"
+    }
+  ]
+}

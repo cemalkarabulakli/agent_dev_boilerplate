@@ -1,0 +1,95 @@
+{
+  "items": [
+    {
+      "id": "sales_process_checklist_agent_structure",
+      "category": "Repository",
+      "description": "Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    },
+    {
+      "id": "sales_process_checklist_prompt_quality",
+      "category": "Prompt",
+      "description": "Prompt contains required sections",
+      "severity": "critical",
+      "check": "prompt_quality"
+    },
+    {
+      "id": "sales_process_checklist_ethical_guardrails",
+      "category": "Ethics",
+      "description": "Ethical guardrails exist",
+      "severity": "critical",
+      "check": "ethical_guardrails"
+    },
+    {
+      "id": "sales_process_checklist_mock_mode",
+      "category": "Runtime",
+      "description": "Agents default to mock mode",
+      "severity": "critical",
+      "check": "mock_mode"
+    },
+    {
+      "id": "sales_process_checklist_context_compaction",
+      "category": "Context",
+      "description": "Context compaction exists",
+      "severity": "critical",
+      "check": "context_compaction"
+    },
+    {
+      "id": "sales_process_checklist_business_context_schema",
+      "category": "Business Context",
+      "description": "Business context schema is valid",
+      "severity": "critical",
+      "check": "business_context_schema"
+    },
+    {
+      "id": "sales_process_checklist_github_ready",
+      "category": "GitHub",
+      "description": "GitHub readiness files exist",
+      "severity": "critical",
+      "check": "github_ready"
+    },
+    {
+      "id": "sales_process_checklist_1",
+      "category": "Business Quality",
+      "description": "qualification criteria exists",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "sales_process_checklist_2",
+      "category": "Business Quality",
+      "description": "discovery questions exist",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "sales_process_checklist_3",
+      "category": "Business Quality",
+      "description": "pain questions exist",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "sales_process_checklist_4",
+      "category": "Business Quality",
+      "description": "desired outcome questions exist",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "sales_process_checklist_5",
+      "category": "Business Quality",
+      "description": "offer presentation is clear",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "sales_process_checklist_6",
+      "category": "Business Quality",
+      "description": "follow-up process exists",
+      "severity": "info",
+      "check": "documented"
+    }
+  ]
+}

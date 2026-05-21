@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "market_selector_required_sections",
+      "input": "Helps choose or evaluate a profitable high-ticket market.",
+      "required_sections": [
+        "Market Scorecard",
+        "Market",
+        "Next Research Questions"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

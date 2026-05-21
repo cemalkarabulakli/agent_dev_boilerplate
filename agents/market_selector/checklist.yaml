@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "market_selector_structure",
+      "category": "Agent",
+      "description": "Market Selector structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

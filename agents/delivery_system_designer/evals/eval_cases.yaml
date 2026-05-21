@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "delivery_system_designer_required_sections",
+      "input": "Designs a delivery system that can fulfill the high-ticket promise.",
+      "required_sections": [
+        "Delivery System",
+        "Onboarding",
+        "Case Study Collection Points"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

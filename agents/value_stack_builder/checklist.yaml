@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "value_stack_builder_structure",
+      "category": "Agent",
+      "description": "Value Stack Builder structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

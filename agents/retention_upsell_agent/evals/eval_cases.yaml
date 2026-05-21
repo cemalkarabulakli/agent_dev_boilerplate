@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "retention_upsell_agent_required_sections",
+      "input": "Builds continuity, upsell, and expansion paths.",
+      "required_sections": [
+        "Retention & Upsell Plan",
+        "Continuity Offer",
+        "Expansion Opportunities"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

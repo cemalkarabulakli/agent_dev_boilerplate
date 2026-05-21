@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "acquisition_strategy_agent_structure",
+      "category": "Agent",
+      "description": "Acquisition Strategy Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

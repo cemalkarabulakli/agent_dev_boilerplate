@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "delivery_system_designer_structure",
+      "category": "Agent",
+      "description": "Delivery System Designer structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

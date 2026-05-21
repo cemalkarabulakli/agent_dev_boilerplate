@@ -1,0 +1,102 @@
+{
+  "items": [
+    {
+      "id": "market_quality_checklist_agent_structure",
+      "category": "Repository",
+      "description": "Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    },
+    {
+      "id": "market_quality_checklist_prompt_quality",
+      "category": "Prompt",
+      "description": "Prompt contains required sections",
+      "severity": "critical",
+      "check": "prompt_quality"
+    },
+    {
+      "id": "market_quality_checklist_ethical_guardrails",
+      "category": "Ethics",
+      "description": "Ethical guardrails exist",
+      "severity": "critical",
+      "check": "ethical_guardrails"
+    },
+    {
+      "id": "market_quality_checklist_mock_mode",
+      "category": "Runtime",
+      "description": "Agents default to mock mode",
+      "severity": "critical",
+      "check": "mock_mode"
+    },
+    {
+      "id": "market_quality_checklist_context_compaction",
+      "category": "Context",
+      "description": "Context compaction exists",
+      "severity": "critical",
+      "check": "context_compaction"
+    },
+    {
+      "id": "market_quality_checklist_business_context_schema",
+      "category": "Business Context",
+      "description": "Business context schema is valid",
+      "severity": "critical",
+      "check": "business_context_schema"
+    },
+    {
+      "id": "market_quality_checklist_github_ready",
+      "category": "GitHub",
+      "description": "GitHub readiness files exist",
+      "severity": "critical",
+      "check": "github_ready"
+    },
+    {
+      "id": "market_quality_checklist_1",
+      "category": "Business Quality",
+      "description": "market has urgent pain",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "market_quality_checklist_2",
+      "category": "Business Quality",
+      "description": "market has ability to pay",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "market_quality_checklist_3",
+      "category": "Business Quality",
+      "description": "market is reachable",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "market_quality_checklist_4",
+      "category": "Business Quality",
+      "description": "market already spends money solving problem",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "market_quality_checklist_5",
+      "category": "Business Quality",
+      "description": "transformation is clear",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "market_quality_checklist_6",
+      "category": "Business Quality",
+      "description": "delivery is feasible",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "market_quality_checklist_7",
+      "category": "Business Quality",
+      "description": "competition/alternatives identified",
+      "severity": "info",
+      "check": "documented"
+    }
+  ]
+}

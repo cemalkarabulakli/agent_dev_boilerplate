@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "funnel_builder_structure",
+      "category": "Agent",
+      "description": "Funnel Builder structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

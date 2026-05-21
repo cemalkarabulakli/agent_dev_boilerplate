@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "_template_structure",
+      "category": "Agent",
+      "description": "Template Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

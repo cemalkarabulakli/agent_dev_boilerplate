@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "content_authority_agent_required_sections",
+      "input": "Creates content strategy that builds authority and sells the offer.",
+      "required_sections": [
+        "Authority Content Plan",
+        "Content Positioning",
+        "CTA Posts"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

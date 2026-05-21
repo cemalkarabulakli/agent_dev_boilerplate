@@ -1,0 +1,95 @@
+{
+  "items": [
+    {
+      "id": "pricing_guarantee_checklist_agent_structure",
+      "category": "Repository",
+      "description": "Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    },
+    {
+      "id": "pricing_guarantee_checklist_prompt_quality",
+      "category": "Prompt",
+      "description": "Prompt contains required sections",
+      "severity": "critical",
+      "check": "prompt_quality"
+    },
+    {
+      "id": "pricing_guarantee_checklist_ethical_guardrails",
+      "category": "Ethics",
+      "description": "Ethical guardrails exist",
+      "severity": "critical",
+      "check": "ethical_guardrails"
+    },
+    {
+      "id": "pricing_guarantee_checklist_mock_mode",
+      "category": "Runtime",
+      "description": "Agents default to mock mode",
+      "severity": "critical",
+      "check": "mock_mode"
+    },
+    {
+      "id": "pricing_guarantee_checklist_context_compaction",
+      "category": "Context",
+      "description": "Context compaction exists",
+      "severity": "critical",
+      "check": "context_compaction"
+    },
+    {
+      "id": "pricing_guarantee_checklist_business_context_schema",
+      "category": "Business Context",
+      "description": "Business context schema is valid",
+      "severity": "critical",
+      "check": "business_context_schema"
+    },
+    {
+      "id": "pricing_guarantee_checklist_github_ready",
+      "category": "GitHub",
+      "description": "GitHub readiness files exist",
+      "severity": "critical",
+      "check": "github_ready"
+    },
+    {
+      "id": "pricing_guarantee_checklist_1",
+      "category": "Business Quality",
+      "description": "price is connected to value",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "pricing_guarantee_checklist_2",
+      "category": "Business Quality",
+      "description": "price does not rely on hype",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "pricing_guarantee_checklist_3",
+      "category": "Business Quality",
+      "description": "payment options considered",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "pricing_guarantee_checklist_4",
+      "category": "Business Quality",
+      "description": "guarantee is realistic",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "pricing_guarantee_checklist_5",
+      "category": "Business Quality",
+      "description": "buyer risk is reduced",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "pricing_guarantee_checklist_6",
+      "category": "Business Quality",
+      "description": "profitability risk considered",
+      "severity": "info",
+      "check": "documented"
+    }
+  ]
+}

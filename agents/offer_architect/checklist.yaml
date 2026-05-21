@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "offer_architect_structure",
+      "category": "Agent",
+      "description": "Offer Architect structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

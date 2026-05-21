@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "value_stack_builder_required_sections",
+      "input": "Builds a high-perceived-value offer stack.",
+      "required_sections": [
+        "Value Stack",
+        "Core Deliverable",
+        "Simplified Offer Stack"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

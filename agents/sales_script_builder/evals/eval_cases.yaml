@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "sales_script_builder_required_sections",
+      "input": "Creates ethical sales call and qualification scripts.",
+      "required_sections": [
+        "Sales Call Script",
+        "Qualification Criteria",
+        "Follow-Up Notes"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

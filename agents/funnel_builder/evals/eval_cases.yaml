@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "funnel_builder_required_sections",
+      "input": "Builds simple high-ticket funnels.",
+      "required_sections": [
+        "High-Ticket Funnel Map",
+        "Traffic Source",
+        "Metrics To Track"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "pricing_guarantee_optimizer_structure",
+      "category": "Agent",
+      "description": "Pricing & Guarantee Optimizer structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

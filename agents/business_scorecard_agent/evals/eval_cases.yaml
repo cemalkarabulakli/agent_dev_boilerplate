@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "business_scorecard_agent_required_sections",
+      "input": "Finds the current bottleneck in the high-ticket business.",
+      "required_sections": [
+        "High-Ticket Business Scorecard",
+        "Market Score",
+        "7-Day Action Plan"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,50 @@
+{
+  "name": "objection_handler",
+  "role": "Objection Handler",
+  "description": "Builds an objection bank and ethical responses.",
+  "version": "0.1.0",
+  "model": {
+    "provider": "mock",
+    "name": "local-mock",
+    "temperature": 0.3
+  },
+  "context": {
+    "keep_last_n_turns": 5,
+    "compact_when_tokens_exceed": 12000,
+    "tool_output_trim_chars": 3000
+  },
+  "memory": {
+    "mode": "file",
+    "allow_learning": true,
+    "require_memory_review": true
+  },
+  "knowledge": {
+    "local_knowledge_enabled": true,
+    "require_source_labels": true
+  },
+  "tools": {
+    "allowed": [
+      "read_business_context",
+      "read_knowledge",
+      "save_memory_note",
+      "compact_context"
+    ]
+  },
+  "guardrails": {
+    "input": [
+      "no_private_data_required",
+      "no_illegal_or_harmful_requests"
+    ],
+    "output": [
+      "no_fake_claims",
+      "no_fake_testimonials",
+      "no_fake_scarcity",
+      "no_unrealistic_income_promises",
+      "separate_fact_assumption_recommendation",
+      "ask_for_missing_data_when_required"
+    ]
+  },
+  "output": {
+    "default_format": "markdown"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "acquisition_strategy_agent_required_sections",
+      "input": "Chooses how to get qualified leads for the high-ticket offer.",
+      "required_sections": [
+        "Acquisition Plan",
+        "Best Lead Source",
+        "Risks"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

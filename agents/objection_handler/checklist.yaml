@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "objection_handler_structure",
+      "category": "Agent",
+      "description": "Objection Handler structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "sales_script_builder_structure",
+      "category": "Agent",
+      "description": "Sales Script Builder structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

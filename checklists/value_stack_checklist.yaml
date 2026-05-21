@@ -1,0 +1,109 @@
+{
+  "items": [
+    {
+      "id": "value_stack_checklist_agent_structure",
+      "category": "Repository",
+      "description": "Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    },
+    {
+      "id": "value_stack_checklist_prompt_quality",
+      "category": "Prompt",
+      "description": "Prompt contains required sections",
+      "severity": "critical",
+      "check": "prompt_quality"
+    },
+    {
+      "id": "value_stack_checklist_ethical_guardrails",
+      "category": "Ethics",
+      "description": "Ethical guardrails exist",
+      "severity": "critical",
+      "check": "ethical_guardrails"
+    },
+    {
+      "id": "value_stack_checklist_mock_mode",
+      "category": "Runtime",
+      "description": "Agents default to mock mode",
+      "severity": "critical",
+      "check": "mock_mode"
+    },
+    {
+      "id": "value_stack_checklist_context_compaction",
+      "category": "Context",
+      "description": "Context compaction exists",
+      "severity": "critical",
+      "check": "context_compaction"
+    },
+    {
+      "id": "value_stack_checklist_business_context_schema",
+      "category": "Business Context",
+      "description": "Business context schema is valid",
+      "severity": "critical",
+      "check": "business_context_schema"
+    },
+    {
+      "id": "value_stack_checklist_github_ready",
+      "category": "GitHub",
+      "description": "GitHub readiness files exist",
+      "severity": "critical",
+      "check": "github_ready"
+    },
+    {
+      "id": "value_stack_checklist_1",
+      "category": "Business Quality",
+      "description": "core deliverable exists",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "value_stack_checklist_2",
+      "category": "Business Quality",
+      "description": "implementation support exists",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "value_stack_checklist_3",
+      "category": "Business Quality",
+      "description": "assets/templates included if useful",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "value_stack_checklist_4",
+      "category": "Business Quality",
+      "description": "accountability included if relevant",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "value_stack_checklist_5",
+      "category": "Business Quality",
+      "description": "bonuses increase perceived value",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "value_stack_checklist_6",
+      "category": "Business Quality",
+      "description": "offer is not bloated with irrelevant bonuses",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "value_stack_checklist_7",
+      "category": "Business Quality",
+      "description": "risk reducers exist",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "value_stack_checklist_8",
+      "category": "Business Quality",
+      "description": "delivery capacity considered",
+      "severity": "info",
+      "check": "documented"
+    }
+  ]
+}

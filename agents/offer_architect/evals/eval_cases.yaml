@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "offer_architect_required_sections",
+      "input": "Helps high-ticket expert businesses create stronger, clearer, higher-value offers.",
+      "required_sections": [
+        "High-Ticket Offer",
+        "Target Customer",
+        "Next Actions"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

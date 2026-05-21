@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "avatar_pain_researcher_required_sections",
+      "input": "Clarifies the specific customer avatar and painful problem.",
+      "required_sections": [
+        "Avatar & Pain Research",
+        "Specific Avatar",
+        "Research Questions"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

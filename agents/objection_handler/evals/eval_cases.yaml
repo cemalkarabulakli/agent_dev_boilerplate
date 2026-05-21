@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "objection_handler_required_sections",
+      "input": "Builds an objection bank and ethical responses.",
+      "required_sections": [
+        "Objection Bank",
+        "Main Objections",
+        "Follow-Up Message"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,88 @@
+{
+  "items": [
+    {
+      "id": "business_scorecard_checklist_agent_structure",
+      "category": "Repository",
+      "description": "Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    },
+    {
+      "id": "business_scorecard_checklist_prompt_quality",
+      "category": "Prompt",
+      "description": "Prompt contains required sections",
+      "severity": "critical",
+      "check": "prompt_quality"
+    },
+    {
+      "id": "business_scorecard_checklist_ethical_guardrails",
+      "category": "Ethics",
+      "description": "Ethical guardrails exist",
+      "severity": "critical",
+      "check": "ethical_guardrails"
+    },
+    {
+      "id": "business_scorecard_checklist_mock_mode",
+      "category": "Runtime",
+      "description": "Agents default to mock mode",
+      "severity": "critical",
+      "check": "mock_mode"
+    },
+    {
+      "id": "business_scorecard_checklist_context_compaction",
+      "category": "Context",
+      "description": "Context compaction exists",
+      "severity": "critical",
+      "check": "context_compaction"
+    },
+    {
+      "id": "business_scorecard_checklist_business_context_schema",
+      "category": "Business Context",
+      "description": "Business context schema is valid",
+      "severity": "critical",
+      "check": "business_context_schema"
+    },
+    {
+      "id": "business_scorecard_checklist_github_ready",
+      "category": "GitHub",
+      "description": "GitHub readiness files exist",
+      "severity": "critical",
+      "check": "github_ready"
+    },
+    {
+      "id": "business_scorecard_checklist_1",
+      "category": "Business Quality",
+      "description": "market score exists",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "business_scorecard_checklist_2",
+      "category": "Business Quality",
+      "description": "avatar score exists",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "business_scorecard_checklist_3",
+      "category": "Business Quality",
+      "description": "offer score exists",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "business_scorecard_checklist_4",
+      "category": "Business Quality",
+      "description": "main bottleneck identified",
+      "severity": "info",
+      "check": "documented"
+    },
+    {
+      "id": "business_scorecard_checklist_5",
+      "category": "Business Quality",
+      "description": "highest leverage fix identified",
+      "severity": "info",
+      "check": "documented"
+    }
+  ]
+}

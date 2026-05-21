@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "business_scorecard_agent_structure",
+      "category": "Agent",
+      "description": "Business Scorecard Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

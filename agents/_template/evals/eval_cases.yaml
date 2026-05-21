@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "id": "_template_required_sections",
+      "input": "Use the configured role to improve a high-ticket expert business while staying ethical, specific, and local-first.",
+      "required_sections": [
+        "[OUTPUT TITLE]",
+        "Facts",
+        "Next Actions"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "limited spots when false",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
+
