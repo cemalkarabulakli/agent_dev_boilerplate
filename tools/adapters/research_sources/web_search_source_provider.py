@@ -1,0 +1,2 @@
+from tools.adapters.research_sources.web_search_adapter import WebSearchAdapter as WebSearchSourceProvider
+

@@ -21,4 +21,6 @@ agents/**/outputs/*
 research/sources/*/raw/*.json
 research/sources/*/processed/*.json
 research/sources/*/reports/*.md
+research/sources/*/screenshots/*
+!research/sources/*/screenshots/.gitkeep
 research/processed/**/*.md

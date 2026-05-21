@@ -34,6 +34,7 @@ class ReferenceManager:
         raw_file: str = "",
         processed_file: str = "",
         confidence: float = 0.0,
+        is_mock: bool = False,
         notes: str = "",
     ) -> dict[str, Any]:
         reference = {
@@ -49,6 +50,7 @@ class ReferenceManager:
             "raw_file": raw_file,
             "processed_file": processed_file,
             "confidence": confidence,
+            "is_mock": is_mock,
             "notes": notes,
         }
         with self.path.open("a", encoding="utf-8") as handle:
@@ -78,6 +80,8 @@ class ReferenceManager:
         url = str(reference.get("url", ""))
         if not url:
             errors.append("reference missing url")
+        if url.startswith("mock://") and not reference.get("is_mock"):
+            errors.append("mock URL must set is_mock true")
         if url.startswith("mock://") and "mock" not in str(reference.get("notes", "")).lower():
             errors.append("mock URL must be labeled mock in notes")
         return errors

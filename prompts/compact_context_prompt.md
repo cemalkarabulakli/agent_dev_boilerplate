@@ -51,6 +51,7 @@ Output structure:
 ## Tool Opportunities
 ## Ad Angle Signals
 ## Customer Language Signals
+## Competitor Signals
 ## Recent Verbatim Turns
 ## Removed Noise
 ## Validation Checklist

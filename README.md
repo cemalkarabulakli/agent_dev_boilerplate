@@ -150,6 +150,85 @@ Generated research reports are written to:
 - Cross-source reports: `research/processed/cross_source_reports/` and `outputs/cross_source_reports/`
 - Weekly reports: `outputs/weekly_reports/`
 
+## Modular Web Research & Source Collection Layer
+
+Agents use abstract tool interfaces only. They should call web/search/extraction/browser/crawler/source interfaces through registries instead of importing Tavily, Firecrawl, Playwright, Scrapy, Reddit, YouTube, or source SDKs directly.
+
+Tool decision rules:
+
+- Tavily: default for AI search, latest public web context, market research, competitor discovery, RAG source discovery, and "find latest info" tasks.
+- Firecrawl: default for clean webpage extraction, markdown, RAG-ready pages, documentation, landing page analysis, pricing page analysis, and competitor page extraction.
+- Playwright: default for browser operation, clicks, login flows, forms, screenshots, PDFs, JavaScript-heavy pages, UI checks, and visual monitoring.
+- Scrapy: default for large scheduled crawls where self-hosted control and lower high-volume cost matter.
+
+The mental model is:
+
+`Tavily = find information`
+`Firecrawl = extract clean page content`
+`Playwright = operate a browser`
+`Scrapy = large-scale crawler infrastructure`
+
+The TypeScript interface layer lives in `tools/web/`:
+
+- Interfaces: `tools/web/interfaces/`
+- Result types: `tools/web/types/`
+- Provider wrappers: `tools/web/search/`, `tools/web/extraction/`, `tools/web/browser/`, `tools/web/crawling/`
+- Source providers: `tools/web/sources/`
+- Registries: `tools/web/registry/`
+- Config: `tools/web/config/`
+
+Python CLIs keep running locally through compatibility providers in `tools/adapters/research_sources/`.
+
+### Source Research
+
+- Quora research finds customer questions, pain language, objections, desired outcomes, beginner confusion, and alternatives.
+- BG-Mamma research supports Bulgarian snippets and local language, family/lifestyle problems, trust objections, buying concerns, complaints, and repeated topics.
+- Facebook Ad Library research focuses on competitor ads, ad angles, hooks, offers, CTAs, creative type, landing pages, repeated positioning, and compliance risks.
+- Reddit research focuses on raw pain language, community complaints, objections, tool mentions, and product complaints.
+- Google Trends research focuses on demand direction, seasonality, regional interest, related queries, and rising queries.
+- GitHub Trends research focuses on new tools, open-source adoption, AI agent tooling, use cases, and developer adoption signals.
+- ClickBank research focuses on digital product categories, offer promises, affiliate angles, and niche monetization signals.
+- YouTube research focuses on content trends, hooks, authority topics, audience pain, formats, and education demand.
+- Web Search research uses Tavily or mock mode for source discovery, official docs discovery, competitors, and tools.
+
+### Competitor Monitoring
+
+Competitor monitoring uses the same interface rules:
+
+1. Search competitors with Tavily or mock search.
+2. Extract home, pricing, and landing pages with Firecrawl or mock extraction.
+3. Use Playwright only when screenshots, PDFs, JavaScript interaction, or visual monitoring is needed.
+4. Save raw search results, processed page insights, optional screenshots, reports, and references separately.
+
+Output:
+
+- Raw competitor results: `research/sources/competitors/raw/`
+- Processed competitor insights: `research/sources/competitors/processed/`
+- Source reports: `research/sources/competitors/reports/`
+- Optional screenshots: `research/sources/competitors/screenshots/`
+- User-facing reports: `outputs/competitor_monitoring/`
+
+### Web Research Commands
+
+```bash
+python scripts/collect_source.py --source reddit --query "coaches struggling to get clients"
+python scripts/collect_source.py --source bg_mamma --query "детски английски курс"
+python scripts/collect_source.py --source facebook_ad_library --query "fitness coaching"
+python scripts/collect_all_sources.py --category high_ticket_business
+python scripts/analyze_cross_source_signals.py
+python scripts/add_research_source.py --id tiktok --name "TikTok" --type "short_video"
+python scripts/monitor_competitors.py --query "AI automation agency Bulgaria"
+python scripts/run_weekly_research.py
+```
+
+### Evidence Rules
+
+Raw research never enters compacted context. Raw data stays in `research/sources/{source}/raw/`. Processed summaries stay in `research/sources/{source}/processed/`. Reports stay in `research/sources/{source}/reports/`. Strategic insight files live in `research/insights/`.
+
+Only processed, source-linked insights with `reference_ids` and confidence scores can enter compacted context. One-source findings stay candidate. Conflicting evidence must show both sides. Stale or low-confidence data must be labeled.
+
+Weekly research runs on GitHub Actions at `23 4 * * 1`. Competitor monitoring runs at `31 5 * * 2`. Both upload artifacts and do not commit, push to `main`, approve new insights, or modify `business_context.yaml`.
+
 ## Avoid Fake Claims
 
 Do not invent claims, testimonials, scarcity, income promises, or guaranteed unrealistic results. Label assumptions clearly and collect real proof when proof is missing.

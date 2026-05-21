@@ -1,0 +1,2 @@
+from tools.adapters.research_sources.google_trends_adapter import GoogleTrendsAdapter as GoogleTrendsSourceProvider
+

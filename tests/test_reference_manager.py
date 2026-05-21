@@ -13,6 +13,7 @@ def test_reference_manager_validates_mock_reference_after_raw_file_update(tmp_pa
         url="mock://reddit/item-001",
         raw_file="research/sources/reddit/raw/mock.json",
         confidence=0.55,
+        is_mock=True,
         notes="Mock mode reference.",
     )
 

@@ -1,0 +1,2 @@
+from tools.adapters.research_sources.github_trends_adapter import GitHubTrendsAdapter as GitHubTrendsSourceProvider
+

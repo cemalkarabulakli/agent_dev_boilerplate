@@ -1,0 +1,2 @@
+from tools.adapters.research_sources.facebook_ad_library_adapter import FacebookAdLibraryAdapter as FacebookAdLibrarySourceProvider
+

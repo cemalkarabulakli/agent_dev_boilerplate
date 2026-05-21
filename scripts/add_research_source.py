@@ -22,6 +22,9 @@ def slugify(value: str) -> str:
 def class_name(source_id: str) -> str:
     return "".join(part.title() for part in source_id.split("_")) + "Adapter"
 
+def provider_class_name(source_id: str) -> str:
+    return "".join(part.title() for part in source_id.split("_")) + "SourceProvider"
+
 
 def add_source(source_id: str, name: str, source_type: str, root: Path = ROOT) -> Path:
     source_id = slugify(source_id)
@@ -38,12 +41,12 @@ def add_source(source_id: str, name: str, source_type: str, root: Path = ROOT) -
         "mode": "mock",
         "queries": ["high ticket business pain"],
         "collection": {"max_results_per_query": 20, "save_raw": True, "save_processed": True, "include_references": True, "include_timestamps": True},
-        "processing": {"extract": ["pain_points", "objections", "desired_outcomes", "repeated_phrases", "competitor_mentions", "tool_mentions", "offer_patterns", "content_angles"]},
+        "processing": {"extract": ["pain_points", "objections", "desired_outcomes", "repeated_phrases", "competitor_mentions", "tool_mentions", "offer_patterns", "content_angles", "ad_angles"]},
         "scoring": {"min_confidence_for_candidate": 0.5, "min_confidence_for_validated": 0.75, "require_cross_source_validation": True},
         "compliance": {"respect_robots_txt": True, "use_official_api_when_available": True, "store_personal_data": False, "notes": "Document source-specific compliance requirements."},
     }
     (base / "source_config.yaml").write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
-    adapter_name = f"{source_id}_adapter"
+    adapter_name = f"{source_id}_source_provider"
     adapter_path = root / "tools" / "adapters" / "research_sources" / f"{adapter_name}.py"
     adapter_path.write_text(
         "from tools.adapters.research_sources.base_source_adapter import BaseSourceAdapter\n\n\n"
@@ -51,6 +54,17 @@ def add_source(source_id: str, name: str, source_type: str, root: Path = ROOT) -
         f"    source_id = \"{source_id}\"\n"
         f"    source_type = \"{source_type}\"\n"
         "    signal_kind = \"custom_signal\"\n",
+        encoding="utf-8",
+    )
+    ts_dir = root / "tools" / "web" / "sources"
+    ts_dir.mkdir(parents=True, exist_ok=True)
+    (ts_dir / f"{adapter_name}.ts").write_text(
+        "import { BaseMockSourceProvider } from \"./custom_source_provider\";\n\n"
+        f"export class {provider_class_name(source_id)} extends BaseMockSourceProvider {{\n"
+        "  constructor() {\n"
+        f"    super(\"{source_id}\", \"{source_type}\", \"en\", \"custom_signal\");\n"
+        "  }\n"
+        "}\n",
         encoding="utf-8",
     )
     registry = SourceRegistry(root)

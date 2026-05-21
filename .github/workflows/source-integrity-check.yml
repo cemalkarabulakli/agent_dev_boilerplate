@@ -34,8 +34,16 @@
           "run": "python scripts/run_checklist.py --checklist cross_source_validation_checklist"
         },
         {
+          "name": "Web tool provider checklist",
+          "run": "python scripts/run_checklist.py --checklist web_tool_provider_checklist"
+        },
+        {
+          "name": "Competitor monitoring checklist",
+          "run": "python scripts/run_checklist.py --checklist competitor_monitoring_checklist"
+        },
+        {
           "name": "Research source tests",
-          "run": "python -m pytest tests/test_research_sources.py"
+          "run": "python -m pytest tests/test_research_sources.py tests/test_web_tool_interfaces.py tests/test_web_tool_registry.py tests/test_source_provider_registry.py tests/test_competitor_monitoring.py"
         }
       ]
     }

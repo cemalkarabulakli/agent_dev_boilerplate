@@ -1,0 +1,9 @@
+{
+  "items": [
+    {"id": "web_interfaces_exist", "category": "Web Tools", "description": "Agents use web tool interfaces only.", "severity": "critical", "check": "web_tool_provider"},
+    {"id": "web_registries_exist", "category": "Web Tools", "description": "Providers are hidden behind registries.", "severity": "critical", "check": "web_tool_provider"},
+    {"id": "web_env_vars", "category": "Web Tools", "description": "Environment variables are used and no API keys are hardcoded.", "severity": "critical", "check": "web_tool_provider"},
+    {"id": "web_mock_providers", "category": "Web Tools", "description": "Mock providers exist for search, extraction, browser, and crawler.", "severity": "critical", "check": "web_tool_provider"},
+    {"id": "web_operational_placeholders", "category": "Web Tools", "description": "Retry, rate-limit, and error-handling placeholders are documented.", "severity": "warning", "check": "web_tool_provider"}
+  ]
+}

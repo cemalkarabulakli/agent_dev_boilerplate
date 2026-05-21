@@ -12,20 +12,24 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_every_registered_source_has_config_folders_and_adapter() -> None:
     registry = SourceRegistry(ROOT)
     for source_id, entry in registry.sources().items():
+        provider_name = entry.get("provider") or entry["adapter"]
         source_dir = ROOT / "research" / "sources" / source_id
         assert (source_dir / "source_config.yaml").exists()
         assert (source_dir / "raw").exists()
         assert (source_dir / "processed").exists()
         assert (source_dir / "reports").exists()
-        assert (ROOT / "tools" / "adapters" / "research_sources" / f"{entry['adapter']}.py").exists()
+        assert (ROOT / "tools" / "adapters" / "research_sources" / f"{provider_name}.py").exists()
+        assert (ROOT / "tools" / "web" / "sources" / f"{provider_name}.ts").exists()
 
 
 def test_every_builtin_adapter_supports_mock_mode() -> None:
     registry = SourceRegistry(ROOT)
     for source_id, entry in registry.sources().items():
+        provider_name = entry.get("provider") or entry["adapter"]
         config = load_yaml(ROOT / "research" / "sources" / source_id / "source_config.yaml")
         assert config["mode"] == "mock"
-        assert (ROOT / "tools" / "adapters" / "research_sources" / f"{entry['adapter']}.py").exists()
+        assert (ROOT / "tools" / "adapters" / "research_sources" / f"{provider_name}.py").exists()
+        assert "ad_angles" in config["processing"]["extract"]
 
 
 def test_collect_source_creates_raw_processed_report_and_references(tmp_path: Path) -> None:
@@ -39,10 +43,13 @@ def test_collect_source_creates_raw_processed_report_and_references(tmp_path: Pa
     processed = json.loads((root / result["processed_file"]).read_text(encoding="utf-8"))
     assert processed
     assert all(signal["reference_ids"] for signal in processed)
+    assert all(signal["raw_signal_ids"] for signal in processed)
+    assert all("source_urls" in signal for signal in processed)
 
     references = (root / "research" / "index" / "collected_references.jsonl").read_text(encoding="utf-8").splitlines()
     assert references
     assert json.loads(references[0])["raw_file"] == result["raw_file"]
+    assert json.loads(references[0])["is_mock"] is True
 
 
 def _single_source_root(tmp_path: Path, source_id: str) -> Path:

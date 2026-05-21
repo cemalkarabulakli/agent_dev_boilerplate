@@ -17,3 +17,4 @@ def test_github_workflows_exist() -> None:
     assert (ROOT / ".github" / "workflows" / "scheduled-optimization.yml").exists()
     assert (ROOT / ".github" / "workflows" / "weekly-research.yml").exists()
     assert (ROOT / ".github" / "workflows" / "source-integrity-check.yml").exists()
+    assert (ROOT / ".github" / "workflows" / "competitor-monitoring.yml").exists()

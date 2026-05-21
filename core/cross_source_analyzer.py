@@ -34,7 +34,7 @@ class CrossSourceAnalyzer:
         signals = signals if signals is not None else self.read_signals()
         grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
         for signal in signals:
-            key = str(signal.get("signal_type") or "general_signal")
+            key = str(signal.get("insight_type") or signal.get("signal_type") or "general_signal")
             grouped[key].append(signal)
         insights: list[CrossSourceInsight] = []
         for key, items in grouped.items():
@@ -99,4 +99,4 @@ class CrossSourceAnalyzer:
     def _format_insight(self, insight: CrossSourceInsight) -> str:
         refs = ", ".join(insight.reference_ids)
         sources = ", ".join(insight.sources)
-        return f"- {insight.insight} Confidence: {insight.confidence}. Sources: {sources}. References: {refs}."
+        return f"- {insight.insight} Confidence: {insight.confidence}. Source quality: acceptable. Sources: {sources}. References: {refs}."

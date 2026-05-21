@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 from core.schema import AgentConfig, MemoryEntry
 
-SECTIONS = ["# Compacted High-Ticket Business Context", "## Business Snapshot", "## Market", "## Expert Positioning", "## Specific Avatar", "## Urgent Pain", "## Expensive Problem", "## Dream Outcome", "## Current Offer", "## Improved Offer Direction", "## Unique Mechanism", "## Value Stack", "## Pricing Decisions", "## Guarantee / Risk Reversal", "## Proof / Credibility", "## Acquisition Decisions", "## Funnel Decisions", "## Sales Process", "## Delivery System", "## Retention / Upsell", "## Metrics", "## Constraints", "## Open Questions", "## Open Tasks", "## Rejected Ideas", "## Assumptions", "## Do Not Forget", "## Research Insights", "## Source References", "## Validated Trends", "## Candidate Trends", "## Tool Opportunities", "## Ad Angle Signals", "## Customer Language Signals", "## Recent Verbatim Turns", "## Removed Noise", "## Validation Checklist"]
+SECTIONS = ["# Compacted High-Ticket Business Context", "## Business Snapshot", "## Market", "## Expert Positioning", "## Specific Avatar", "## Urgent Pain", "## Expensive Problem", "## Dream Outcome", "## Current Offer", "## Improved Offer Direction", "## Unique Mechanism", "## Value Stack", "## Pricing Decisions", "## Guarantee / Risk Reversal", "## Proof / Credibility", "## Acquisition Decisions", "## Funnel Decisions", "## Sales Process", "## Delivery System", "## Retention / Upsell", "## Metrics", "## Constraints", "## Open Questions", "## Open Tasks", "## Rejected Ideas", "## Assumptions", "## Do Not Forget", "## Research Insights", "## Source References", "## Validated Trends", "## Candidate Trends", "## Tool Opportunities", "## Ad Angle Signals", "## Customer Language Signals", "## Competitor Signals", "## Recent Verbatim Turns", "## Removed Noise", "## Validation Checklist"]
 CATEGORIES = {
     "Market": ["market", "niche"], "Expert Positioning": ["expert", "credibility", "experience"], "Specific Avatar": ["avatar", "customer", "client"], "Urgent Pain": ["urgent pain", "pain"], "Expensive Problem": ["expensive problem", "costly", "problem"], "Dream Outcome": ["dream outcome", "desired outcome"], "Current Offer": ["current offer", "offer"], "Improved Offer Direction": ["improved offer", "offer direction"], "Unique Mechanism": ["unique mechanism", "mechanism"], "Value Stack": ["value stack", "bonus", "asset"], "Pricing Decisions": ["price", "pricing", "$", "payment"], "Guarantee / Risk Reversal": ["guarantee", "risk reversal"], "Proof / Credibility": ["proof", "case study", "testimonial", "credibility"], "Acquisition Decisions": ["acquisition", "lead", "ads", "outbound", "content"], "Funnel Decisions": ["funnel", "webinar", "workshop", "application", "email"], "Sales Process": ["sales", "close", "qualification", "objection"], "Delivery System": ["delivery", "onboarding", "milestone", "fulfillment"], "Retention / Upsell": ["retention", "upsell", "continuity", "referral"], "Metrics": ["metric", "close rate", "leads", "aov", "ltv", "%"], "Constraints": ["constraint", "budget", "time", "capacity"], "Open Questions": ["open question", "question"], "Open Tasks": ["task", "todo", "next action"], "Rejected Ideas": ["rejected", "do not"], "Assumptions": ["assumption", "assume"],
 }
@@ -66,6 +66,7 @@ def compact_context(config: AgentConfig, history: list[dict[str, Any]], session_
         "Tool Opportunities": [],
         "Ad Angle Signals": [],
         "Customer Language Signals": [],
+        "Competitor Signals": [],
     }
     for line in do_not_forget:
         lowered = line.lower()
@@ -86,6 +87,8 @@ def compact_context(config: AgentConfig, history: list[dict[str, Any]], session_
             research_sections["Ad Angle Signals"].append(line)
         if "language" in lowered or "pain" in lowered:
             research_sections["Customer Language Signals"].append(line)
+        if "competitor" in lowered or "pricing signal" in lowered or "positioning" in lowered:
+            research_sections["Competitor Signals"].append(line)
     for section, items in research_sections.items():
         lines.extend(["", f"## {section}"])
         lines.extend(_bullets(_dedupe(items)))
@@ -96,7 +99,7 @@ def compact_context(config: AgentConfig, history: list[dict[str, Any]], session_
     else:
         lines.append("No recent user turns.")
     lines.extend(["", "## Removed Noise", f"Removed greetings, duplicates, vague motivational text, and rejected temporary brainstorming where detected. Noise fragments removed: {removed}.", "", "## Validation Checklist"])
-    lines.extend(["- recent turns preserved", "- important numbers preserved", "- market preserved when present", "- avatar preserved when present", "- offer and price preserved when present", "- positioning decisions preserved when present", "- sales/delivery decisions preserved when present", "- rejected ideas preserved when present", "- open tasks preserved when present", "- no invented facts", "- assumptions labeled", "- raw history untouched", "- raw research dumps excluded", "- research insights require processed status, confidence, and references", "- weak signals remain labeled candidate"])
+    lines.extend(["- recent turns preserved", "- important numbers preserved", "- market preserved when present", "- avatar preserved when present", "- offer and price preserved when present", "- positioning decisions preserved when present", "- sales/delivery decisions preserved when present", "- rejected ideas preserved when present", "- open tasks preserved when present", "- no invented facts", "- assumptions labeled", "- raw history untouched", "- raw research dumps excluded", "- research insights require processed status, confidence, and references", "- weak signals remain labeled candidate", "- competitor signals require references and human review"])
     markdown = "\n".join(lines) + "\n"
     errors = validate_compaction(markdown, history, recent)
     return CompactionResult(markdown, not errors, errors, removed)

@@ -59,7 +59,7 @@ def write_report(report: ChecklistReport, reports_dir: Path) -> Path:
     return path
 
 def _run_item(item: ChecklistItem, agent_name: str, root: Path) -> CheckResult:
-    checks = {"agent_structure": _agent_structure, "prompt_quality": _prompt_quality, "github_ready": _github_ready, "mock_mode": _mock_mode, "ethical_guardrails": _ethical_guardrails, "context_compaction": _context_compaction, "business_context_schema": _business_context_schema, "research_source_structure": _research_source_structure, "reference_integrity": _reference_integrity, "cross_source_validation": _cross_source_validation}
+    checks = {"agent_structure": _agent_structure, "prompt_quality": _prompt_quality, "github_ready": _github_ready, "mock_mode": _mock_mode, "ethical_guardrails": _ethical_guardrails, "context_compaction": _context_compaction, "business_context_schema": _business_context_schema, "research_source_structure": _research_source_structure, "reference_integrity": _reference_integrity, "cross_source_validation": _cross_source_validation, "web_tool_provider": _web_tool_provider, "competitor_monitoring": _competitor_monitoring}
     passed, message = checks.get(item.check, lambda *_: (True, "Documented checklist item."))(agent_name, root)
     return CheckResult(item.id, item.category, item.description, item.severity, passed, message)
 
@@ -124,9 +124,11 @@ def _research_source_structure(agent_name: str, root: Path) -> tuple[bool, str]:
         for rel in ["source_config.yaml", "raw", "processed", "reports"]:
             if not (source_dir / rel).exists():
                 errors.append(f"{source_id} missing {rel}")
-        adapter = root / "tools" / "adapters" / "research_sources" / f"{entry['adapter']}.py"
-        if not adapter.exists():
-            errors.append(f"{source_id} missing adapter {entry['adapter']}")
+        adapter_name = str(entry.get("provider") or entry["adapter"])
+        adapter = root / "tools" / "adapters" / "research_sources" / f"{adapter_name}.py"
+        provider = root / "tools" / "web" / "sources" / f"{adapter_name}.ts"
+        if not adapter.exists() and not provider.exists():
+            errors.append(f"{source_id} missing adapter/provider {entry['adapter']}")
         config = load_yaml(source_dir / "source_config.yaml")
         if config.get("mode") != "mock":
             errors.append(f"{source_id} must support mock mode by default")
@@ -159,6 +161,54 @@ def _cross_source_validation(agent_name: str, root: Path) -> tuple[bool, str]:
     if not report.exists():
         return True, "Cross-source report not generated yet; run analyze_cross_source_signals.py after collection."
     text = report.read_text(encoding="utf-8")
-    required = ["## Weak Signals", "## Conflicting Signals", "## References", "Confidence:", "Sources:"]
+    required = ["## Weak Signals", "## Conflicting Signals", "## References", "Confidence:", "Source quality:", "Sources:"]
     missing = [item for item in required if item not in text]
     return (not missing, "Cross-source validation report contains required evidence fields." if not missing else "Missing: " + ", ".join(missing))
+
+def _web_tool_provider(agent_name: str, root: Path) -> tuple[bool, str]:
+    del agent_name
+    required = [
+        "tools/web/interfaces/web_search_tool.ts",
+        "tools/web/interfaces/web_extractor_tool.ts",
+        "tools/web/interfaces/browser_automation_tool.ts",
+        "tools/web/interfaces/web_crawler_tool.ts",
+        "tools/web/interfaces/source_collector_tool.ts",
+        "tools/web/interfaces/trend_provider_tool.ts",
+        "tools/web/registry/web_tool_registry.ts",
+        "tools/web/registry/source_provider_registry.ts",
+        "tools/web/search/mock_search_provider.ts",
+        "tools/web/extraction/mock_extractor_provider.ts",
+        "tools/web/browser/mock_browser_provider.ts",
+        "tools/web/crawling/mock_crawler_provider.py",
+    ]
+    missing = [item for item in required if not (root / item).exists()]
+    env_text = (root / ".env.example").read_text(encoding="utf-8")
+    for key in ["TAVILY_API_KEY", "FIRECRAWL_API_KEY", "WEB_TOOLS_MODE"]:
+        if key not in env_text:
+            missing.append(f".env.example missing {key}")
+    direct_import_terms = ["tavily", "firecrawl", "playwright", "scrapy"]
+    for path in (root / "agents").glob("**/*"):
+        if path.is_file() and path.suffix in {".md", ".yaml"}:
+            text = path.read_text(encoding="utf-8").lower()
+            if any(f"import {term}" in text or f"from {term}" in text for term in direct_import_terms):
+                missing.append(f"agent imports provider directly: {path.relative_to(root)}")
+    return (not missing, "Web tool interfaces and provider registries are valid." if not missing else "; ".join(missing))
+
+def _competitor_monitoring(agent_name: str, root: Path) -> tuple[bool, str]:
+    del agent_name
+    registry = SourceRegistry(root)
+    errors: list[str] = []
+    if "competitors" not in registry.sources():
+        errors.append("competitors source is not registered")
+    required = [
+        "research/sources/competitors/source_config.yaml",
+        "research/sources/competitors/raw",
+        "research/sources/competitors/processed",
+        "research/sources/competitors/reports",
+        "research/sources/competitors/screenshots",
+        "core/competitor_monitor.py",
+        "scripts/monitor_competitors.py",
+        "outputs/competitor_monitoring",
+    ]
+    errors.extend(item for item in required if not (root / item).exists())
+    return (not errors, "Competitor monitoring structure is valid." if not errors else "; ".join(errors))

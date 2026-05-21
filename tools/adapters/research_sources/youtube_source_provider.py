@@ -1,0 +1,2 @@
+from tools.adapters.research_sources.youtube_adapter import YouTubeAdapter as YouTubeSourceProvider
+

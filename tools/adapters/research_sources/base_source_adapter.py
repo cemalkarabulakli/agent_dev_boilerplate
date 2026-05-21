@@ -13,12 +13,18 @@ from core.schema import load_yaml, utc_now
 class RawSignal:
     id: str
     source: str
+    source_type: str
     query: str
     title: str
     url: str
+    text: str
+    language: str
+    author_or_channel: str
     snippet: str
     collected_at: str
+    published_at: str
     reference_id: str
+    is_mock: bool
     raw_file: str = ""
     metadata: dict[str, Any] = field(default_factory=dict)
 
@@ -27,13 +33,23 @@ class RawSignal:
 class ProcessedSignal:
     id: str
     source: str
-    signal_type: str
-    query: str
-    insight: str
-    confidence: float
+    raw_signal_ids: list[str]
     reference_ids: list[str]
+    insight_type: str
+    summary: str
+    evidence: list[str]
+    source_urls: list[str]
+    confidence: float
+    scores: dict[str, float]
+    status: str
+    recommendation: str
+    created_at: str
+    is_mock: bool
+    # Backward-compatible fields used by the existing analyzer/tests.
+    signal_type: str = ""
+    query: str = ""
+    insight: str = ""
     processed_file: str = ""
-    status: str = "candidate"
     language: str = "unknown"
     tags: list[str] = field(default_factory=list)
 
@@ -76,18 +92,26 @@ class BaseSourceAdapter:
                     raw_file="",
                     processed_file="",
                     confidence=0.45,
+                    is_mock=self.mode == "mock",
                     notes="Mock mode reference. Replace with API/scrape/manual data when configured.",
                 )
+                text = self.mock_snippet(query, index)
                 signals.append(
                     RawSignal(
                         id=signal_id,
                         source=self.source_id,
+                        source_type=self.source_type,
                         query=query,
                         title=reference["title"],
                         url=url,
-                        snippet=self.mock_snippet(query, index),
+                        text=text,
+                        language=self.language,
+                        author_or_channel=reference["author_or_channel"],
+                        snippet=text,
                         collected_at=reference["collected_at"],
+                        published_at="",
                         reference_id=reference["id"],
+                        is_mock=self.mode == "mock",
                         metadata={"mode": self.mode, "mock": self.mode == "mock", "source_type": self.source_type},
                     )
                 )
@@ -112,18 +136,29 @@ class BaseSourceAdapter:
     def process(self, signals: list[RawSignal]) -> list[ProcessedSignal]:
         processed: list[ProcessedSignal] = []
         for signal in signals:
+            confidence = 0.55 if signal.metadata.get("mock") else 0.7
+            insight = self.extract_insight(signal)
             processed.append(
                 ProcessedSignal(
                     id=f"sig_{signal.id}",
                     source=self.source_id,
-                    signal_type=self.signal_kind,
-                    query=signal.query,
-                    insight=self.extract_insight(signal),
-                    confidence=0.55 if signal.metadata.get("mock") else 0.7,
+                    raw_signal_ids=[signal.id],
                     reference_ids=[signal.reference_id],
+                    insight_type=self.signal_kind,
+                    summary=insight,
+                    evidence=[signal.text],
+                    source_urls=[signal.url],
+                    confidence=confidence,
+                    scores={"source_confidence": confidence, "evidence_strength": confidence},
                     status="candidate",
+                    recommendation="Needs human review before strategy changes.",
+                    created_at=utc_now(),
+                    is_mock=signal.is_mock,
                     language=self.language,
                     tags=self.default_tags(),
+                    signal_type=self.signal_kind,
+                    query=signal.query,
+                    insight=insight,
                 )
             )
         return processed
@@ -152,7 +187,8 @@ class BaseSourceAdapter:
             "## Candidate Signals",
         ]
         for signal in processed:
-            lines.append(f"- {signal.insight} (confidence: {signal.confidence}, references: {', '.join(signal.reference_ids)})")
+            label = "MOCK" if signal.is_mock else "LIVE"
+            lines.append(f"- [{label}] {signal.summary} (confidence: {signal.confidence}, references: {', '.join(signal.reference_ids)})")
         lines.extend(["", "## References"])
         for signal in processed:
             lines.append(f"- {', '.join(signal.reference_ids)}")

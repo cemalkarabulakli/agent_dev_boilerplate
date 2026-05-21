@@ -1,0 +1,9 @@
+{
+  "items": [
+    {"id": "competitor_source_registered", "category": "Competitor Monitoring", "description": "Competitor source is registered.", "severity": "critical", "check": "competitor_monitoring"},
+    {"id": "competitor_query_saved", "category": "Competitor Monitoring", "description": "Competitor query and search results are saved.", "severity": "critical", "check": "competitor_monitoring"},
+    {"id": "competitor_extracted_pages_saved", "category": "Competitor Monitoring", "description": "Extracted pages are saved.", "severity": "critical", "check": "competitor_monitoring"},
+    {"id": "competitor_screenshots_optional", "category": "Competitor Monitoring", "description": "Screenshots are optional and isolated.", "severity": "warning", "check": "competitor_monitoring"},
+    {"id": "competitor_references", "category": "Competitor Monitoring", "description": "Reports include references and major change detection.", "severity": "critical", "check": "competitor_monitoring"}
+  ]
+}

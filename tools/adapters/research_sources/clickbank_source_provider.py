@@ -1,0 +1,2 @@
+from tools.adapters.research_sources.clickbank_adapter import ClickBankAdapter as ClickBankSourceProvider
+

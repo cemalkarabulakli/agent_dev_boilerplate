@@ -1,0 +1,2 @@
+from tools.adapters.research_sources.bg_mamma_adapter import BGMammaAdapter as BgMammaSourceProvider
+

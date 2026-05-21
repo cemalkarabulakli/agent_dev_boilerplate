@@ -22,7 +22,7 @@ class SourceCollector:
     def collect_source(self, source_id: str, query: str | None = None, limit: int | None = None) -> dict[str, Any]:
         entry = self.registry.get(source_id)
         config = load_yaml(self.root / "research" / "sources" / source_id / "source_config.yaml")
-        adapter_name = str(entry["adapter"])
+        adapter_name = str(entry.get("provider") or entry["adapter"])
         adapter_cls = self._resolve_adapter(adapter_name)
         adapter = adapter_cls.from_source_id(self.root, source_id, entry)
         queries = [query] if query else list(config.get("queries", []))
@@ -50,6 +50,14 @@ class SourceCollector:
     def _resolve_adapter(self, adapter_name: str) -> type[BaseSourceAdapter]:
         if adapter_name in ADAPTERS:
             return ADAPTERS[adapter_name]
+        if adapter_name.endswith("_source_provider"):
+            legacy_name = adapter_name.replace("_source_provider", "_adapter")
+            if legacy_name in ADAPTERS:
+                return ADAPTERS[legacy_name]
+            if "competitor" in adapter_name and "competitor_source_provider" in ADAPTERS:
+                return ADAPTERS["competitor_source_provider"]
+            if "custom_source_provider" in ADAPTERS:
+                return ADAPTERS["custom_source_provider"]
         module = importlib.import_module(f"tools.adapters.research_sources.{adapter_name}")
         candidates = [
             member

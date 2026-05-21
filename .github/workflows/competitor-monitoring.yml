@@ -1,0 +1,43 @@
+{
+  "name": "Competitor Monitoring",
+  "on": {
+    "schedule": [
+      {
+        "cron": "31 5 * * 2"
+      }
+    ],
+    "workflow_dispatch": {}
+  },
+  "jobs": {
+    "competitor-monitoring": {
+      "runs-on": "ubuntu-latest",
+      "steps": [
+        {
+          "uses": "actions/checkout@v4"
+        },
+        {
+          "uses": "actions/setup-python@v5",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Install dependencies",
+          "run": "pip install -r requirements.txt"
+        },
+        {
+          "name": "Run competitor monitoring",
+          "run": "python scripts/monitor_competitors.py --query \"high ticket business coaching\""
+        },
+        {
+          "name": "Upload competitor monitoring artifacts",
+          "uses": "actions/upload-artifact@v4",
+          "with": {
+            "name": "competitor-monitoring-artifacts",
+            "path": "outputs/competitor_monitoring/\nresearch/sources/competitors/"
+          }
+        }
+      ]
+    }
+  }
+}
