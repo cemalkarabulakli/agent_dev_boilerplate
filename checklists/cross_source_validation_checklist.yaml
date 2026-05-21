@@ -1,0 +1,9 @@
+{
+  "items": [
+    {"id": "candidate_labeling", "category": "Cross Source", "description": "One-source insight is marked candidate.", "severity": "critical", "check": "cross_source_validation"},
+    {"id": "validated_labeling", "category": "Cross Source", "description": "Multi-source insight can be validated.", "severity": "critical", "check": "cross_source_validation"},
+    {"id": "source_count", "category": "Cross Source", "description": "Source count and confidence score are shown.", "severity": "critical", "check": "cross_source_validation"},
+    {"id": "conflicting_signals", "category": "Cross Source", "description": "Conflicting signals section exists.", "severity": "critical", "check": "cross_source_validation"},
+    {"id": "no_uncited_insights", "category": "Cross Source", "description": "No uncited insight appears in strategy reports.", "severity": "critical", "check": "cross_source_validation"}
+  ]
+}

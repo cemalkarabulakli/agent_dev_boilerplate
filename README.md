@@ -95,8 +95,60 @@ python scripts/run_checklist.py --agent offer_architect
 - `ci.yml`: runs tests, YAML validation, and agent structure validation.
 - `agent-quality-check.yml`: runs checklists and evals, then uploads quality reports.
 - `scheduled-optimization.yml`: weekly at `17 3 * * 1` UTC, compacts contexts, runs checklists, and uploads reports.
+- `weekly-research.yml`: weekly at `23 4 * * 1` UTC, runs modular source collection in configured mode and uploads research artifacts.
+- `source-integrity-check.yml`: validates research source structure, reference integrity, cross-source validation rules, and research source tests.
 
 Workflows do not auto-commit or push to `main` by default.
+
+## V4 Modular Multi-Source Research Engine
+
+V4 adds a modular research engine for collecting market signals from source adapters. It is designed for evidence-driven high-ticket business research and runs in mock mode unless a source is explicitly configured for API, scrape, or manual collection.
+
+Supported source modules:
+
+- Quora: customer questions, pain language, objections, education gaps.
+- BG-Mamma: Bulgarian community language, local trust objections, family and lifestyle discussions.
+- Facebook Ad Library: competitor ads, ad angles, creative patterns, offer positioning.
+- Reddit: raw pain language, objections, buying frustrations, tool mentions.
+- Google Trends: demand direction, seasonality, regional interest, related queries.
+- GitHub Trends: new tools, open-source adoption, AI agent tooling signals.
+- ClickBank: digital product categories, affiliate offer positioning, niche monetization signals.
+- YouTube: content trends, titles, hooks, authority-building topics.
+- Web Search: general research, official docs discovery, competitor and tool discovery.
+
+Each source has its own adapter, `source_config.yaml`, raw folder, processed folder, and report folder under `research/sources/{source}/`. New sources can be added without rewriting the collector.
+
+Raw source output is stored separately and never enters agent context directly. Only processed signals with `reference_ids`, confidence scores, source labels, and candidate or validated status can be used in compacted context or strategy reports. Human review is required before candidate insights update business strategy.
+
+References are appended to `research/index/collected_references.jsonl`. Every raw signal has a `reference_id`, every processed signal has `reference_ids`, and every report has a references section. In mock mode, URLs use `mock://...` and are labeled as mock.
+
+Cross-source validation uses source count and confidence:
+
+- 1 source: candidate.
+- 2 independent sources: stronger candidate.
+- 3 or more independent sources: validated if source quality is acceptable.
+- Google Trends + Reddit + YouTube is strong for demand and content signals.
+- Facebook Ad Library + ClickBank is strong for offer and ad signals.
+- GitHub Trends + Web Search is strong for tool signals.
+
+### Research Commands
+
+```bash
+python scripts/collect_source.py --source reddit --query "coaches struggling to get clients"
+python scripts/collect_source.py --source bg_mamma --query "детски английски курс"
+python scripts/collect_source.py --source facebook_ad_library --query "fitness coaching"
+python scripts/collect_source.py --source youtube --query "high ticket coaching funnel"
+python scripts/collect_all_sources.py --category high_ticket_business
+python scripts/analyze_cross_source_signals.py
+python scripts/add_research_source.py --id tiktok --name "TikTok" --type "short_video"
+python scripts/run_weekly_research.py
+```
+
+Generated research reports are written to:
+
+- Per-source reports: `research/sources/{source}/reports/`
+- Cross-source reports: `research/processed/cross_source_reports/` and `outputs/cross_source_reports/`
+- Weekly reports: `outputs/weekly_reports/`
 
 ## Avoid Fake Claims
 

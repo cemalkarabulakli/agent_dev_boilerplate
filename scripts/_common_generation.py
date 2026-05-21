@@ -14,13 +14,15 @@ def run_generation(default_agent: str) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--agent", default=default_agent)
     parser.add_argument("--context", default="business_context.yaml")
+    parser.add_argument("--no-memory", action="store_true", help="Skip memory writes for deterministic tests.")
     args = parser.parse_args()
     loaded = load_agent(args.agent, ROOT)
     context = BusinessContext.load(ROOT / args.context)
     markdown = render_mock_output(args.agent, context)
     path = save_output(ROOT, args.agent, markdown)
-    manager = MemoryManager(loaded.agent_dir)
-    manager.append_raw_history("agent", f"Generated {path.name}", {"script": Path(sys.argv[0]).name})
-    manager.save_candidate_memory("Generated mock output from business_context.yaml", "assumption", "agent", 0.4)
+    if not args.no_memory:
+        manager = MemoryManager(loaded.agent_dir)
+        manager.append_raw_history("agent", f"Generated {path.name}", {"script": Path(sys.argv[0]).name})
+        manager.save_candidate_memory("Generated mock output from business_context.yaml", "assumption", "agent", 0.4)
     print(path)
     return 0

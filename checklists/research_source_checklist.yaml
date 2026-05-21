@@ -1,0 +1,10 @@
+{
+  "items": [
+    {"id": "research_source_registered", "category": "Research Source", "description": "Every enabled source is registered.", "severity": "critical", "check": "research_source_structure"},
+    {"id": "research_source_config", "category": "Research Source", "description": "Every source has source_config.yaml.", "severity": "critical", "check": "research_source_structure"},
+    {"id": "research_source_folders", "category": "Research Source", "description": "Every source has raw, processed, and reports folders.", "severity": "critical", "check": "research_source_structure"},
+    {"id": "research_source_adapter", "category": "Research Source", "description": "Every source has an adapter.", "severity": "critical", "check": "research_source_structure"},
+    {"id": "research_source_mock_mode", "category": "Research Source", "description": "Every adapter supports mock mode.", "severity": "critical", "check": "research_source_structure"},
+    {"id": "research_source_compliance", "category": "Research Source", "description": "Every source has a compliance note and references enabled.", "severity": "critical", "check": "research_source_structure"}
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Source Integrity Check",
+  "on": {
+    "push": {},
+    "pull_request": {}
+  },
+  "jobs": {
+    "source-integrity": {
+      "runs-on": "ubuntu-latest",
+      "steps": [
+        {
+          "uses": "actions/checkout@v4"
+        },
+        {
+          "uses": "actions/setup-python@v5",
+          "with": {
+            "python-version": "3.12"
+          }
+        },
+        {
+          "name": "Install dependencies",
+          "run": "pip install -r requirements.txt"
+        },
+        {
+          "name": "Research source checklist",
+          "run": "python scripts/run_checklist.py --checklist research_source_checklist"
+        },
+        {
+          "name": "Reference integrity checklist",
+          "run": "python scripts/run_checklist.py --checklist reference_integrity_checklist"
+        },
+        {
+          "name": "Cross-source validation checklist",
+          "run": "python scripts/run_checklist.py --checklist cross_source_validation_checklist"
+        },
+        {
+          "name": "Research source tests",
+          "run": "python -m pytest tests/test_research_sources.py"
+        }
+      ]
+    }
+  }
+}

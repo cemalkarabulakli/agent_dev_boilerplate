@@ -3,7 +3,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from core.agent_loader import agent_dir, list_agents, load_agent_config, repo_root
 from core.business_context_schema import BusinessContext
+from core.reference_manager import ReferenceManager
 from core.schema import ChecklistItem, load_yaml
+from core.source_registry import SourceRegistry
 
 PROMPT_SECTIONS = ["# Role", "# Goal", "# Operating Principles", "# High-Ticket Business Logic", "# Memory Rules", "# Context Compaction Rules", "# Output Rules", "# Ethical Marketing Rules", "# Self-Review Checklist"]
 
@@ -37,6 +39,16 @@ def run_for_all(root: Path | None = None) -> list[ChecklistReport]:
     actual = root or repo_root()
     return [run_for_agent(agent, actual) for agent in list_agents(actual)]
 
+def run_named_checklist(checklist_name: str, root: Path | None = None) -> ChecklistReport:
+    actual = root or repo_root()
+    path = actual / "checklists" / f"{checklist_name}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"Unknown checklist: {checklist_name}")
+    data = load_yaml(path)
+    items = [ChecklistItem.from_dict(item) for item in data.get("items", [])]
+    agent = checklist_name
+    return ChecklistReport(agent, [_run_item(item, agent, actual) for item in items])
+
 def write_report(report: ChecklistReport, reports_dir: Path) -> Path:
     reports_dir.mkdir(parents=True, exist_ok=True)
     path = reports_dir / f"{report.agent}_checklist_report.md"
@@ -47,7 +59,7 @@ def write_report(report: ChecklistReport, reports_dir: Path) -> Path:
     return path
 
 def _run_item(item: ChecklistItem, agent_name: str, root: Path) -> CheckResult:
-    checks = {"agent_structure": _agent_structure, "prompt_quality": _prompt_quality, "github_ready": _github_ready, "mock_mode": _mock_mode, "ethical_guardrails": _ethical_guardrails, "context_compaction": _context_compaction, "business_context_schema": _business_context_schema}
+    checks = {"agent_structure": _agent_structure, "prompt_quality": _prompt_quality, "github_ready": _github_ready, "mock_mode": _mock_mode, "ethical_guardrails": _ethical_guardrails, "context_compaction": _context_compaction, "business_context_schema": _business_context_schema, "research_source_structure": _research_source_structure, "reference_integrity": _reference_integrity, "cross_source_validation": _cross_source_validation}
     passed, message = checks.get(item.check, lambda *_: (True, "Documented checklist item."))(agent_name, root)
     return CheckResult(item.id, item.category, item.description, item.severity, passed, message)
 
@@ -102,3 +114,51 @@ def evaluate_business_quality(context: BusinessContext) -> list[str]:
     if any(term in serialized for term in ["fake testimonial", "fake scarcity", "guaranteed income"]):
         errors.append("fake or unsupported claims are present")
     return errors
+
+def _research_source_structure(agent_name: str, root: Path) -> tuple[bool, str]:
+    del agent_name
+    registry = SourceRegistry(root)
+    errors: list[str] = []
+    for source_id, entry in registry.sources().items():
+        source_dir = root / "research" / "sources" / source_id
+        for rel in ["source_config.yaml", "raw", "processed", "reports"]:
+            if not (source_dir / rel).exists():
+                errors.append(f"{source_id} missing {rel}")
+        adapter = root / "tools" / "adapters" / "research_sources" / f"{entry['adapter']}.py"
+        if not adapter.exists():
+            errors.append(f"{source_id} missing adapter {entry['adapter']}")
+        config = load_yaml(source_dir / "source_config.yaml")
+        if config.get("mode") != "mock":
+            errors.append(f"{source_id} must support mock mode by default")
+        if not entry.get("compliance_note"):
+            errors.append(f"{source_id} missing compliance note")
+        if not config.get("collection", {}).get("include_references"):
+            errors.append(f"{source_id} references not enabled")
+    return (not errors, "Research source structure is valid." if not errors else "; ".join(errors))
+
+def _reference_integrity(agent_name: str, root: Path) -> tuple[bool, str]:
+    del agent_name
+    manager = ReferenceManager(root)
+    errors: list[str] = []
+    for reference in manager.read_all():
+        errors.extend(manager.validate_reference(reference))
+    for path in (root / "research" / "sources").glob("*/processed/*_processed.json"):
+        signals = load_yaml(path)
+        for signal in signals:
+            if not signal.get("reference_ids"):
+                errors.append(f"{path} has processed signal without reference_ids")
+    for path in (root / "research" / "sources").glob("*/reports/*_report.md"):
+        text = path.read_text(encoding="utf-8")
+        if "## References" not in text:
+            errors.append(f"{path} missing references section")
+    return (not errors, "Reference integrity checks passed." if not errors else "; ".join(errors))
+
+def _cross_source_validation(agent_name: str, root: Path) -> tuple[bool, str]:
+    del agent_name
+    report = root / "research" / "processed" / "cross_source_reports" / "cross_source_report.md"
+    if not report.exists():
+        return True, "Cross-source report not generated yet; run analyze_cross_source_signals.py after collection."
+    text = report.read_text(encoding="utf-8")
+    required = ["## Weak Signals", "## Conflicting Signals", "## References", "Confidence:", "Sources:"]
+    missing = [item for item in required if item not in text]
+    return (not missing, "Cross-source validation report contains required evidence fields." if not missing else "Missing: " + ", ".join(missing))

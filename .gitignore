@@ -12,7 +12,13 @@ dist/
 build/
 *.egg-info/
 outputs/**/*.md
+outputs/**/*.json
+outputs/**/*.jsonl
 !outputs/**/.gitkeep
 agents/**/outputs/*
 !agents/**/outputs/README.md
-reports/
+/reports/
+research/sources/*/raw/*.json
+research/sources/*/processed/*.json
+research/sources/*/reports/*.md
+research/processed/**/*.md

@@ -1,0 +1,8 @@
+{
+  "items": [
+    {"id": "reference_index_exists", "category": "References", "description": "Reference index exists.", "severity": "critical", "check": "reference_integrity"},
+    {"id": "reference_required_fields", "category": "References", "description": "Every reference has source, collected_at, raw_file, and URL or mock URL.", "severity": "critical", "check": "reference_integrity"},
+    {"id": "processed_reference_ids", "category": "References", "description": "Every processed signal has reference_ids.", "severity": "critical", "check": "reference_integrity"},
+    {"id": "report_references", "category": "References", "description": "Reports include a references section.", "severity": "critical", "check": "reference_integrity"}
+  ]
+}
