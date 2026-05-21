@@ -1,7 +1,0 @@
-sources:
-  - id: cto_internal_placeholder
-    title: "CTO Internal Placeholder"
-    type: "internal"
-    url: "internal://cto/placeholder"
-    status: "placeholder"
-    notes: "Replace with reviewed engineering standards, architecture docs, or official sources."

@@ -1,7 +1,0 @@
-sources:
-  - id: researcher_source_placeholder
-    title: "Researcher Source Placeholder"
-    type: "user_provided"
-    url: "internal://researcher/placeholder"
-    status: "placeholder"
-    notes: "Replace with official, internal, or user-provided sources for the research domain."
