@@ -1,0 +1,193 @@
+{
+  "items": [
+    {
+      "id": "andromeda_signal_capi",
+      "category": "Andromeda Signal Quality",
+      "description": "CAPI (Conversions API) is configured and sending server-side events",
+      "severity": "critical",
+      "check": "capi_configured"
+    },
+    {
+      "id": "andromeda_signal_emq",
+      "category": "Andromeda Signal Quality",
+      "description": "Event Match Quality (EMQ) score is 7.0 or above",
+      "severity": "critical",
+      "check": "emq_score_threshold"
+    },
+    {
+      "id": "andromeda_signal_dedup",
+      "category": "Andromeda Signal Quality",
+      "description": "Pixel and CAPI events share the same event_id for deduplication",
+      "severity": "critical",
+      "check": "event_id_deduplication"
+    },
+    {
+      "id": "andromeda_signal_pixel",
+      "category": "Andromeda Signal Quality",
+      "description": "Meta Pixel is installed and firing standard events correctly",
+      "severity": "critical",
+      "check": "pixel_installed"
+    },
+    {
+      "id": "creative_minimum_count",
+      "category": "Creative Diversification",
+      "description": "Minimum 10 conceptually distinct creatives per ad set",
+      "severity": "critical",
+      "check": "creative_count_minimum"
+    },
+    {
+      "id": "creative_recommended_count",
+      "category": "Creative Diversification",
+      "description": "Recommended 20 diversified creatives active in campaign",
+      "severity": "warning",
+      "check": "creative_count_recommended"
+    },
+    {
+      "id": "creative_pda_coverage",
+      "category": "Creative Diversification",
+      "description": "Creatives span multiple P.D.A. combinations (Persona × Desire × Awareness)",
+      "severity": "critical",
+      "check": "pda_diversity_check"
+    },
+    {
+      "id": "creative_portfolio_balance",
+      "category": "Creative Diversification",
+      "description": "Creative portfolio follows 50/30/20 rule: 50% new concepts, 30% refined variants, 20% proven winners",
+      "severity": "warning",
+      "check": "portfolio_balance_check"
+    },
+    {
+      "id": "creative_format_diversity",
+      "category": "Creative Diversification",
+      "description": "Multiple ad formats represented: video (9:16), static (4:5), UGC, carousel",
+      "severity": "warning",
+      "check": "format_diversity_check"
+    },
+    {
+      "id": "creative_refresh_cadence",
+      "category": "Creative Diversification",
+      "description": "No creative is older than 21 days without a refresh review",
+      "severity": "warning",
+      "check": "creative_age_check"
+    },
+    {
+      "id": "learning_phase_protection",
+      "category": "Learning Phase Integrity",
+      "description": "Campaigns are not modified during active learning phase (< 50 conversions)",
+      "severity": "critical",
+      "check": "learning_phase_protection"
+    },
+    {
+      "id": "learning_phase_budget",
+      "category": "Learning Phase Integrity",
+      "description": "Weekly budget is at least 50x target CPA to enable learning phase exit",
+      "severity": "critical",
+      "check": "budget_vs_cpa_threshold"
+    },
+    {
+      "id": "advantage_plus_eligible",
+      "category": "Advantage+ Optimization",
+      "description": "ASC eligibility confirmed: 50+ conversions in past 30 days, pixel active, catalog connected (if applicable)",
+      "severity": "warning",
+      "check": "asc_eligibility_check"
+    },
+    {
+      "id": "advantage_plus_audience",
+      "category": "Advantage+ Optimization",
+      "description": "Advantage+ Audience is enabled for prospecting campaigns",
+      "severity": "warning",
+      "check": "advantage_plus_audience_enabled"
+    },
+    {
+      "id": "audience_exclusions",
+      "category": "Audience Strategy",
+      "description": "Existing customers are excluded from cold prospecting campaigns",
+      "severity": "warning",
+      "check": "customer_exclusion_check"
+    },
+    {
+      "id": "bidding_strategy_match",
+      "category": "Budget and Bidding",
+      "description": "Bidding strategy matches conversion volume: Lowest Cost (< 50), Cost Cap (50-200), ROAS Target (200+)",
+      "severity": "critical",
+      "check": "bidding_strategy_match"
+    },
+    {
+      "id": "budget_scaling_limit",
+      "category": "Budget and Bidding",
+      "description": "Budget increases do not exceed 30% in a single change on active campaigns",
+      "severity": "warning",
+      "check": "budget_change_limit"
+    },
+    {
+      "id": "hook_rate_threshold",
+      "category": "Performance Monitoring",
+      "description": "All active creatives have Hook Rate above 15% (3-second view rate / impressions)",
+      "severity": "warning",
+      "check": "hook_rate_minimum"
+    },
+    {
+      "id": "frequency_threshold",
+      "category": "Performance Monitoring",
+      "description": "Frequency in cold prospecting campaigns is below 3.0",
+      "severity": "warning",
+      "check": "frequency_limit"
+    },
+    {
+      "id": "testing_budget_allocation",
+      "category": "Performance Monitoring",
+      "description": "20-30% of campaign budget allocated to new creative testing",
+      "severity": "warning",
+      "check": "testing_budget_pct"
+    },
+    {
+      "id": "policy_personal_attributes",
+      "category": "Ad Policy Compliance",
+      "description": "Ad copy does not assert or imply personal attributes of the audience (health, religion, finances, etc.)",
+      "severity": "critical",
+      "check": "no_personal_attributes"
+    },
+    {
+      "id": "policy_special_categories",
+      "category": "Ad Policy Compliance",
+      "description": "Special Ad Category requirements checked: Finance, Health, Housing, Employment, Political",
+      "severity": "critical",
+      "check": "special_category_check"
+    },
+    {
+      "id": "policy_landing_page",
+      "category": "Ad Policy Compliance",
+      "description": "Landing page loads within 3 seconds, matches ad promise, has privacy policy if collecting data",
+      "severity": "critical",
+      "check": "landing_page_compliance"
+    },
+    {
+      "id": "policy_no_guaranteed_results",
+      "category": "Ad Policy Compliance",
+      "description": "Ad copy contains no guaranteed ROAS, CPA, or outcome promises",
+      "severity": "critical",
+      "check": "no_guaranteed_results"
+    },
+    {
+      "id": "attribution_window",
+      "category": "Attribution",
+      "description": "Attribution window set to 7-day click + 1-day view (Meta 2025 standard)",
+      "severity": "warning",
+      "check": "attribution_window_check"
+    },
+    {
+      "id": "domain_verification",
+      "category": "Attribution",
+      "description": "Domain verified in Business Manager to prevent pixel blocking",
+      "severity": "warning",
+      "check": "domain_verified"
+    },
+    {
+      "id": "meta_ads_manager_structure",
+      "category": "Agent",
+      "description": "Meta Ads Manager agent structure exists and is complete",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

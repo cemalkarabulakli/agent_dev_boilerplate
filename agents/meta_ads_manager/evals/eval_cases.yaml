@@ -1,0 +1,96 @@
+{
+  "agent": "meta_ads_manager",
+  "description": "Eval cases for the Andromeda-first Meta Ads Manager agent",
+  "cases": [
+    {
+      "id": "eval_capi_missing",
+      "description": "Agent must flag CAPI as missing before any campaign recommendation",
+      "input": "We want to launch a Meta ads campaign for our fitness coaching program. We have Facebook Pixel installed.",
+      "required_sections": ["Andromeda Readiness Check", "CAPI", "Signal Quality"],
+      "required_terms": ["CAPI", "Conversions API", "Event Match Quality"],
+      "forbidden_terms": ["guarantee", "guaranteed ROAS", "guaranteed results"],
+      "expected_behavior": "Agent flags missing CAPI before making any campaign recommendations"
+    },
+    {
+      "id": "eval_creative_minimum",
+      "description": "Agent must flag insufficient creative count (< 10 concepts) as a blocker",
+      "input": "We have 3 ad creatives ready. Can we launch Advantage+ Shopping Campaigns?",
+      "required_sections": ["Creative Portfolio Assessment"],
+      "required_terms": ["minimum", "10", "P.D.A", "creative", "diversification"],
+      "forbidden_terms": ["yes, you can launch", "ready to launch"],
+      "expected_behavior": "Agent flags insufficient creative count and explains P.D.A. requirement"
+    },
+    {
+      "id": "eval_learning_phase_protection",
+      "description": "Agent must refuse to optimize a campaign in learning phase",
+      "input": "Our campaign launched 3 days ago with 12 conversions. CPA looks high. Should we change the bid strategy?",
+      "required_sections": ["Andromeda Readiness Check"],
+      "required_terms": ["learning phase", "50 conversions", "do not change", "wait"],
+      "forbidden_terms": ["change the bid", "optimize the bid", "adjust the targeting"],
+      "expected_behavior": "Agent strongly advises against changing anything during learning phase"
+    },
+    {
+      "id": "eval_pda_framework",
+      "description": "Agent uses P.D.A. framework when evaluating creative strategy",
+      "input": "We have 15 creatives but they all feature the same person talking about the same transformation. Are we ready for ASC?",
+      "required_sections": ["Creative Portfolio Assessment"],
+      "required_terms": ["P.D.A", "Persona", "Desire", "Awareness", "Entity ID", "surface variant", "conceptual diversity"],
+      "forbidden_terms": ["yes, 15 creatives is sufficient"],
+      "expected_behavior": "Agent identifies creatives as surface variants, recommends genuine P.D.A. diversity"
+    },
+    {
+      "id": "eval_personal_attributes_policy",
+      "description": "Agent flags personal attribute violation in ad copy",
+      "input": "We want to use this headline: 'Are you struggling with anxiety and looking for relief?'",
+      "required_sections": ["Policy Check"],
+      "required_terms": ["personal attribute", "prohibited", "policy", "imply"],
+      "forbidden_terms": ["looks good", "approved", "that works"],
+      "expected_behavior": "Agent flags personal attributes policy violation and provides compliant alternative"
+    },
+    {
+      "id": "eval_andromeda_first_recommendation",
+      "description": "Every recommendation references Andromeda signal or learning impact",
+      "input": "Our ROAS dropped from 3.2 to 2.1 over the past 2 weeks. What should we do?",
+      "required_sections": ["Creative Portfolio Assessment", "Next Actions"],
+      "required_terms": ["Andromeda", "CAPI", "Hook Rate", "creative", "fatigue"],
+      "forbidden_terms": ["add more budget", "increase the bid", "target a narrower audience"],
+      "expected_behavior": "Agent runs through Andromeda optimization decision tree before recommending action"
+    },
+    {
+      "id": "eval_indirect_vs_direct",
+      "description": "Agent recommends Indirect video ad strategy for B2C coach without big brand",
+      "input": "I'm a nutrition coach with 2,000 Instagram followers. Should I run direct ads pitching my 1:1 coaching program?",
+      "required_sections": ["Creative Portfolio Assessment", "Next Actions"],
+      "required_terms": ["indirect", "lead magnet", "free training", "show rate", "trust"],
+      "forbidden_terms": ["direct ads are fine", "pitch your offer directly"],
+      "expected_behavior": "Agent recommends indirect lead magnet approach and explains show rate advantage"
+    },
+    {
+      "id": "eval_no_guaranteed_results",
+      "description": "Agent never promises guaranteed ROAS or CPA outcomes",
+      "input": "What ROAS can I expect from Meta ads for my online course?",
+      "required_sections": ["Assumptions"],
+      "required_terms": ["industry average", "benchmark", "assumption", "depends"],
+      "forbidden_terms": ["you will get", "guaranteed", "you can expect exactly", "I promise"],
+      "expected_behavior": "Agent provides benchmarks labeled as averages, not guarantees"
+    },
+    {
+      "id": "eval_budget_learning_phase",
+      "description": "Agent checks budget vs. CPA ratio before campaign setup",
+      "input": "Our target CPA is $50. We want to start with $20/day. Is that okay?",
+      "required_sections": ["Budget and Bidding"],
+      "required_terms": ["50x", "learning phase", "weekly budget", "insufficient"],
+      "forbidden_terms": ["that is fine", "go ahead"],
+      "expected_behavior": "Agent flags $20/day as insufficient for $50 CPA target (needs $350/week minimum)"
+    },
+    {
+      "id": "eval_asc_eligibility",
+      "description": "Agent checks ASC eligibility before recommending Advantage+ Shopping",
+      "input": "We want to run Advantage+ Shopping Campaigns. We launched our store last week.",
+      "required_sections": ["Campaign Structure", "Andromeda Readiness Check"],
+      "required_terms": ["50 conversions", "eligibility", "learning", "manual"],
+      "forbidden_terms": ["launch ASC now", "Advantage+ Shopping is ready"],
+      "expected_behavior": "Agent explains ASC eligibility requirements and recommends manual campaign first"
+    }
+  ]
+}
