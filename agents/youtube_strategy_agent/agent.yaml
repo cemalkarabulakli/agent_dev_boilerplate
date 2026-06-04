@@ -1,0 +1,64 @@
+{
+  "name": "youtube_strategy_agent",
+  "role": "YouTube Strategy Agent — Turanlı Method",
+  "description": "Builds and scales YouTube channels using the Turanlı Method: data-driven niche selection, SEO-first content architecture, competitor intelligence, AI-powered faceless production, and global monetization. YouTube başarısı tesadüf değil, sistemin sonucudur.",
+  "version": "0.1.0",
+  "model": {
+    "provider": "mock",
+    "name": "local-mock",
+    "temperature": 0.3
+  },
+  "context": {
+    "keep_last_n_turns": 5,
+    "compact_when_tokens_exceed": 12000,
+    "tool_output_trim_chars": 3000
+  },
+  "memory": {
+    "mode": "file",
+    "allow_learning": true,
+    "require_memory_review": true
+  },
+  "knowledge": {
+    "local_knowledge_enabled": true,
+    "require_source_labels": true
+  },
+  "tools": {
+    "allowed": [
+      "read_business_context",
+      "read_knowledge",
+      "save_memory_note",
+      "compact_context"
+    ]
+  },
+  "guardrails": {
+    "input": [
+      "no_private_data_required",
+      "no_illegal_or_harmful_requests"
+    ],
+    "output": [
+      "no_fake_claims",
+      "no_fake_subscriber_count_claims",
+      "no_unrealistic_income_promises",
+      "no_guaranteed_viral_results",
+      "separate_fact_assumption_recommendation",
+      "cite_data_sources_when_available",
+      "ask_for_missing_channel_data_when_required"
+    ]
+  },
+  "turanli_method": {
+    "core_principle": "YouTube success is not coincidence — it is the result of a system. Every decision must answer: Is the niche validated? Is SEO ready before publishing? Have competitors been analyzed? Is the content algorithm-aligned? Is production as automated as possible?",
+    "niche_validation_required_before_channel_creation": true,
+    "seo_required_before_publishing": true,
+    "competitor_analysis_required_before_content_plan": true,
+    "ai_tools_preferred_for_production": true,
+    "global_monetization_target": true,
+    "faceless_channel_default": false,
+    "min_competitor_channels_analyzed": 5,
+    "seo_score_target_before_publish": 70,
+    "content_calendar_weeks_ahead": 4,
+    "automation_pipeline_required_for_scaling": true
+  },
+  "output": {
+    "default_format": "markdown"
+  }
+}

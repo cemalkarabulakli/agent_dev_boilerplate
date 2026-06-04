@@ -1,0 +1,179 @@
+{
+  "items": [
+    {
+      "id": "niche_search_demand",
+      "category": "Niche Validation",
+      "description": "Niche has confirmed search demand — monthly search volume validated via vidIQ or TubeBuddy keyword research",
+      "severity": "critical",
+      "check": "niche_search_demand_confirmed"
+    },
+    {
+      "id": "niche_monetization_potential",
+      "category": "Niche Validation",
+      "description": "Niche CPM estimate reviewed — Tier 1 country audience or high-CPM topic (Finance, SaaS, Real Estate, Health)",
+      "severity": "critical",
+      "check": "niche_cpm_reviewed"
+    },
+    {
+      "id": "niche_competition_level",
+      "category": "Niche Validation",
+      "description": "Top 10 competitor channels analyzed for exploitability — average views-to-subscriber ratio and content quality assessed",
+      "severity": "critical",
+      "check": "niche_competition_analyzed"
+    },
+    {
+      "id": "niche_content_gap",
+      "category": "Niche Validation",
+      "description": "At least 3 identifiable content gaps found in the niche that competitors are not covering well",
+      "severity": "critical",
+      "check": "content_gap_identified"
+    },
+    {
+      "id": "channel_name_keyword",
+      "category": "SEO Foundation",
+      "description": "Channel name contains primary keyword or clear topical signal for YouTube's algorithm",
+      "severity": "warning",
+      "check": "channel_name_keyword_check"
+    },
+    {
+      "id": "channel_description_seo",
+      "category": "SEO Foundation",
+      "description": "Channel description contains primary keyword in first 100 characters",
+      "severity": "critical",
+      "check": "channel_description_seo"
+    },
+    {
+      "id": "playlist_architecture",
+      "category": "SEO Foundation",
+      "description": "Playlist structure planned before first video — topical playlists increase session continuity and suggested video eligibility",
+      "severity": "warning",
+      "check": "playlist_structure_planned"
+    },
+    {
+      "id": "video_title_keyword",
+      "category": "SEO Foundation",
+      "description": "Every video title contains a validated keyword in the first 60 characters",
+      "severity": "critical",
+      "check": "video_title_keyword_check"
+    },
+    {
+      "id": "video_description_seo",
+      "category": "SEO Foundation",
+      "description": "Video description includes: primary keyword in first 2 sentences, secondary keywords, timestamps, and relevant links",
+      "severity": "critical",
+      "check": "video_description_seo"
+    },
+    {
+      "id": "video_tags",
+      "category": "SEO Foundation",
+      "description": "Video tags include: exact-match primary keyword, broad topic keywords, and channel name",
+      "severity": "warning",
+      "check": "video_tags_set"
+    },
+    {
+      "id": "competitor_min_analyzed",
+      "category": "Competitor Intelligence",
+      "description": "Minimum 5 competitor channels analyzed using the Competitor Analysis Skill before content plan is finalized",
+      "severity": "critical",
+      "check": "competitor_min_count"
+    },
+    {
+      "id": "competitor_gap_documented",
+      "category": "Competitor Intelligence",
+      "description": "Competitor content gaps documented and mapped to content calendar slots",
+      "severity": "critical",
+      "check": "competitor_gap_documented"
+    },
+    {
+      "id": "outlier_videos_identified",
+      "category": "Competitor Intelligence",
+      "description": "Outlier videos identified per competitor (videos with 3x+ average views) — these reveal what the algorithm rewards in this niche",
+      "severity": "warning",
+      "check": "outlier_videos_found"
+    },
+    {
+      "id": "ctr_title_thumbnail",
+      "category": "Content Quality",
+      "description": "Every video has a title + thumbnail combination reviewed against the CTR Framework (Click test) before publishing",
+      "severity": "critical",
+      "check": "ctr_review"
+    },
+    {
+      "id": "hook_quality",
+      "category": "Content Quality",
+      "description": "First 30 seconds of every video deliver on the title promise AND tease what's coming (Time test)",
+      "severity": "critical",
+      "check": "hook_quality_check"
+    },
+    {
+      "id": "end_screen_cards",
+      "category": "Content Quality",
+      "description": "End screens and cards configured pointing to related videos (Return test)",
+      "severity": "warning",
+      "check": "end_screen_configured"
+    },
+    {
+      "id": "content_calendar_4_weeks",
+      "category": "Production System",
+      "description": "Content calendar maintains at least 4 weeks of planned and scripted videos ahead",
+      "severity": "warning",
+      "check": "content_calendar_ahead"
+    },
+    {
+      "id": "production_pipeline_defined",
+      "category": "Production System",
+      "description": "Production pipeline documented: Script → Voiceover/Recording → Editing → Thumbnail → Metadata → Schedule",
+      "severity": "warning",
+      "check": "pipeline_documented"
+    },
+    {
+      "id": "thumbnail_ab_test",
+      "category": "Production System",
+      "description": "Thumbnails A/B tested on underperforming videos (CTR below 4%) within first 48 hours",
+      "severity": "warning",
+      "check": "thumbnail_ab_test"
+    },
+    {
+      "id": "ctr_monitoring",
+      "category": "Performance Monitoring",
+      "description": "CTR monitored per video — below 4% triggers thumbnail/title review",
+      "severity": "critical",
+      "check": "ctr_threshold"
+    },
+    {
+      "id": "avd_monitoring",
+      "category": "Performance Monitoring",
+      "description": "Average View Duration monitored — below 40% triggers hook and content structure review",
+      "severity": "critical",
+      "check": "avd_threshold"
+    },
+    {
+      "id": "ypp_progress",
+      "category": "Monetization",
+      "description": "YPP progress tracked: 1,000 subscribers + 4,000 watch hours (long-form) or 10M Shorts views in 90 days",
+      "severity": "warning",
+      "check": "ypp_threshold_tracked"
+    },
+    {
+      "id": "monetization_diversification",
+      "category": "Monetization",
+      "description": "Monetization strategy includes at least 2 revenue streams: AdSense + one of (sponsorship, affiliate, digital products)",
+      "severity": "warning",
+      "check": "monetization_diversified"
+    },
+    {
+      "id": "automation_tools_configured",
+      "category": "Automation",
+      "description": "If producing faceless content: AI tools stack configured (script + voice + video + thumbnail + metadata)",
+      "severity": "warning",
+      "check": "automation_stack_configured"
+    },
+    {
+      "id": "youtube_strategy_agent_structure",
+      "category": "Agent",
+      "description": "YouTube Strategy Agent structure exists and is complete",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}
