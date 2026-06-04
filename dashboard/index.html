@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Dashboard</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface2: #21262d;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --yellow: #d29922;
+  --red: #f85149;
+  --purple: #bc8cff;
+  --r: 6px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Sidebar ─────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  padding: 18px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-logo .icon { font-size: 22px; }
+
+.sidebar-nav { padding: 8px; flex: 1; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 12px;
+  border-radius: var(--r);
+  cursor: pointer;
+  color: var(--muted);
+  transition: all .15s;
+  font-size: 13px;
+  margin-bottom: 2px;
+  user-select: none;
+}
+
+.nav-item:hover { background: var(--surface2); color: var(--text); }
+.nav-item.active { background: rgba(88,166,255,.12); color: var(--accent); }
+
+.nav-badge {
+  margin-left: auto;
+  font-size: 11px;
+  background: var(--surface2);
+  padding: 1px 6px;
+  border-radius: 10px;
+  color: var(--muted);
+}
+
+.nav-item.active .nav-badge { background: rgba(88,166,255,.2); color: var(--accent); }
+
+.sidebar-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pulse-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  display: inline-block;
+  margin-right: 5px;
+}
+.pulse-dot.spinning { animation: blink 1s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* ── Main ─────────────────────────────────────── */
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+.topbar {
+  height: 52px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.topbar-title { font-size: 15px; font-weight: 600; flex: 1; }
+
+.content { flex: 1; overflow-y: auto; padding: 24px; }
+
+/* ── Buttons ──────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+  transition: all .15s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.btn:hover { background: #2d333b; border-color: #6e7681; }
+
+/* ── Stat Cards ───────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-sub { font-size: 11px; color: var(--muted); }
+
+/* ── Section headers ──────────────────────────── */
+.section-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.section-title { font-size: 15px; font-weight: 600; }
+
+.search-box {
+  padding: 6px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  color: var(--text);
+  font-size: 13px;
+  width: 210px;
+  outline: none;
+  font-family: inherit;
+}
+.search-box:focus { border-color: var(--accent); }
+
+/* ── Agent Cards ──────────────────────────────── */
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 14px;
+}
+
+.agent-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: border-color .15s, transform .15s;
+}
+.agent-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+.agent-card-hd { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 6px; }
+.agent-name { font-size: 13px; font-weight: 600; }
+.agent-ver { font-size: 11px; color: var(--muted); background: var(--surface2); padding: 2px 6px; border-radius: 10px; }
+.agent-role { font-size: 11px; color: var(--accent); margin-bottom: 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.agent-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 12px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.agent-badges { display: flex; gap: 5px; flex-wrap: wrap; }
+
+/* ── Badges ───────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500;
+}
+.bg { background: rgba(63,185,80,.15); color: var(--green); }
+.by { background: rgba(210,153,34,.15); color: var(--yellow); }
+.br { background: rgba(248,81,73,.15); color: var(--red); }
+.bb { background: rgba(88,166,255,.15); color: var(--accent); }
+.bp { background: rgba(188,140,255,.15); color: var(--purple); }
+.bx { background: rgba(139,148,158,.15); color: var(--muted); }
+
+.mem-dots { display: flex; gap: 3px; align-items: center; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--surface2); border: 1px solid var(--border); }
+.dot.on { background: var(--green); border-color: var(--green); }
+
+/* ── Research Cards ───────────────────────────── */
+.source-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+
+.source-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 15px; }
+.source-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.source-name { font-size: 13px; font-weight: 600; }
+.source-desc { font-size: 12px; color: var(--muted); line-height: 1.4; margin-bottom: 12px; }
+
+.source-stats { display: flex; gap: 20px; }
+.src-stat-v { font-size: 22px; font-weight: 700; }
+.src-stat-l { font-size: 11px; color: var(--muted); }
+
+/* ── Scripts ──────────────────────────────────── */
+.script-list { display: flex; flex-direction: column; gap: 7px; }
+.script-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 11px 15px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.script-name { font-size: 13px; font-weight: 500; }
+.script-cmd { font-family: monospace; font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+/* ── Modal ────────────────────────────────────── */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.75);
+  display: none;
+  align-items: flex-start; justify-content: center;
+  z-index: 200; padding: 48px 20px; overflow-y: auto;
+}
+.overlay.open { display: flex; }
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 100%; max-width: 820px;
+  display: flex; flex-direction: column;
+  max-height: 88vh;
+}
+
+.modal-hd {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  flex-shrink: 0;
+}
+.modal-title { font-size: 18px; font-weight: 600; }
+.modal-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.modal-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 22px; padding: 2px 6px; border-radius: 4px; line-height: 1; }
+.modal-close:hover { background: var(--surface2); color: var(--text); }
+
+.modal-tabs { display: flex; padding: 0 24px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.tab-btn {
+  padding: 11px 15px; cursor: pointer; font-size: 13px; color: var(--muted);
+  border-bottom: 2px solid transparent; transition: all .15s; user-select: none;
+  background: none; border-top: none; border-left: none; border-right: none;
+  font-family: inherit;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.modal-body { padding: 22px 24px; overflow-y: auto; flex: 1; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ── Info rows ────────────────────────────────── */
+.info-row { display: flex; gap: 12px; margin-bottom: 8px; font-size: 13px; }
+.info-k { color: var(--muted); min-width: 150px; flex-shrink: 0; }
+.info-v { color: var(--text); }
+
+.sub-title {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--muted); margin-bottom: 10px;
+}
+
+/* ── Code block ───────────────────────────────── */
+.code-block {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 14px;
+  font-family: 'Courier New', monospace; font-size: 12px;
+  line-height: 1.65; overflow-x: auto; white-space: pre-wrap;
+  word-break: break-word; color: var(--muted);
+  max-height: 480px; overflow-y: auto;
+}
+
+/* ── File list ────────────────────────────────── */
+.file-list { display: flex; flex-direction: column; gap: 5px; }
+.file-item {
+  background: var(--surface2); border-radius: var(--r);
+  padding: 8px 12px; display: flex; align-items: center;
+  justify-content: space-between; font-size: 13px;
+}
+.file-sz { font-size: 11px; color: var(--muted); }
+
+/* ── Misc ─────────────────────────────────────── */
+.loading { display: flex; align-items: center; justify-content: center; padding: 60px; color: var(--muted); }
+.empty { text-align: center; padding: 60px; color: var(--muted); }
+.divider { height: 1px; background: var(--border); margin: 18px 0; }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6e7681; }
+</style>
+</head>
+<body>
+
+<!-- ── Sidebar ─────────────────────────────────── -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <span class="icon">🤖</span>
+    Agent Dashboard
+  </div>
+
+  <div class="sidebar-nav">
+    <div class="nav-item active" id="nav-overview" onclick="navigate('overview')">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M1.5 2.5A1.5 1.5 0 0 1 3 1h10a1.5 1.5 0 0 1 1.5 1.5v3A1.5 1.5 0 0 1 13 7H3A1.5 1.5 0 0 1 1.5 5.5v-3zm0 7A1.5 1.5 0 0 1 3 8h4.5A1.5 1.5 0 0 1 9 9.5v4A1.5 1.5 0 0 1 7.5 15H3A1.5 1.5 0 0 1 1.5 13.5v-4zm9 0A1.5 1.5 0 0 1 12 8h1A1.5 1.5 0 0 1 14.5 9.5v4A1.5 1.5 0 0 1 13 15h-1a1.5 1.5 0 0 1-1.5-1.5v-4z"/>
+      </svg>
+      Overview
+    </div>
+
+    <div class="nav-item" id="nav-agents" onclick="navigate('agents')">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+      </svg>
+      Agents
+      <span class="nav-badge" id="agent-count-badge">0</span>
+    </div>
+
+    <div class="nav-item" id="nav-research" onclick="navigate('research')">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.099zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>
+      Research
+    </div>
+
+    <div class="nav-item" id="nav-scripts" onclick="navigate('scripts')">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+        <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+      </svg>
+      Scripts
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div><span class="pulse-dot" id="pulse-dot"></span><span id="last-refresh">—</span></div>
+    <div>Auto-refresh: 30s</div>
+  </div>
+</nav>
+
+<!-- ── Main ─────────────────────────────────────── -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="page-title">Overview</div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <input class="search-box" id="search-box" type="text" placeholder="Search agents…" style="display:none;" oninput="filterAgents()">
+      <button class="btn" onclick="refresh()">↻ Refresh</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- OVERVIEW -->
+    <div id="section-overview">
+      <div class="stat-grid" id="stat-grid"><div class="loading">Loading…</div></div>
+      <div class="section-hd"><div class="section-title">All Agents</div></div>
+      <div class="agent-grid" id="overview-grid"><div class="loading">Loading…</div></div>
+    </div>
+
+    <!-- AGENTS -->
+    <div id="section-agents" style="display:none;">
+      <div class="section-hd">
+        <div class="section-title">Agents — <span id="agents-count">0</span></div>
+      </div>
+      <div class="agent-grid" id="agents-grid"><div class="loading">Loading…</div></div>
+    </div>
+
+    <!-- RESEARCH -->
+    <div id="section-research" style="display:none;">
+      <div class="section-hd"><div class="section-title">Research Sources</div></div>
+      <div class="source-grid" id="source-grid"><div class="loading">Loading…</div></div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <div id="section-scripts" style="display:none;">
+      <div class="section-hd"><div class="section-title">CLI Scripts</div></div>
+      <div class="script-list" id="script-list"><div class="loading">Loading…</div></div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── Modal ────────────────────────────────────── -->
+<div class="overlay" id="overlay" onclick="onOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-hd">
+      <div>
+        <div class="modal-title" id="modal-title">—</div>
+        <div class="modal-sub" id="modal-sub">—</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+
+    <div class="modal-tabs">
+      <button class="tab-btn active" onclick="switchTab('info')">Info</button>
+      <button class="tab-btn" onclick="switchTab('prompt')">System Prompt</button>
+      <button class="tab-btn" onclick="switchTab('knowledge')">Knowledge</button>
+      <button class="tab-btn" onclick="switchTab('memory')">Memory</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="tab-pane active" id="tab-info"></div>
+      <div class="tab-pane" id="tab-prompt"></div>
+      <div class="tab-pane" id="tab-knowledge"></div>
+      <div class="tab-pane" id="tab-memory"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────
+let allAgents = [];
+let currentSection = 'overview';
+
+// ── Navigation ─────────────────────────────────────
+function navigate(section) {
+  ['overview','agents','research','scripts'].forEach(s => {
+    document.getElementById(`section-${s}`).style.display = 'none';
+    document.getElementById(`nav-${s}`).classList.remove('active');
+  });
+  document.getElementById(`section-${section}`).style.display = 'block';
+  document.getElementById(`nav-${section}`).classList.add('active');
+
+  const titles = { overview:'Overview', agents:'Agents', research:'Research Sources', scripts:'CLI Scripts' };
+  document.getElementById('page-title').textContent = titles[section];
+  document.getElementById('search-box').style.display = section === 'agents' ? 'block' : 'none';
+
+  currentSection = section;
+  if (section === 'agents') renderAgentsGrid(allAgents);
+  else if (section === 'research') loadResearch();
+  else if (section === 'scripts') loadScripts();
+}
+
+// ── Data loading ────────────────────────────────────
+async function api(url) {
+  try { return await (await fetch(url)).json(); }
+  catch { return null; }
+}
+
+async function refresh() {
+  const dot = document.getElementById('pulse-dot');
+  dot.classList.add('spinning');
+  const [stats, agents] = await Promise.all([api('/api/stats'), api('/api/agents')]);
+  allAgents = agents || [];
+  renderStats(stats || {});
+  renderOverviewGrid(allAgents);
+  document.getElementById('agent-count-badge').textContent = allAgents.length;
+  document.getElementById('agents-count').textContent = allAgents.length;
+  if (currentSection === 'agents') renderAgentsGrid(allAgents);
+  dot.classList.remove('spinning');
+  document.getElementById('last-refresh').textContent = new Date().toLocaleTimeString('tr-TR');
+}
+
+async function loadResearch() {
+  const data = await api('/api/research');
+  renderResearch(data || []);
+}
+
+async function loadScripts() {
+  const data = await api('/api/scripts');
+  renderScripts(data || []);
+}
+
+// ── Stats ───────────────────────────────────────────
+function renderStats(s) {
+  const items = [
+    { l:'Total Agents',      v:s.total_agents || 0,      sub:'aktif agent',          c:'' },
+    { l:'Full Memory',       v:s.full_memory || 0,       sub:'4/4 memory dosyası',   c:'var(--green)' },
+    { l:'Has Evals',         v:s.has_evals || 0,         sub:'eval case\'i olan',     c:'var(--accent)' },
+    { l:'Has Knowledge',     v:s.has_knowledge || 0,     sub:'knowledge dosyalı',    c:'var(--purple)' },
+    { l:'Research Sources',  v:s.research_sources || 0,  sub:'veri kaynağı',         c:'var(--yellow)' },
+    { l:'Scripts',           v:s.scripts || 0,           sub:'CLI script',           c:'var(--muted)' },
+  ];
+  document.getElementById('stat-grid').innerHTML = items.map(i => `
+    <div class="stat-card">
+      <div class="stat-label">${i.l}</div>
+      <div class="stat-value" style="${i.c ? `color:${i.c}` : ''}">${i.v}</div>
+      <div class="stat-sub">${i.sub}</div>
+    </div>
+  `).join('');
+}
+
+// ── Agent Card ──────────────────────────────────────
+function memBadge(m, cov) {
+  const dots = ['raw_history','long_term','session_notes','compacted'].map(k =>
+    `<div class="dot ${m[k] ? 'on' : ''}" title="${{raw_history:'Raw History',long_term:'Long-Term Memory',session_notes:'Session Notes',compacted:'Compacted Context'}[k]}"></div>`
+  ).join('');
+  const cls = cov === 4 ? 'bg' : cov >= 2 ? 'by' : 'bx';
+  return `<span class="badge ${cls}"><span class="mem-dots">${dots}</span>${cov}/4</span>`;
+}
+
+function agentCard(a) {
+  const kBadge = a.knowledge_count > 0
+    ? `<span class="badge bp">📚 ${a.knowledge_count}</span>`
+    : `<span class="badge bx">Knowledge yok</span>`;
+  const eBadge = a.has_evals
+    ? `<span class="badge bb">✓ Evals</span>`
+    : `<span class="badge bx">Eval yok</span>`;
+  const mBadge = a.model_provider === 'mock'
+    ? `<span class="badge by">Mock</span>`
+    : `<span class="badge bg">${a.model_provider}</span>`;
+  return `
+    <div class="agent-card" onclick="openAgent('${a.name}')">
+      <div class="agent-card-hd">
+        <div class="agent-name">${a.display_name}</div>
+        <div class="agent-ver">v${a.version}</div>
+      </div>
+      ${a.role ? `<div class="agent-role">${esc(a.role)}</div>` : ''}
+      ${a.description ? `<div class="agent-desc">${esc(a.description)}</div>` : '<div style="height:8px;"></div>'}
+      <div class="agent-badges">
+        ${memBadge(a.memory, a.memory_coverage)}
+        ${kBadge}${eBadge}${mBadge}
+      </div>
+    </div>`;
+}
+
+function renderOverviewGrid(agents) {
+  const el = document.getElementById('overview-grid');
+  el.innerHTML = agents.length ? agents.map(agentCard).join('') : '<div class="empty">Hiç agent bulunamadı</div>';
+}
+
+function renderAgentsGrid(agents) {
+  const q = document.getElementById('search-box').value.toLowerCase();
+  const list = q ? agents.filter(a =>
+    a.name.includes(q) || a.display_name.toLowerCase().includes(q) ||
+    (a.description||'').toLowerCase().includes(q) || (a.role||'').toLowerCase().includes(q)
+  ) : agents;
+  const el = document.getElementById('agents-grid');
+  el.innerHTML = list.length ? list.map(agentCard).join('') : `<div class="empty">${q ? 'Eşleşen agent yok' : 'Hiç agent bulunamadı'}</div>`;
+}
+
+function filterAgents() { renderAgentsGrid(allAgents); }
+
+// ── Research ────────────────────────────────────────
+function renderResearch(sources) {
+  document.getElementById('source-grid').innerHTML = sources.length
+    ? sources.map(s => `
+        <div class="source-card">
+          <div class="source-hd">
+            <div class="source-name">${s.display_name}</div>
+            <div style="display:flex;gap:4px;">
+              <span class="badge ${s.mode==='mock'?'by':'bg'}">${s.mode}</span>
+              <span class="badge ${s.enabled?'bg':'bx'}">${s.enabled?'Enabled':'Off'}</span>
+            </div>
+          </div>
+          ${s.description ? `<div class="source-desc">${esc(s.description)}</div>` : ''}
+          <div class="source-stats">
+            <div><div class="src-stat-v">${s.raw_count}</div><div class="src-stat-l">Ham Dosya</div></div>
+            <div><div class="src-stat-v">${s.processed_count}</div><div class="src-stat-l">İşlenmiş</div></div>
+          </div>
+        </div>`)
+      .join('')
+    : '<div class="empty">Research source bulunamadı</div>';
+}
+
+// ── Scripts ─────────────────────────────────────────
+function renderScripts(scripts) {
+  document.getElementById('script-list').innerHTML = scripts.length
+    ? scripts.map(s => `
+        <div class="script-item">
+          <div>
+            <div class="script-name">${s.display_name}</div>
+            <div class="script-cmd">python scripts/${s.name}</div>
+          </div>
+          <button class="btn" onclick="copyCmd('python scripts/${s.name}',this)">Kopyala</button>
+        </div>`)
+      .join('')
+    : '<div class="empty">Script bulunamadı</div>';
+}
+
+function copyCmd(cmd, btn) {
+  navigator.clipboard.writeText(cmd).then(() => {
+    const old = btn.textContent;
+    btn.textContent = 'Kopyalandı!';
+    setTimeout(() => btn.textContent = old, 1500);
+  });
+}
+
+// ── Modal ────────────────────────────────────────────
+async function openAgent(name) {
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('modal-title').textContent = name.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase());
+  document.getElementById('modal-sub').textContent = 'Yükleniyor…';
+  switchTab('info');
+  document.getElementById('tab-info').innerHTML = '<div class="loading">Yükleniyor…</div>';
+
+  const d = await api(`/api/agent/${name}`);
+  if (!d || d.error) { document.getElementById('tab-info').innerHTML = '<div class="empty">Agent bulunamadı</div>'; return; }
+
+  const cfg = d.config || {};
+  document.getElementById('modal-sub').textContent =
+    `v${cfg.version||'?'} · ${(cfg.model||{}).provider||'?'} · ${(cfg.model||{}).name||'?'}`;
+
+  // Info tab
+  const rows = [
+    ['Name', cfg.name],
+    ['Role', cfg.role],
+    ['Version', cfg.version],
+    ['Model Provider', (cfg.model||{}).provider],
+    ['Model Name', (cfg.model||{}).name],
+    ['Temperature', (cfg.model||{}).temperature],
+    ['Memory Mode', (cfg.memory||{}).mode],
+    ['Allow Learning', (cfg.memory||{}).allow_learning],
+    ['Output Format', (cfg.output||{}).default_format],
+  ].filter(([,v]) => v != null).map(([k,v]) => `
+    <div class="info-row"><div class="info-k">${k}</div><div class="info-v">${esc(String(v))}</div></div>`).join('');
+
+  const tools = ((cfg.tools||{}).allowed||[]);
+  const guardIn = ((cfg.guardrails||{}).input||[]);
+  const guardOut = ((cfg.guardrails||{}).output||[]);
+
+  document.getElementById('tab-info').innerHTML = `
+    <div style="margin-bottom:18px;">
+      <div class="sub-title">Konfigürasyon</div>
+      ${rows}
+    </div>
+    ${tools.length ? `
+    <div style="margin-bottom:18px;">
+      <div class="sub-title">Tools (${tools.length})</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;">${tools.map(t=>`<span class="badge bb">${t}</span>`).join('')}</div>
+    </div>` : ''}
+    ${guardIn.length ? `
+    <div style="margin-bottom:18px;">
+      <div class="sub-title">Input Guardrails</div>
+      <ul style="color:var(--muted);font-size:12px;line-height:1.7;padding-left:16px;">
+        ${guardIn.map(r=>`<li>${esc(r)}</li>`).join('')}
+      </ul>
+    </div>` : ''}
+    ${guardOut.length ? `
+    <div>
+      <div class="sub-title">Output Guardrails</div>
+      <ul style="color:var(--muted);font-size:12px;line-height:1.7;padding-left:16px;">
+        ${guardOut.map(r=>`<li>${esc(r)}</li>`).join('')}
+      </ul>
+    </div>` : ''}`;
+
+  // Prompt tab
+  document.getElementById('tab-prompt').innerHTML = `<div class="code-block">${esc(d.system_prompt||'(boş)')}</div>`;
+
+  // Knowledge tab
+  const files = d.knowledge_files || [];
+  document.getElementById('tab-knowledge').innerHTML = files.length
+    ? `<div class="file-list">${files.map(f=>`
+        <div class="file-item">
+          <span>📄 ${esc(f.name)}</span>
+          <span class="file-sz">${fmtSize(f.size)}</span>
+        </div>`).join('')}</div>`
+    : '<div class="empty">Knowledge dosyası yok</div>';
+
+  // Memory tab
+  const ag = allAgents.find(a=>a.name===name) || {};
+  const mem = ag.memory || {};
+  const memRows = [
+    ['Raw History', mem.raw_history],
+    ['Long-term Memory', mem.long_term],
+    ['Session Notes', mem.session_notes],
+    ['Compacted Context', mem.compacted],
+  ].map(([l,has]) => `
+    <div class="info-row">
+      <div class="info-k">${l}</div>
+      <div class="info-v"><span class="badge ${has?'bg':'bx'}">${has?'✓ Mevcut':'✗ Eksik'}</span></div>
+    </div>`).join('');
+
+  document.getElementById('tab-memory').innerHTML = `
+    <div style="margin-bottom:18px;">
+      <div class="sub-title">Memory Dosyaları</div>
+      ${memRows}
+    </div>
+    ${d.session_notes ? `
+    <div>
+      <div class="sub-title">Session Notes (önizleme)</div>
+      <div class="code-block">${esc(d.session_notes)}</div>
+    </div>` : ''}`;
+}
+
+function switchTab(name) {
+  const tabs = ['info','prompt','knowledge','memory'];
+  tabs.forEach(t => document.getElementById(`tab-${t}`).classList.remove('active'));
+  document.getElementById(`tab-${name}`).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach((el,i) => el.classList.toggle('active', tabs[i]===name));
+}
+
+function closeModal() { document.getElementById('overlay').classList.remove('open'); }
+function onOverlayClick(e) { if (e.target === document.getElementById('overlay')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+
+// ── Helpers ─────────────────────────────────────────
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function fmtSize(b) {
+  if (b < 1024) return `${b} B`;
+  if (b < 1048576) return `${(b/1024).toFixed(1)} KB`;
+  return `${(b/1048576).toFixed(1)} MB`;
+}
+
+// ── Bootstrap ────────────────────────────────────────
+setInterval(refresh, 30000);
+refresh();
+</script>
+</body>
+</html>
