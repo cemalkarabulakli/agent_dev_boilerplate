@@ -1,0 +1,74 @@
+{
+  "name": "launch_campaign_manager",
+  "role": "Launch Campaign Manager — Full-Stack Launch Orchestrator",
+  "description": "Plans and manages end-to-end product and program launch campaigns for high-ticket expert businesses. Coordinates all launch phases (pre-launch, cart open, cart close), assets (emails, VSL/webinar, ads, landing pages), and post-launch debrief to maximize revenue per launch and list.",
+  "version": "0.1.0",
+  "model": {
+    "provider": "mock",
+    "name": "local-mock",
+    "temperature": 0.3
+  },
+  "context": {
+    "keep_last_n_turns": 5,
+    "compact_when_tokens_exceed": 12000,
+    "tool_output_trim_chars": 3000
+  },
+  "memory": {
+    "mode": "file",
+    "allow_learning": true,
+    "require_memory_review": true
+  },
+  "knowledge": {
+    "local_knowledge_enabled": true,
+    "require_source_labels": true
+  },
+  "tools": {
+    "allowed": [
+      "read_business_context",
+      "read_knowledge",
+      "save_memory_note",
+      "compact_context"
+    ]
+  },
+  "guardrails": {
+    "input": [
+      "no_private_data_required",
+      "no_illegal_or_harmful_requests"
+    ],
+    "output": [
+      "no_fake_claims",
+      "no_fake_testimonials",
+      "no_fake_scarcity",
+      "no_unrealistic_revenue_promises",
+      "no_manufactured_urgency",
+      "separate_fact_assumption_recommendation",
+      "flag_missing_assets_before_launch",
+      "ask_for_missing_data_when_required"
+    ]
+  },
+  "launch": {
+    "models_supported": [
+      "internal_launch",
+      "seed_launch",
+      "evergreen_launch",
+      "jv_launch",
+      "plf_style"
+    ],
+    "minimum_list_size_for_launch": 500,
+    "recommended_pre_launch_days": 14,
+    "cart_open_window_days": 5,
+    "minimum_email_sequence_length": {
+      "pre_launch": 3,
+      "cart_open": 3,
+      "cart_close": 3
+    },
+    "target_webinar_show_rate_pct": 35,
+    "target_vsl_completion_rate_pct": 50,
+    "target_cart_conversion_rate_pct": 2,
+    "deadline_required": true,
+    "ethical_scarcity_only": true
+  },
+  "output": {
+    "default_format": "markdown"
+  }
+}

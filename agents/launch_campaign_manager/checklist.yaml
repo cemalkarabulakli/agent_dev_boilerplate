@@ -1,0 +1,228 @@
+{
+  "items": [
+    {
+      "id": "offer_mechanism_defined",
+      "category": "Offer Readiness",
+      "description": "Unique mechanism is defined and clearly communicated in all launch assets",
+      "severity": "critical",
+      "check": "mechanism_defined"
+    },
+    {
+      "id": "offer_transformation_promise",
+      "category": "Offer Readiness",
+      "description": "Transformation promise is specific, believable, and grounded in real results",
+      "severity": "critical",
+      "check": "transformation_promise_check"
+    },
+    {
+      "id": "offer_price_confirmed",
+      "category": "Offer Readiness",
+      "description": "Price point is confirmed and justified by the value stack",
+      "severity": "critical",
+      "check": "price_confirmed"
+    },
+    {
+      "id": "offer_guarantee_set",
+      "category": "Offer Readiness",
+      "description": "Guarantee or risk reversal is defined and included on the sales page",
+      "severity": "warning",
+      "check": "guarantee_check"
+    },
+    {
+      "id": "offer_bonus_stack",
+      "category": "Offer Readiness",
+      "description": "Bonus stack is defined with clear value assignments and real expiry conditions",
+      "severity": "warning",
+      "check": "bonus_stack_check"
+    },
+    {
+      "id": "list_minimum_size",
+      "category": "List Readiness",
+      "description": "Email list has at least 500 engaged subscribers before internal launch",
+      "severity": "critical",
+      "check": "list_size_minimum"
+    },
+    {
+      "id": "list_recent_email",
+      "category": "List Readiness",
+      "description": "List has received an email in the past 14 days (warmth check)",
+      "severity": "critical",
+      "check": "list_warmth_check"
+    },
+    {
+      "id": "list_segmentation",
+      "category": "List Readiness",
+      "description": "Buyers and non-buyers are segmented for targeted close sequence",
+      "severity": "warning",
+      "check": "list_segmentation_check"
+    },
+    {
+      "id": "asset_optin_page",
+      "category": "L.O.A.D. — Lead Generation",
+      "description": "Opt-in or registration page is live and tested",
+      "severity": "critical",
+      "check": "optin_page_live"
+    },
+    {
+      "id": "asset_confirmation_sequence",
+      "category": "L.O.A.D. — Lead Generation",
+      "description": "Thank-you page and confirmation email sequence are active",
+      "severity": "critical",
+      "check": "confirmation_sequence_active"
+    },
+    {
+      "id": "asset_sales_page",
+      "category": "L.O.A.D. — Offer Presentation",
+      "description": "Sales page or VSL is complete, live, and tested on mobile and desktop",
+      "severity": "critical",
+      "check": "sales_page_live"
+    },
+    {
+      "id": "asset_checkout_page",
+      "category": "L.O.A.D. — Offer Presentation",
+      "description": "Checkout page is live and a test transaction has been completed successfully",
+      "severity": "critical",
+      "check": "checkout_page_tested"
+    },
+    {
+      "id": "asset_plc_sequence",
+      "category": "L.O.A.D. — Activation (Email)",
+      "description": "Pre-launch content (PLC) email sequence has minimum 3 emails drafted and scheduled",
+      "severity": "critical",
+      "check": "plc_sequence_ready"
+    },
+    {
+      "id": "asset_opencart_sequence",
+      "category": "L.O.A.D. — Activation (Email)",
+      "description": "Open cart email sequence has minimum 3 emails drafted and scheduled",
+      "severity": "critical",
+      "check": "opencart_sequence_ready"
+    },
+    {
+      "id": "asset_close_sequence",
+      "category": "L.O.A.D. — Activation (Email)",
+      "description": "Close sequence has minimum 3 emails (48hr warning, final day, last hour) drafted and scheduled",
+      "severity": "critical",
+      "check": "close_sequence_ready"
+    },
+    {
+      "id": "asset_buyer_onboarding",
+      "category": "L.O.A.D. — Activation (Email)",
+      "description": "Buyer onboarding sequence is ready to trigger automatically on purchase",
+      "severity": "warning",
+      "check": "buyer_onboarding_ready"
+    },
+    {
+      "id": "traffic_organic_plan",
+      "category": "L.O.A.D. — Distribution (Traffic)",
+      "description": "Organic content calendar is drafted for the full pre-launch window",
+      "severity": "warning",
+      "check": "organic_content_planned"
+    },
+    {
+      "id": "traffic_paid_budget",
+      "category": "L.O.A.D. — Distribution (Traffic)",
+      "description": "Paid traffic budget is confirmed and approved before launch date",
+      "severity": "warning",
+      "check": "paid_budget_confirmed"
+    },
+    {
+      "id": "traffic_retargeting_audiences",
+      "category": "L.O.A.D. — Distribution (Traffic)",
+      "description": "Retargeting audiences are seeded: page visitors, video viewers, email list uploaded",
+      "severity": "warning",
+      "check": "retargeting_audiences_ready"
+    },
+    {
+      "id": "deadline_confirmed",
+      "category": "Deadline and Urgency",
+      "description": "Cart close date and time are confirmed and communicated on page, in emails, and in ads",
+      "severity": "critical",
+      "check": "deadline_confirmed"
+    },
+    {
+      "id": "deadline_is_real",
+      "category": "Deadline and Urgency",
+      "description": "Deadline is enforced — cart closes, price rises, or bonuses expire at the stated time",
+      "severity": "critical",
+      "check": "deadline_is_real"
+    },
+    {
+      "id": "scarcity_is_ethical",
+      "category": "Deadline and Urgency",
+      "description": "All scarcity and urgency elements are real and verifiable — no manufactured countdown resets",
+      "severity": "critical",
+      "check": "ethical_scarcity"
+    },
+    {
+      "id": "metrics_tracking_active",
+      "category": "Performance Monitoring",
+      "description": "Analytics tracking is active for opt-in page, sales page, and checkout conversion",
+      "severity": "critical",
+      "check": "tracking_active"
+    },
+    {
+      "id": "email_open_rate_threshold",
+      "category": "Performance Monitoring",
+      "description": "Email open rates above 20% during active launch window",
+      "severity": "warning",
+      "check": "email_open_rate_minimum"
+    },
+    {
+      "id": "optin_rate_threshold",
+      "category": "Performance Monitoring",
+      "description": "Opt-in rate above 25% (cold) or 50% (warm list)",
+      "severity": "warning",
+      "check": "optin_rate_minimum"
+    },
+    {
+      "id": "cart_cvr_threshold",
+      "category": "Performance Monitoring",
+      "description": "Cart page conversion rate above 1% (minimum) or 2% (target)",
+      "severity": "warning",
+      "check": "cart_cvr_minimum"
+    },
+    {
+      "id": "close_window_revenue",
+      "category": "Performance Monitoring",
+      "description": "Close sequence (last 24–48 hours) drives 30–40% of total launch revenue",
+      "severity": "warning",
+      "check": "close_window_revenue_share"
+    },
+    {
+      "id": "postlaunch_debrief",
+      "category": "Post-Launch",
+      "description": "Post-launch debrief document is completed within 72 hours of cart close",
+      "severity": "warning",
+      "check": "debrief_completed"
+    },
+    {
+      "id": "no_income_guarantees",
+      "category": "Ethical Compliance",
+      "description": "No guaranteed revenue or conversion rate promises in any launch asset",
+      "severity": "critical",
+      "check": "no_income_guarantees"
+    },
+    {
+      "id": "no_fake_testimonials",
+      "category": "Ethical Compliance",
+      "description": "All testimonials and case studies are real, documented, and attributed",
+      "severity": "critical",
+      "check": "no_fake_testimonials"
+    },
+    {
+      "id": "claims_are_supportable",
+      "category": "Ethical Compliance",
+      "description": "All transformation and outcome claims are grounded in real client results or labeled as targets",
+      "severity": "critical",
+      "check": "claims_supportable"
+    },
+    {
+      "id": "launch_campaign_manager_structure",
+      "category": "Agent",
+      "description": "Launch Campaign Manager agent structure exists and is complete",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}
