@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "id": "case_study_has_specific_number",
+      "category": "Proof Quality",
+      "description": "Case study includes a specific result number with a timeframe",
+      "severity": "critical",
+      "check": "result_specificity"
+    },
+    {
+      "id": "before_state_documented",
+      "category": "Proof Quality",
+      "description": "Before state contains specific metrics or situation details — not vague",
+      "severity": "critical",
+      "check": "before_state_specificity"
+    },
+    {
+      "id": "mechanism_documented",
+      "category": "Proof Quality",
+      "description": "What the client did is documented step by step",
+      "severity": "critical",
+      "check": "mechanism_present"
+    },
+    {
+      "id": "obstacle_named",
+      "category": "Proof Quality",
+      "description": "At least one obstacle or failure moment is named and resolved",
+      "severity": "high",
+      "check": "obstacle_present"
+    },
+    {
+      "id": "objection_mapped",
+      "category": "Strategy",
+      "description": "The case study is mapped to a specific prospect objection it eliminates",
+      "severity": "high",
+      "check": "objection_mapping"
+    },
+    {
+      "id": "proof_ladder_labeled",
+      "category": "Strategy",
+      "description": "Proof ladder level is labeled: typical / above average / outlier",
+      "severity": "high",
+      "check": "proof_ladder_level"
+    },
+    {
+      "id": "outlier_labeled_as_such",
+      "category": "Ethics",
+      "description": "If result is exceptional, it is labeled as not a typical result",
+      "severity": "critical",
+      "check": "outlier_disclosure"
+    },
+    {
+      "id": "no_invented_data",
+      "category": "Ethics",
+      "description": "All results and claims are based on real provided client data",
+      "severity": "critical",
+      "check": "data_integrity"
+    },
+    {
+      "id": "direct_quote_present",
+      "category": "Completeness",
+      "description": "A direct, unedited client quote is included",
+      "severity": "medium",
+      "check": "direct_quote"
+    },
+    {
+      "id": "deployment_plan_included",
+      "category": "Output",
+      "description": "Output includes where and how this case study gets deployed",
+      "severity": "medium",
+      "check": "deployment_strategy"
+    }
+  ]
+}
