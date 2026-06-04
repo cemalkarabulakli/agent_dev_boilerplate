@@ -1,0 +1,36 @@
+{
+  "market_selector": {
+    "_meta": {
+      "completed_at": "2026-06-04T00:44:20Z",
+      "upstream_gaps": []
+    }
+  },
+  "avatar_pain_researcher": {
+    "_meta": {
+      "completed_at": "2026-06-04T00:44:20Z",
+      "upstream_gaps": [
+        "market_selector.Market",
+        "market_selector.Score"
+      ]
+    }
+  },
+  "case_study_writer": {
+    "_meta": {
+      "completed_at": "2026-06-04T00:44:10Z",
+      "upstream_gaps": [
+        "proof_engine_builder (not completed)",
+        "offer_architect (not completed)"
+      ]
+    }
+  },
+  "offer_architect": {
+    "_meta": {
+      "completed_at": "2026-06-04T00:44:20Z",
+      "upstream_gaps": [
+        "avatar_pain_researcher.Specific Avatar",
+        "avatar_pain_researcher.Urgent Pain",
+        "avatar_pain_researcher.Dream Outcome"
+      ]
+    }
+  }
+}
