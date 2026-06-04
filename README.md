@@ -30,6 +30,7 @@ This repository is designed to be pushed to GitHub and run locally without API k
 - [How To Add A New Agent](#how-to-add-a-new-agent)
 - [How To Add A New Research Source](#how-to-add-a-new-research-source)
 - [How To Add Real Providers Later](#how-to-add-real-providers-later)
+- [Agent Dashboard](#agent-dashboard)
 - [Safety And Ethics](#safety-and-ethics)
 - [Developer Notes](#developer-notes)
 
@@ -119,6 +120,14 @@ agents/
   delivery_system_designer/          Delivery system agent
   retention_upsell_agent/            Retention and upsell agent
   business_scorecard_agent/          Bottleneck and scorecard agent
+  meta_ads_manager/                  Meta (Facebook/Instagram) ads agent — Andromeda-first
+  vsl_copywriter/                    VSL script and funnel strategy agent
+  case_study_writer/                 Client case study writing agent — Hormozi-style proof
+  youtube_strategy_agent/            YouTube channel growth agent — Turanlı Method
+  launch_campaign_manager/           End-to-end launch campaign orchestration agent
+
+dashboard/
+  server.py                          Local HTTP dashboard server (python dashboard/server.py → http://localhost:8765)
 
 core/
   agent_loader.py                    Agent config and prompt loading
@@ -283,6 +292,11 @@ Current starter agents:
 | `delivery_system_designer` | Designs onboarding, milestones, support, SOPs, success metrics |
 | `retention_upsell_agent` | Designs continuity, upsells, referrals, expansion paths |
 | `business_scorecard_agent` | Scores the business and identifies bottlenecks |
+| `meta_ads_manager` | Manages Meta (Facebook/Instagram) ad campaigns — Andromeda-first, P.D.A. framework |
+| `vsl_copywriter` | Guides 5-phase VSL script production: profiling, offer, script, landing page, Lovable prompts |
+| `case_study_writer` | Writes high-converting client case studies with specific numbers and Hormozi-level clarity |
+| `youtube_strategy_agent` | Builds and scales YouTube channels using the Turanlı Method — SEO-first, AI-powered faceless production |
+| `launch_campaign_manager` | Plans and manages full launch campaigns — pre-launch, cart open/close, emails, ads, debrief |
 
 ## Runtime Architecture
 
@@ -455,6 +469,11 @@ The generator scripts use `business_context.yaml` and `core.output_templates` to
 | `generate_delivery_system.py` | `delivery_system_designer` | `outputs/delivery_systems/` |
 | `generate_proof_engine.py` | `proof_engine_builder` | `outputs/proof_engines/` |
 | `generate_business_scorecard.py` | `business_scorecard_agent` | `outputs/business_scorecards/` |
+| `generate_meta_ads_plan.py` | `meta_ads_manager` | `outputs/meta_ads_plans/` |
+| `generate_vsl_script.py` | `vsl_copywriter` | `outputs/vsl_scripts/` |
+| `generate_case_study.py` | `case_study_writer` | `outputs/case_studies/` |
+| `generate_youtube_strategy.py` | `youtube_strategy_agent` | `outputs/youtube_strategies/` |
+| `generate_launch_campaign.py` | `launch_campaign_manager` | `outputs/launch_campaigns/` |
 
 Example:
 
@@ -793,6 +812,11 @@ python scripts/generate_objection_bank.py --agent objection_handler --context bu
 python scripts/generate_delivery_system.py --agent delivery_system_designer --context business_context.yaml
 python scripts/generate_proof_engine.py --agent proof_engine_builder --context business_context.yaml
 python scripts/generate_business_scorecard.py --agent business_scorecard_agent --context business_context.yaml
+python scripts/generate_meta_ads_plan.py --agent meta_ads_manager --context business_context.yaml
+python scripts/generate_vsl_script.py --agent vsl_copywriter --context business_context.yaml
+python scripts/generate_case_study.py --agent case_study_writer --context business_context.yaml
+python scripts/generate_youtube_strategy.py --agent youtube_strategy_agent --context business_context.yaml
+python scripts/generate_launch_campaign.py --agent launch_campaign_manager --context business_context.yaml
 ```
 
 Research:
@@ -928,6 +952,20 @@ CLICKBANK_API_KEY=
 RESEARCH_MODE=mock
 WEB_TOOLS_MODE=mock
 ```
+
+## Agent Dashboard
+
+A lightweight local dashboard is available under `dashboard/`.
+
+Start it:
+
+```bash
+python dashboard/server.py
+```
+
+Then open `http://localhost:8765` in a browser.
+
+The dashboard lists all agents, their memory state, and recent outputs without requiring any API keys. It is a local-only tool and is not committed to the repository by default.
 
 ## Safety And Ethics
 
