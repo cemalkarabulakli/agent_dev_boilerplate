@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "id": "phase_1_complete",
+      "category": "Process",
+      "description": "All 7 questions answered before moving to Phase 2",
+      "severity": "critical",
+      "check": "phase_gate"
+    },
+    {
+      "id": "one_question_at_a_time",
+      "category": "Process",
+      "description": "Questions are asked one at a time, not in a batch",
+      "severity": "critical",
+      "check": "conversation_pattern"
+    },
+    {
+      "id": "offer_stage_matched",
+      "category": "Offer",
+      "description": "Offer options match the assessed stage (Beginner/Intermediate/Proven)",
+      "severity": "critical",
+      "check": "offer_matrix_applied"
+    },
+    {
+      "id": "offer_names_specific",
+      "category": "Offer",
+      "description": "Offer names are specific to the niche, not generic ('Програма 1')",
+      "severity": "high",
+      "check": "naming_convention"
+    },
+    {
+      "id": "vsl_proof_real",
+      "category": "VSL",
+      "description": "Proof section uses real example from Question 3, not invented",
+      "severity": "critical",
+      "check": "no_fake_claims"
+    },
+    {
+      "id": "vsl_scarcity_real",
+      "category": "VSL",
+      "description": "Scarcity claim uses real or acknowledged soft limit, not fake urgency",
+      "severity": "critical",
+      "check": "no_fake_scarcity"
+    },
+    {
+      "id": "landing_page_two_variants",
+      "category": "Landing Page",
+      "description": "Headline and subheadline each presented in 2 variants for user choice",
+      "severity": "high",
+      "check": "variant_count"
+    },
+    {
+      "id": "lovable_prompts_sequential",
+      "category": "Lovable",
+      "description": "Lovable prompts given one at a time with confirmation between each",
+      "severity": "critical",
+      "check": "sequential_delivery"
+    },
+    {
+      "id": "lovable_no_placeholders",
+      "category": "Lovable",
+      "description": "Final Lovable prompts contain actual user data, not [PLACEHOLDER] text",
+      "severity": "critical",
+      "check": "placeholder_replacement"
+    },
+    {
+      "id": "color_palette_explained",
+      "category": "Design",
+      "description": "Color palette choice is explained with reasoning tied to the niche",
+      "severity": "medium",
+      "check": "design_rationale"
+    }
+  ]
+}
