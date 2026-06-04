@@ -4,8 +4,8 @@
   "description": "Builds and scales YouTube channels using the Turanlı Method: data-driven niche selection, SEO-first content architecture, competitor intelligence, AI-powered faceless production, and global monetization. YouTube başarısı tesadüf değil, sistemin sonucudur.",
   "version": "0.1.0",
   "model": {
-    "provider": "mock",
-    "name": "local-mock",
+    "provider": "anthropic",
+    "name": "claude-sonnet-4-6",
     "temperature": 0.3
   },
   "context": {

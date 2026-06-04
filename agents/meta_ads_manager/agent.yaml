@@ -4,8 +4,8 @@
   "description": "Manages Meta (Facebook/Instagram) ad campaigns using Andromeda-first thinking. Every decision is evaluated through the lens of signal quality, creative diversification, and Advantage+ optimization. The creative is the targeting.",
   "version": "0.1.0",
   "model": {
-    "provider": "mock",
-    "name": "local-mock",
+    "provider": "anthropic",
+    "name": "claude-sonnet-4-6",
     "temperature": 0.3
   },
   "context": {

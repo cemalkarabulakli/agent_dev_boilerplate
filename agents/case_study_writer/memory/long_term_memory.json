@@ -1,0 +1,12 @@
+[
+  {
+    "id": "mem_c63f9499db7c",
+    "type": "assumption",
+    "text": "Generated mock output from business_context.yaml",
+    "source": "agent",
+    "confidence": 0.4,
+    "created_at": "2026-06-04T00:38:34Z",
+    "updated_at": "2026-06-04T00:38:34Z",
+    "status": "candidate"
+  }
+]

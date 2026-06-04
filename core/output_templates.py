@@ -15,7 +15,7 @@ OUTPUT_TEMPLATES = {
     "funnel_builder": ("funnel_maps", "High-Ticket Funnel Map", ["Traffic Source", "Lead Magnet", "Workshop / Webinar", "Application Page", "Booking Page", "Email Sequence", "Retargeting", "Sales Call Flow", "Metrics To Track"]),
     "sales_script_builder": ("sales_scripts", "Sales Call Script", ["Qualification Criteria", "Opening", "Diagnosis Questions", "Pain Questions", "Desired Outcome Questions", "Current Alternative Questions", "Offer Presentation", "Objection Handling", "Close / Next Step", "Follow-Up Notes"]),
     "objection_handler": ("objection_banks", "Objection Bank", ["Main Objections", "Root Cause", "Ethical Response", "Proof Needed", "Offer Adjustment Needed", "Follow-Up Message"]),
-    "proof_engine_builder": ("proof_engines", "Proof Engine", ["Proof Assets Needed", "Case Study Collection Process", "Client Metrics To Track", "Before / After Structure", "Testimonial Questions", "Process Proof Ideas", "Authority Proof Ideas", "Ethical Claims Rules"]),
+    "proof_engine_builder": ("proof_engines", "Proof Engine", ["Proof Assets Needed", "Client Metrics To Track", "Before / After Structure", "Testimonial Questions", "Process Proof Ideas", "Authority Proof Ideas", "Ethical Claims Rules"]),
     "delivery_system_designer": ("delivery_systems", "Delivery System", ["Onboarding", "Client Roadmap", "Milestones", "Weekly Delivery Cadence", "Support Model", "Templates / Assets", "SOPs Needed", "Client Dashboard", "Success Metrics", "Fulfillment Risks", "Case Study Collection Points"]),
     "retention_upsell_agent": ("business_scorecards", "Retention & Upsell Plan", ["Continuity Offer", "Advanced Offer", "Upsell Path", "Community / Mastermind", "Renewal Process", "Referral System", "Expansion Opportunities"]),
     "business_scorecard_agent": ("business_scorecards", "High-Ticket Business Scorecard", ["Market Score", "Avatar Score", "Offer Score", "Proof Score", "Acquisition Score", "Funnel Score", "Sales Score", "Delivery Score", "Retention Score", "Main Bottleneck", "Highest Leverage Fix", "7-Day Action Plan"]),
@@ -26,21 +26,191 @@ OUTPUT_TEMPLATES = {
     "launch_campaign_manager": ("launch_campaigns", "Launch Campaign Plan", ["Launch Timeline", "Pre-Launch Phase", "Cart Open Phase", "Cart Close Phase", "Email Sequence", "VSL / Webinar Plan", "Ad Strategy", "Landing Page Copy", "Post-Launch Debrief", "Revenue Target", "Launch KPIs"]),
 }
 
+# Dependency graph: what each agent reads from upstream agents and writes as structured output.
+# reads  → {upstream_agent: [section_keys_to_pull]}
+# writes → [section_keys_to_extract_and_store]
+PIPELINE_SCHEMA: dict[str, dict[str, Any]] = {
+    "market_selector": {
+        "reads": {},
+        "writes": ["Market", "Score", "Risks", "Recommendation"],
+    },
+    "avatar_pain_researcher": {
+        "reads": {"market_selector": ["Market", "Score"]},
+        "writes": ["Specific Avatar", "Urgent Pain", "Dream Outcome", "Messaging Angles"],
+    },
+    "offer_architect": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar", "Urgent Pain", "Dream Outcome"],
+        },
+        "writes": ["Core Promise", "Unique Mechanism", "Price", "Guarantee / Risk Reversal"],
+    },
+    "value_stack_builder": {
+        "reads": {"offer_architect": ["Core Promise", "Price"]},
+        "writes": ["Core Deliverable", "Perceived Value Notes"],
+    },
+    "pricing_guarantee_optimizer": {
+        "reads": {"offer_architect": ["Price", "Core Promise"]},
+        "writes": ["Recommendation"],
+    },
+    "acquisition_strategy_agent": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar", "Messaging Angles"],
+            "offer_architect": ["Core Promise"],
+        },
+        "writes": ["Best Lead Source", "Message To Market"],
+    },
+    "content_authority_agent": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar", "Urgent Pain"],
+            "offer_architect": ["Core Promise"],
+        },
+        "writes": ["Content Positioning", "Main Content Pillars"],
+    },
+    "funnel_builder": {
+        "reads": {
+            "offer_architect": ["Core Promise", "Price"],
+            "acquisition_strategy_agent": ["Best Lead Source"],
+        },
+        "writes": ["Traffic Source", "Lead Magnet"],
+    },
+    "sales_script_builder": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar", "Urgent Pain"],
+            "offer_architect": ["Core Promise", "Price"],
+        },
+        "writes": ["Qualification Criteria"],
+    },
+    "objection_handler": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar"],
+            "offer_architect": ["Core Promise", "Price"],
+        },
+        "writes": ["Main Objections"],
+    },
+    "proof_engine_builder": {
+        "reads": {"offer_architect": ["Core Promise", "Unique Mechanism"]},
+        "writes": ["Proof Assets Needed"],
+    },
+    "delivery_system_designer": {
+        "reads": {"offer_architect": ["Core Promise", "Price"]},
+        "writes": ["Onboarding", "Client Roadmap"],
+    },
+    "retention_upsell_agent": {
+        "reads": {
+            "offer_architect": ["Core Promise", "Price"],
+            "delivery_system_designer": ["Onboarding"],
+        },
+        "writes": ["Continuity Offer", "Upsell Path"],
+    },
+    "business_scorecard_agent": {
+        "reads": {
+            "market_selector": ["Market", "Score"],
+            "avatar_pain_researcher": ["Specific Avatar"],
+            "offer_architect": ["Core Promise", "Price"],
+            "acquisition_strategy_agent": ["Best Lead Source"],
+        },
+        "writes": ["Main Bottleneck", "Highest Leverage Fix"],
+    },
+    "meta_ads_manager": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar", "Messaging Angles"],
+            "offer_architect": ["Core Promise", "Price"],
+            "acquisition_strategy_agent": ["Best Lead Source", "Message To Market"],
+        },
+        "writes": ["Campaign Objective", "Creative Strategy", "P.D.A. Framework"],
+    },
+    "vsl_copywriter": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar", "Urgent Pain", "Dream Outcome"],
+            "offer_architect": ["Core Promise", "Unique Mechanism", "Price"],
+        },
+        "writes": ["VSL Hook", "Offer Presentation"],
+    },
+    "case_study_writer": {
+        "reads": {
+            "proof_engine_builder": ["Proof Assets Needed"],
+            "offer_architect": ["Core Promise"],
+        },
+        "writes": ["Before State", "Specific Results"],
+    },
+    "youtube_strategy_agent": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar", "Messaging Angles"],
+            "content_authority_agent": ["Content Positioning", "Main Content Pillars"],
+        },
+        "writes": ["Niche Selection", "SEO Architecture"],
+    },
+    "launch_campaign_manager": {
+        "reads": {
+            "offer_architect": ["Core Promise", "Price"],
+            "funnel_builder": ["Traffic Source", "Lead Magnet"],
+            "vsl_copywriter": ["VSL Hook"],
+        },
+        "writes": ["Launch Timeline", "Revenue Target"],
+    },
+}
+
 HINTS = {"Market": ("market", "market_name"), "Specific Avatar": ("customer", "specific_avatar"), "Target Customer": ("customer", "target_customer"), "Painful Problem": ("customer", "expensive_problem"), "Dream Outcome": ("customer", "dream_outcome"), "Unique Mechanism": ("offer", "unique_mechanism"), "Core Promise": ("offer", "core_promise"), "Current Price": ("offer", "current_price"), "Price": ("offer", "current_price")}
 
-def value(context: BusinessContext, section: str) -> str:
+
+def value(context: BusinessContext, section: str, deps: dict[str, Any] | None = None) -> str:
     if section in HINTS:
         source, key = HINTS[section]
         data = context.get(source, key)
         if data not in ("", None, [], {}):
             return ", ".join(data) if isinstance(data, list) else str(data)
+    if deps:
+        for dep_key, dep_val in deps.items():
+            if dep_key.split(".", 1)[-1] == section:
+                return str(dep_val)
     return "Unknown. Treat this as an assumption gap, not a fact."
 
-def render_mock_output(agent_name: str, context: BusinessContext) -> str:
+
+_UNKNOWN = "Unknown. Treat this as an assumption gap, not a fact."
+
+
+def extract_structured_output(
+    agent_name: str,
+    context: BusinessContext,
+    deps: dict[str, Any],
+) -> dict[str, Any]:
+    writes = PIPELINE_SCHEMA.get(agent_name, {}).get("writes", [])
+    result = {}
+    for section in writes:
+        v = value(context, section, deps)
+        if v != _UNKNOWN:
+            result[section] = v
+    return result
+
+
+def render_mock_output(
+    agent_name: str,
+    context: BusinessContext,
+    deps: dict[str, Any] | None = None,
+    gaps: list[str] | None = None,
+) -> str:
+    deps = deps or {}
+    gaps = gaps or []
     _, title, sections = OUTPUT_TEMPLATES[agent_name]
-    lines = [f"# {title}", "", f"Generated in local mock mode at {utc_now()}.", "", "## Facts", "- Uses only fields from business_context.yaml.", "", "## Assumptions", "- Blank fields are unknown and must be validated before making strong claims.", "", "## Recommendations", "- Fix market, avatar, and offer clarity before scaling traffic.", ""]
+    lines = [f"# {title}", "", f"Generated in local mock mode at {utc_now()}.", ""]
+
+    upstream_values = {k: v for k, v in deps.items() if not k.startswith("_")}
+    if upstream_values:
+        lines.extend(["## Upstream Inputs", ""])
+        for k, v in upstream_values.items():
+            lines.append(f"- **{k}**: {v}")
+        lines.append("")
+
+    if gaps:
+        lines.extend(["## Upstream Gaps", ""])
+        for g in gaps:
+            lines.append(f"- {g} — not available, treating as unknown")
+        lines.append("")
+
+    lines.extend(["## Facts", "- Uses only fields from business_context.yaml.", "", "## Assumptions", "- Blank fields are unknown and must be validated before making strong claims.", "", "## Recommendations", "- Fix market, avatar, and offer clarity before scaling traffic.", ""])
+
     for section in sections:
-        lines.extend([f"## {section}"])
+        lines.append(f"## {section}")
         if section == "Main Bottleneck":
             lines.append(context.get("business", "current_bottleneck") or "Offer clarity is the default bottleneck when market, avatar, and offer fields are blank.")
         elif section == "Highest Leverage Fix":
@@ -50,10 +220,12 @@ def render_mock_output(agent_name: str, context: BusinessContext) -> str:
         elif "Score" in section and agent_name == "business_scorecard_agent":
             lines.append("5/10 placeholder score until real business data is provided.")
         else:
-            lines.append(value(context, section))
+            lines.append(value(context, section, deps))
         lines.append("")
+
     lines.extend(["## Ethical Notes", "- No fake claims.", "- No fake testimonials.", "- No fake scarcity.", "- No unrealistic income promises."])
     return "\n".join(lines) + "\n"
+
 
 def save_output(root: Path, agent_name: str, markdown: str) -> Path:
     directory, _, _ = OUTPUT_TEMPLATES[agent_name]
