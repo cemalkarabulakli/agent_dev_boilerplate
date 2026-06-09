@@ -1,6 +1,6 @@
 # Landing Page Structure
 
-Source: Funnel Masters — Proven Landing Page Framework
+Source: VSL Copywriter Agent — Landing Page Framework
 
 ## Purpose
 

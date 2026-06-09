@@ -1,6 +1,6 @@
 # Lovable Build Prompts
 
-Source: Funnel Masters — Lovable Integration Framework
+Source: VSL Copywriter Agent — Lovable Integration Framework
 
 ## Usage Rules
 

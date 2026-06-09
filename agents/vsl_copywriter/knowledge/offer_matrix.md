@@ -1,6 +1,6 @@
 # Offer Matrix
 
-Source: Funnel Masters — Offer Selection Framework
+Source: VSL Copywriter Agent — Offer Selection Framework
 
 ## Stage Assessment
 

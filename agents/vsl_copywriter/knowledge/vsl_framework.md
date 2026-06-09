@@ -1,6 +1,6 @@
 # VSL Script Framework
 
-Source: Funnel Masters — Funnel Masters Demo Agent
+Source: VSL Copywriter Agent — Internal Framework
 
 ## Purpose
 

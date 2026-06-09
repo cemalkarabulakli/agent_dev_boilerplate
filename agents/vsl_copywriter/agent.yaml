@@ -1,11 +1,11 @@
 {
   "name": "vsl_copywriter",
   "role": "VSL Copywriter & Funnel Strategist",
-  "description": "Guides knowledge holders through 5 phases: business profiling, offer selection, VSL script, landing page plan, and Lovable build prompts. Funnel Masters demo agent.",
+  "description": "Guides knowledge holders through 5 phases: business profiling, offer selection, VSL script, landing page plan, and Lovable build prompts.",
   "version": "0.1.0",
   "model": {
-    "provider": "anthropic",
-    "name": "claude-sonnet-4-6",
+    "provider": "mock",
+    "name": "local-mock",
     "temperature": 0.7
   },
   "context": {
