@@ -1,0 +1,208 @@
+{
+  "expert": {
+    "niche": "AI process automation for SMBs — eliminating daily manual data workflows that waste 2-4 hours and cause costly errors. Primary market: Bulgaria. Secondary: Turkey. Tertiary: global.",
+    "expertise": "Google Sheets automation, Apps Script, API integrations between platforms, workflow design, AI-assisted process optimization, barcode/scanner data pipelines",
+    "years_experience": "12",
+    "credibility_assets": [
+      "Automated hotel booking data collection: 4 hours/day → 1 hour, zero human errors — first project in 2010",
+      "Built warehouse management system: barcode scanner → Google Sheets → auto-reports, replacing full manual stock logging",
+      "52 paid automation clients on Upwork with verified reviews — near-identical API integration projects",
+      "12 years software engineering across multiple industries",
+      "Personally built and sold e-commerce stores — understands operator pain firsthand"
+    ],
+    "audience_size": "Upwork profile with 52 verified reviews; no owned social audience yet",
+    "current_channels": ["Upwork (main)", "word-of-mouth from past clients"],
+    "delivery_strengths": [
+      "Fast diagnosis — identifies the root bottleneck in 1 session",
+      "Fixed-scope delivery — client knows exactly what they get and when",
+      "Google Sheets as the delivery layer — clients don't need new software or IT team",
+      "Explains technical solutions in plain language to non-technical owners"
+    ],
+    "unique_experience": "In 2010, while working at a hotel, built software that collected Booking.com reservation data automatically — cut daily manual work from 4 hours to 1 hour and eliminated errors. That was the first real proof that automation ROI is measured in pain removed, not lines of code written."
+  },
+  "market": {
+    "market_name": "SMB automation consulting — Bulgaria (primary market), Turkey (secondary market), global English-speaking (tertiary)",
+    "market_size_assumption": "Bulgaria: ~200,000 SMBs, ~15-20% have a painful manual data process worth automating. Turkey: ~3.5 million SMBs, much larger total addressable market, English + Turkish language required, strong digital adoption (especially WhatsApp for business and local ERP systems like Logo, Mikro, Netsis). Global: English-speaking SMBs reachable via Upwork and LinkedIn with no geographic constraint.",
+    "urgency_level": "High for owners personally doing the manual work; Medium for those who have delegated it — urgency spikes when an error causes a financial loss or a key employee quits",
+    "ability_to_pay": "Bulgaria: price-sensitive, $1,500-$4,000 comfortable range, ROI must be shown in BGN. Turkey: similar purchasing power but larger deal sizes possible ($2,000-$6,000) for Istanbul-based companies; Anatolian SMBs are more price-sensitive. Global: $3,500-$8,000 standard for this scope.",
+    "accessibility": "Bulgaria: Facebook groups for Bulgarian business owners (e-commerce, logistics, retail), LinkedIn Bulgaria, direct outreach to Sofia-based companies. Turkey: LinkedIn Turkey, Instagram (very strong for Turkish business owners), Facebook groups for Turkish entrepreneurs, WhatsApp business communities, local accounting software vendor partnerships (Logo, Mikro, Netsis resellers). Global: Upwork (existing 52-review profile), LinkedIn English.",
+    "current_spending_behavior": "Paying for accounting software, CRM tools, and POS systems but connecting them manually. Not aware that automation is affordable — assume it requires a large IT project.",
+    "competitors": [
+      "Large IT agencies (too expensive, too slow, minimum $10k projects)",
+      "Generic Upwork freelancers (cheap but no domain knowledge, no ROI framing)",
+      "DIY Zapier/Make (owner tries it, gets overwhelmed, abandons)",
+      "Hiring an extra data entry employee (~800-1200 BGN/month ongoing cost)"
+    ],
+    "market_risks": [
+      "Trust gap — SMB owners have been burned by IT projects that over-promised",
+      "Budget objection framed as 'we can't afford it' when real issue is unclear ROI",
+      "Decision cycle is slow — owner needs to trust you before spending $3k+"
+    ]
+  },
+  "customer": {
+    "target_customer": "SMB owner or operations manager, 35-55 years old, running a business with 5-30 employees, using 2+ digital platforms that don't talk to each other. Primary: Bulgaria. Secondary: Turkey (Istanbul + major cities). Tertiary: global English-speaking SMBs.",
+    "specific_avatar": "Bulgaria — Georgi, 47, owns a mid-sized e-commerce business in Sofia selling home goods. Has a Shopify store, uses a local accounting software (Microinvest or Accounting+), and manages stock in an Excel sheet. Every morning, his bookkeeper spends 2 hours manually copying orders into the accounting system. Last month she made an error that caused an oversell — he had to refund 12 customers. Turkey — Mehmet, 43, runs a wholesale logistics company in Istanbul with 20 employees. Uses a local ERP (Logo Tiger) but receives daily orders via WhatsApp and email — a staff member manually enters each order into the system. 3 hours/day, frequent entry mistakes, no audit trail.",
+    "current_situation": "Running 2-3 disconnected systems manually bridged by a staff member or the owner himself every day",
+    "main_problem": "No automated data flow between platforms — every system is an island connected by human copy-paste",
+    "expensive_problem": "One error per month can cost $500-$5,000 in refunds, lost supplier trust, or customer churn. Plus 40-80 staff hours/month in pure manual work.",
+    "dream_outcome": "Wake up and find yesterday's orders already in the accounting system, stock already updated, daily report already in his inbox — without touching anything",
+    "emotional_pain": "Frustrated that something 'so simple' requires this much manual work. Embarrassed when errors reach customers. Anxious every time a key employee is sick or leaves.",
+    "logical_pain": "40 hours/month of staff time at 15 BGN/hr = 600 BGN wasted monthly just on data transfer. Plus error costs. Over a year: 7,200+ BGN in recoverable waste.",
+    "objections": [
+      "This will probably cost a fortune and take months",
+      "We tried something like this before and it didn't work",
+      "My situation is unique — our software is local and non-standard",
+      "I don't have time to manage an IT project right now"
+    ],
+    "alternatives": [
+      "Hire another data entry employee (ongoing cost, same error risk)",
+      "Buy an all-in-one ERP (expensive, complex, months of migration)",
+      "Ask their current IT person to 'figure something out' (low priority, no deadline)",
+      "Keep doing it manually and accept the loss"
+    ],
+    "awareness_level": "Unaware-to-problem-aware — knows the pain exists but doesn't know affordable automation is an option. Most have never heard the term 'API integration'.",
+    "buying_triggers": [
+      "A costly error caused by manual data entry",
+      "A key employee who handles the manual process quit or is leaving",
+      "Growth spike — suddenly doing 3x volume and the manual process broke",
+      "A competitor clearly running smoother operations"
+    ]
+  },
+  "offer": {
+    "current_offer": "Kill the Bottleneck — Fixed-Scope Automation Package",
+    "current_price": "3500",
+    "delivery_model": "Fixed-scope project: 1 discovery call → scoped proposal → 2-3 week build → handover with documentation and 30-day support",
+    "core_promise": "Eliminate your most painful daily manual process in 3 weeks — guaranteed to work or we fix it for free",
+    "unique_mechanism": "The 3-Platform Bridge — we connect exactly 2-3 of your existing systems (no new software required) using a Google Sheets automation layer that your team already knows how to read",
+    "included_assets": [
+      "1-hour Process Diagnosis call (maps the exact flow and calculates ROI in BGN)",
+      "Custom automation build (Google Sheets + Apps Script + API integration)",
+      "Live handover session — your team learns to use and monitor it",
+      "Plain-language documentation (no technical jargon)",
+      "30-day bug-fix guarantee",
+      "Monthly automated performance report showing time saved"
+    ],
+    "bonuses": [
+      "Free 'Second Bottleneck' audit — we identify your next automation opportunity at no charge",
+      "Priority support for 30 days via WhatsApp/Telegram"
+    ],
+    "guarantee": "If the automation doesn't run correctly for 30 days after handover, we fix it at no additional cost",
+    "proof_assets": [
+      "Hotel: 4 hours/day → 1 hour, zero data errors — Booking.com integration (2010)",
+      "Warehouse: barcode scanner → Google Sheets → automatic stock reports, eliminated manual stock counting",
+      "52 verified Upwork client reviews on API integration and Google Sheets automation",
+      "Average project delivery: 10-15 working days"
+    ],
+    "risk_reversal": "Fixed price, fixed scope — client knows the exact cost before we start. No surprises. 30-day fix guarantee after delivery.",
+    "urgency_reason": "Taking maximum 3 new projects per month to maintain delivery quality"
+  },
+  "business": {
+    "current_products": [
+      "Hourly freelance automation work on Upwork (~$55/project average — underpriced)",
+      "Kill the Bottleneck fixed-scope package ($3,500) — new offer to build"
+    ],
+    "current_revenue_range": "Under $5,000/month (Upwork freelance, inconsistent)",
+    "business_model": "Fixed-scope productized automation service targeting Balkan SMBs directly (off-platform)",
+    "delivery_capacity": "3-4 projects/month comfortably as a solo operator",
+    "team_size": "Solo",
+    "current_bottleneck": "All clients come from Upwork at low prices — no direct acquisition channel, no local Bulgarian/Balkan market presence, underpriced relative to value delivered"
+  },
+  "acquisition": {
+    "current_lead_sources": ["Upwork (52 reviews, strong profile)", "word of mouth from past clients"],
+    "current_content_channels": ["None — no content presence yet"],
+    "current_ads": "None",
+    "outbound_system": "None — all inbound via Upwork platform",
+    "partnerships": "None currently",
+    "email_list_size": "0",
+    "conversion_problem": "No direct acquisition channel outside Upwork. Geographic expansion plan: (1) Bulgaria first — Facebook business groups, LinkedIn Bulgaria, direct outreach to Sofia e-commerce and logistics companies; (2) Turkey second — LinkedIn Turkey, Instagram (dominant for Turkish business owners), WhatsApp outreach, potential partnerships with local ERP resellers; (3) Global third — English LinkedIn content, Upwork profile repositioned at higher price point, inbound from VSL/landing page."
+  },
+  "sales": {
+    "sales_process": "Inquiry → 30-min Process Diagnosis call (free) → scoped proposal with ROI calculation → decision within 48hrs",
+    "application_form": "Short intake form: industry, which platforms they use, what the manual process is, how many hours/week it takes, how many employees are involved",
+    "sales_call_required": true,
+    "close_rate": "Unknown for new direct offer — Upwork close rate ~60% on proposals",
+    "common_objections": [
+      "How much will this cost? (before they understand the ROI)",
+      "We use local software — I doubt you can integrate it",
+      "We tried something similar before and it failed",
+      "I need to discuss with my partner / accountant"
+    ],
+    "follow_up_process": "Send ROI calculation summary after call + follow up in 3 days if no response"
+  },
+  "delivery": {
+    "onboarding_process": "Signed contract + 50% upfront → access to client systems → process mapping session → build begins",
+    "milestones": [
+      "Day 1-2: Full process map and API documentation confirmed",
+      "Day 5-7: Working prototype in staging environment",
+      "Day 10-15: Live system with client team testing",
+      "Day 21: Final handover + documentation + team training"
+    ],
+    "client_success_metrics": [
+      "Hours/week eliminated from manual process",
+      "Error rate before vs. after (0 errors target)",
+      "Number of platforms successfully connected",
+      "Time to handover (target: under 3 weeks)"
+    ],
+    "support_model": "30-day WhatsApp/Telegram support post-handover. Bugs fixed within 24hrs.",
+    "fulfillment_risks": [
+      "Client's local software has no API (mitigated by diagnosis call upfront)",
+      "Client delays providing system access (slows delivery timeline)",
+      "Scope creep — client wants 'just one more thing' after contract signed"
+    ],
+    "case_study_collection": "Post-project survey + permission to use results in case study (with or without company name)"
+  },
+  "retention": {
+    "upsell_paths": [
+      "Monthly automation maintenance retainer ($300-$500/month)",
+      "Second bottleneck project (new scope, new price)",
+      "Team training workshop: 'How to use your automation — and what to do when something changes' ($500 half-day)"
+    ],
+    "continuity_offer": "$400/month maintenance and monitoring retainer",
+    "community": "None yet — potential: private Telegram group for Balkan business owners on automation",
+    "referral_system": "10% referral fee for any paying client referred by a past client"
+  },
+  "constraints": {
+    "budget": "$500-$1,000/month for LinkedIn ads or Facebook ads once first 3 case studies are documented",
+    "time_available": "30-40 hrs/week (solo operator)",
+    "delivery_capacity": "Max 3-4 concurrent projects without quality drop",
+    "ethical_constraints": [
+      "Never promise automation will work with software before diagnosing the API availability",
+      "Never overscope — only commit to what is technically confirmed possible"
+    ],
+    "legal_constraints": [
+      "Client data accessed during integration must be handled under a signed NDA",
+      "GDPR compliance required for any system handling personal customer data (Bulgaria is EU)"
+    ]
+  },
+  "metrics": {
+    "leads_per_month": "5 (current, Upwork only)",
+    "booked_calls_per_month": "3",
+    "show_up_rate": "80%",
+    "close_rate": "60%",
+    "average_order_value": "3500",
+    "customer_lifetime_value": "6200",
+    "refund_rate": "0%",
+    "lead_cost": "0 (organic/Upwork)",
+    "cost_per_call": "0",
+    "sales_cycle_length": "2-5 days"
+  },
+  "notes": {
+    "assumptions": [
+      "Balkan SMB owners will pay $2,500-$5,000 for automation when ROI is shown in BGN, not USD",
+      "LinkedIn Bulgaria and Facebook business groups are viable organic acquisition channels",
+      "Case studies from hotel and warehouse projects are strong enough to close first 3-5 direct clients"
+    ],
+    "open_questions": [
+      "Bulgaria: should the offer be priced in BGN (6,500-8,000 лв) to feel local rather than foreign ($3,500 USD)?",
+      "Turkey: should there be a separate Turkish-language landing page and pricing in TRY, or pitch in English to Istanbul-based companies?",
+      "Is a free 'Process Audit' a better lead magnet than a paid discovery call at this stage?",
+      "Which industry vertical (e-commerce, logistics, hospitality) should anchor the first 3 case studies in Bulgaria?",
+      "For Turkey: are ERP reseller partnerships (Logo, Netsis dealers) a faster channel than cold outreach?"
+    ],
+    "rejected_ideas": [
+      "Monthly retainer as primary offer — too hard to sell before trust is established",
+      "Targeting international clients via Upwork at low rates — race to the bottom, not sustainable",
+      "Building a SaaS tool — too much upfront investment before market validation"
+    ]
+  }
+}
