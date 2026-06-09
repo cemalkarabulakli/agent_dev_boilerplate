@@ -333,6 +333,46 @@ body {
 }
 .file-sz { font-size: 11px; color: var(--muted); }
 
+/* ── Pipeline ─────────────────────────────────── */
+.pipeline-wrap { max-width: 680px; margin: 0 auto; }
+.pipeline-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pg-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 18px;
+}
+.pg-stripe { width: 3px; height: 36px; border-radius: 2px; flex-shrink: 0; }
+.pg-title { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; flex: 1; padding-left: 12px; }
+.pg-badge { font-size: 11px; color: var(--muted); }
+.pg-note { font-size: 11px; color: var(--yellow); background: rgba(210,153,34,.08); padding: 7px 18px; border-top: 1px solid var(--border); }
+.pa-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 18px; cursor: pointer;
+  border-top: 1px solid var(--border);
+  transition: background .1s;
+}
+.pa-item:hover { background: var(--surface2); }
+.pa-step {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  background: var(--surface2); color: var(--muted);
+  border: 1.5px solid var(--border);
+}
+.pa-info { flex: 1; min-width: 0; }
+.pa-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.pa-role { font-size: 11px; color: var(--accent); margin-bottom: 4px; }
+.pa-produces { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.pa-cli { font-family: monospace; font-size: 11px; color: var(--muted); margin-top: 5px; opacity: .6; }
+.pipeline-arrow {
+  display: flex; align-items: center; justify-content: center;
+  height: 32px; color: var(--muted); font-size: 16px;
+}
+
 /* ── Misc ─────────────────────────────────────── */
 .loading { display: flex; align-items: center; justify-content: center; padding: 60px; color: var(--muted); }
 .empty { text-align: center; padding: 60px; color: var(--muted); }
@@ -374,6 +414,13 @@ body {
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.099zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
       </svg>
       Research
+    </div>
+
+    <div class="nav-item" id="nav-pipeline" onclick="navigate('pipeline')">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm.5 4.5a.5.5 0 0 0-1 0v3.793L5.354 6.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 8.293V4.5z"/>
+      </svg>
+      Pipeline
     </div>
 
     <div class="nav-item" id="nav-scripts" onclick="navigate('scripts')">
@@ -424,6 +471,12 @@ body {
       <div class="source-grid" id="source-grid"><div class="loading">Loading…</div></div>
     </div>
 
+    <!-- PIPELINE -->
+    <div id="section-pipeline" style="display:none;">
+      <div class="section-hd"><div class="section-title">Business Build Pipeline — 19 Stages</div></div>
+      <div class="pipeline-wrap" id="pipeline-wrap"></div>
+    </div>
+
     <!-- SCRIPTS -->
     <div id="section-scripts" style="display:none;">
       <div class="section-hd"><div class="section-title">CLI Scripts</div></div>
@@ -467,19 +520,20 @@ let currentSection = 'overview';
 
 // ── Navigation ─────────────────────────────────────
 function navigate(section) {
-  ['overview','agents','research','scripts'].forEach(s => {
+  ['overview','agents','pipeline','research','scripts'].forEach(s => {
     document.getElementById(`section-${s}`).style.display = 'none';
     document.getElementById(`nav-${s}`).classList.remove('active');
   });
   document.getElementById(`section-${section}`).style.display = 'block';
   document.getElementById(`nav-${section}`).classList.add('active');
 
-  const titles = { overview:'Overview', agents:'Agents', research:'Research Sources', scripts:'CLI Scripts' };
+  const titles = { overview:'Overview', agents:'Agents', pipeline:'Business Build Pipeline', research:'Research Sources', scripts:'CLI Scripts' };
   document.getElementById('page-title').textContent = titles[section];
   document.getElementById('search-box').style.display = section === 'agents' ? 'block' : 'none';
 
   currentSection = section;
   if (section === 'agents') renderAgentsGrid(allAgents);
+  else if (section === 'pipeline') renderPipeline();
   else if (section === 'research') loadResearch();
   else if (section === 'scripts') loadScripts();
 }
@@ -627,6 +681,140 @@ function copyCmd(cmd, btn) {
     btn.textContent = 'Kopyalandı!';
     setTimeout(() => btn.textContent = old, 1500);
   });
+}
+
+// ── Pipeline ─────────────────────────────────────
+const PIPELINE_GROUPS = [
+  {
+    label: 'FOUNDATION', color: '#58a6ff',
+    note: null,
+    agents: [
+      { name: 'market_selector',       step: 1,  produces: 'Market selection + scorecard' },
+      { name: 'avatar_pain_researcher',step: 2,  produces: 'Avatar profile + pain map' },
+    ]
+  },
+  {
+    label: 'OFFER', color: '#bc8cff',
+    note: null,
+    agents: [
+      { name: 'offer_architect',              step: 3,  produces: 'Core offer structure + mechanism' },
+      { name: 'value_stack_builder',          step: 4,  produces: 'Value stack + bonuses' },
+      { name: 'pricing_guarantee_optimizer',  step: 5,  produces: 'Price point + guarantee' },
+      { name: 'proof_engine_builder',         step: 6,  produces: 'Proof strategy + case study plan' },
+    ]
+  },
+  {
+    label: 'ACQUISITION', color: '#d29922',
+    note: null,
+    agents: [
+      { name: 'acquisition_strategy_agent', step: 7,  produces: 'Multi-channel acquisition plan' },
+      { name: 'content_authority_agent',    step: 8,  produces: 'Authority content plan' },
+      { name: 'funnel_builder',             step: 9,  produces: 'Lead magnet + funnel structure' },
+      { name: 'sales_script_builder',       step: 10, produces: 'Discovery + sales call scripts' },
+      { name: 'objection_handler',          step: 11, produces: 'Objection response library' },
+    ]
+  },
+  {
+    label: 'DELIVERY', color: '#3fb950',
+    note: null,
+    agents: [
+      { name: 'delivery_system_designer', step: 12, produces: 'Onboarding + delivery SOPs' },
+      { name: 'retention_upsell_agent',   step: 13, produces: 'Retention + upsell plan' },
+    ]
+  },
+  {
+    label: 'ASSESSMENT', color: '#f85149',
+    note: null,
+    agents: [
+      { name: 'business_scorecard_agent', step: 14, produces: 'Full business scorecard' },
+    ]
+  },
+  {
+    label: 'SPECIALISTS', color: '#e5c07b',
+    note: 'Run independently after Assessment — use whichever you need',
+    agents: [
+      { name: 'meta_ads_manager',         step: 15, produces: 'Meta Ads campaign structure (Andromeda-first)' },
+      { name: 'vsl_copywriter',           step: 16, produces: 'VSL script' },
+      { name: 'vsl_events_copywriter',    step: 17, produces: 'VSL script for paid events' },
+      { name: 'case_study_writer',        step: 18, produces: 'Case study templates' },
+      { name: 'youtube_strategy_agent',   step: 19, produces: 'YouTube content strategy' },
+    ]
+  },
+  {
+    label: 'LAUNCH', color: '#3fb950',
+    note: null,
+    agents: [
+      { name: 'launch_campaign_manager', step: 20, produces: 'Launch campaign plan' },
+    ]
+  },
+];
+
+const SUPPORT_AGENTS = [
+  { name: 'funnel_diagnostic_agent',   label: 'Funnel Diagnostic',    note: 'Diagnose funnel issues at any stage' },
+  { name: 'knowledge_integrator_agent',label: 'Knowledge Integrator', note: 'Self-learning — integrates new knowledge into agents' },
+];
+
+function renderPipeline() {
+  const agentMap = {};
+  allAgents.forEach(a => { agentMap[a.name] = a; });
+
+  let html = '';
+
+  PIPELINE_GROUPS.forEach((group, gi) => {
+    if (gi > 0) html += `<div class="pipeline-arrow">↓</div>`;
+
+    const agentRows = group.agents.map(pa => {
+      const a = agentMap[pa.name] || {};
+      const role = a.role || '';
+      return `
+        <div class="pa-item" onclick="openAgent('${pa.name}')">
+          <div class="pa-step">${pa.step}</div>
+          <div class="pa-info">
+            <div class="pa-name">${(a.display_name || pa.name.replace(/_/g,' ').replace(/\b\w/g,l=>l.toUpperCase()))}</div>
+            ${role ? `<div class="pa-role">${esc(role)}</div>` : ''}
+            <div class="pa-produces">→ ${esc(pa.produces)}</div>
+            <div class="pa-cli">agent-forge run ${pa.name}</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    html += `
+      <div class="pipeline-group">
+        <div class="pg-header" style="border-left: 3px solid ${group.color};">
+          <div class="pg-title" style="color:${group.color};">${group.label}</div>
+          <div class="pg-badge">${group.agents.length} agent${group.agents.length>1?'s':''}</div>
+        </div>
+        ${agentRows}
+        ${group.note ? `<div class="pg-note">${group.note}</div>` : ''}
+      </div>`;
+  });
+
+  // Support / utility agents
+  if (SUPPORT_AGENTS.length) {
+    html += `<div class="pipeline-arrow" style="opacity:.4;">↓</div>`;
+    const rows = SUPPORT_AGENTS.map(sa => {
+      const a = agentMap[sa.name] || {};
+      return `
+        <div class="pa-item" onclick="openAgent('${sa.name}')">
+          <div class="pa-step" style="font-size:9px;">⚙</div>
+          <div class="pa-info">
+            <div class="pa-name">${sa.label}</div>
+            <div class="pa-produces">${esc(sa.note)}</div>
+            <div class="pa-cli">agent-forge run ${sa.name}</div>
+          </div>
+        </div>`;
+    }).join('');
+    html += `
+      <div class="pipeline-group">
+        <div class="pg-header" style="border-left: 3px solid var(--muted);">
+          <div class="pg-title" style="color:var(--muted);">SUPPORT TOOLS</div>
+          <div class="pg-badge">${SUPPORT_AGENTS.length} agents</div>
+        </div>
+        ${rows}
+      </div>`;
+  }
+
+  document.getElementById('pipeline-wrap').innerHTML = html;
 }
 
 // ── Modal ────────────────────────────────────────────
