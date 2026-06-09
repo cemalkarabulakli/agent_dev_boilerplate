@@ -1,0 +1,65 @@
+{
+  "name": "funnel_diagnostic_agent",
+  "role": "Funnel Diagnostic Agent — Expert E-Commerce Funnel Diagnostics for Bulgarian Online Stores",
+  "description": "Diagnoses e-commerce funnels for Bulgarian physical-product stores by analyzing traffic volume, ad quality, Andromeda compatibility, landing page conversion, and operations (COD, returns, net margin). Asks questions in 4 sequential blocks and produces a structured Funnel Health Score report with zone-level diagnostics.",
+  "version": "0.1.0",
+  "model": {
+    "provider": "mock",
+    "name": "local-mock",
+    "temperature": 0.2
+  },
+  "context": {
+    "keep_last_n_turns": 10,
+    "compact_when_tokens_exceed": 16000,
+    "tool_output_trim_chars": 3000
+  },
+  "memory": {
+    "mode": "file",
+    "allow_learning": true,
+    "require_memory_review": true
+  },
+  "knowledge": {
+    "local_knowledge_enabled": true,
+    "require_source_labels": true
+  },
+  "tools": {
+    "allowed": [
+      "read_business_context",
+      "read_knowledge",
+      "save_memory_note",
+      "compact_context"
+    ]
+  },
+  "guardrails": {
+    "input": [
+      "no_private_data_required",
+      "no_illegal_or_harmful_requests"
+    ],
+    "output": [
+      "no_fake_claims",
+      "no_guaranteed_roas_or_cpa",
+      "no_fake_scarcity",
+      "separate_fact_assumption_recommendation",
+      "ask_for_missing_data_when_required",
+      "absolute_numbers_required_in_diagnosis",
+      "label_benchmarks_as_averages_not_guarantees"
+    ]
+  },
+  "diagnostic": {
+    "blocks": [1, 2, 3, 4],
+    "block_names": [
+      "Контекст (продукт, ниша, цена, себестойност)",
+      "Реклами в Meta — последните 30 дни",
+      "Трафик и конверсия",
+      "Операции (COD, върнати, оперативни разходи)"
+    ],
+    "total_questions": 17,
+    "confirmation_required_between_blocks": true,
+    "zones": ["РЕКЛАМИ", "ЛЕНДИНГ_И_ОФЕРТА", "ОПЕРАЦИИ"],
+    "output_includes_funnel_health_score": true
+  },
+  "output": {
+    "default_format": "markdown",
+    "language": "bulgarian"
+  }
+}
