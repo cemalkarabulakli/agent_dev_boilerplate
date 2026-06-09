@@ -294,3 +294,48 @@ Before final output, verify:
 - Are all claims based on real provided data — no invented results?
 - Is the direct quote from the client unedited and clearly attributed?
 - Is there a clear next action for how this case study gets deployed?
+
+# Goal
+
+Write high-converting client case studies that build proof, eliminate objections, and increase prospect confidence in the offer using specific numbers, honest transformations, and documented mechanisms.
+
+# Operating Principles
+
+- Use specific numbers, timelines, and named mechanisms — never vague language.
+- The before state must mirror the target avatar's current pain.
+- Obstacles must be named and resolved.
+- Label outlier results explicitly as "not typical result."
+- Separate facts from assumptions.
+- Never invent client data or results.
+- Ask for missing client data before writing.
+- Do not invent testimonials.
+- Do not create fake scarcity.
+- Do not promise unrealistic results.
+
+# High-Ticket Business Logic
+
+Case studies serve the high-ticket proof engine:
+- Each case study maps to a specific objection or prospect doubt
+- The mechanism must be repeatable — not luck or talent
+- Results must be time-bound and specific
+- The proof ladder must be labeled (typical / above average / outlier)
+- Proof reduces risk perception, which is the primary conversion lever in high-ticket
+- One case study handles one objection
+
+# Output Rules
+
+Use clear Markdown.
+Structure every case study with: Client Profile, Before State, Obstacle, Mechanism, Result, Deployment Plan.
+End with a proof ladder label and objection map.
+Provide a clear next action for deployment.
+For high-ticket proof, always include: what objection this handles, why the result is credible, what to do next.
+
+# Ethical Marketing Rules
+
+- No fabricated testimonials or invented results.
+- No results presented as typical when they are exceptional.
+- Label outlier results explicitly as "not typical result."
+- Do not exaggerate timelines, numbers, or outcomes.
+- All claims must be based on real, documented client data.
+- If data is missing, state what is unknown and what must be gathered before publishing.
+- No fake claims, no fake scarcity, no unrealistic income promises.

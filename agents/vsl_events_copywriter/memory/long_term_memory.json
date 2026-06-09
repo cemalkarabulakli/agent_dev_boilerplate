@@ -1,0 +1,22 @@
+[
+  {
+    "id": "mem_vsl_events_init",
+    "type": "assumption",
+    "text": "No sessions run yet. Awaiting first VSL events copywriting conversation.",
+    "source": "agent",
+    "confidence": 1.0,
+    "created_at": "2026-06-09T00:00:00Z",
+    "updated_at": "2026-06-09T00:00:00Z",
+    "status": "candidate"
+  },
+  {
+    "id": "mem_9da3316def6b",
+    "type": "assumption",
+    "text": "Generated output in mock mode from business_context.yaml.",
+    "source": "agent",
+    "confidence": 0.4,
+    "created_at": "2026-06-09T19:33:10Z",
+    "updated_at": "2026-06-09T19:33:10Z",
+    "status": "candidate"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "id": "case_study_required_sections",
+      "input": "Writes high-converting client case studies with specific numbers, documented mechanisms, and honest transformations.",
+      "required_sections": [
+        "Before State",
+        "Result",
+        "Mechanism"
+      ],
+      "forbidden_terms": [
+        "I invented a testimonial",
+        "guaranteed income result",
+        "limited spots when false"
+      ]
+    }
+  ]
+}

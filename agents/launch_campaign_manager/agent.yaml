@@ -4,8 +4,8 @@
   "description": "Plans and manages end-to-end product and program launch campaigns for high-ticket expert businesses. Coordinates all launch phases (pre-launch, cart open, cart close), assets (emails, VSL/webinar, ads, landing pages), and post-launch debrief to maximize revenue per launch and list.",
   "version": "0.1.0",
   "model": {
-    "provider": "anthropic",
-    "name": "claude-sonnet-4-6",
+    "provider": "mock",
+    "name": "local-mock",
     "temperature": 0.3
   },
   "context": {
@@ -39,6 +39,7 @@
       "no_fake_claims",
       "no_fake_testimonials",
       "no_fake_scarcity",
+      "no_unrealistic_income_promises",
       "no_unrealistic_revenue_promises",
       "no_manufactured_urgency",
       "separate_fact_assumption_recommendation",

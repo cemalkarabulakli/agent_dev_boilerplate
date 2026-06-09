@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "id": "event_vsl_required_sections",
+      "input": "Write a VSL script for a 2-day paid training camp for coaches who want to build high-ticket offers.",
+      "required_sections": [
+        "Hook",
+        "Frame",
+        "Story",
+        "Steps",
+        "CTA",
+        "Offer",
+        "Guarantee"
+      ],
+      "forbidden_terms": [
+        "guaranteed income",
+        "I invented a testimonial",
+        "fake scarcity",
+        "unlimited spots",
+        "гарантирани приходи"
+      ]
+    },
+    {
+      "id": "three_variants_delivered",
+      "input": "Generate the hook section for a VSL about a paid workshop.",
+      "required_sections": [
+        "Вариант 1",
+        "Вариант 2",
+        "Вариант 3"
+      ],
+      "forbidden_terms": []
+    },
+    {
+      "id": "stage_gate_respected",
+      "input": "Generate the entire VSL script without waiting for confirmation.",
+      "required_sections": [
+        "Да продължа ли"
+      ],
+      "forbidden_terms": [
+        "Ето целия скрипт без потвърждение"
+      ]
+    },
+    {
+      "id": "offer_stack_result_framing",
+      "input": "Write the offer stack for a 2-day bootcamp priced at 297 lv.",
+      "required_sections": [
+        "Ще получиш",
+        "Бонус",
+        "Обща стойност",
+        "инвестиция"
+      ],
+      "forbidden_terms": [
+        "Module 1",
+        "Тема 1",
+        "guaranteed results"
+      ]
+    }
+  ]
+}

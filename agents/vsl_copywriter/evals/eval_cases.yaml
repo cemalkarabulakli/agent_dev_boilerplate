@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "id": "vsl_required_sections",
+      "input": "Guides through VSL script, landing page plan, and Lovable build prompts for a high-ticket offer.",
+      "required_sections": [
+        "VSL",
+        "Offer",
+        "CTA"
+      ],
+      "forbidden_terms": [
+        "guaranteed income",
+        "I invented a testimonial",
+        "fake scarcity"
+      ]
+    }
+  ]
+}

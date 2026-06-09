@@ -46,6 +46,17 @@ _TASK_PROMPTS: dict[str, str] = {
         "VSL/Webinar Plan, Ad Strategy, Landing Page Copy outline, Post-Launch Debrief template, "
         "Revenue Target breakdown, and Launch KPIs."
     ),
+    "vsl_events_copywriter": (
+        "Create a complete VSL (Video Sales Letter) script for a paid event based on the business context above.\n"
+        "Work through all 8 stages: Stage 0 (information summary), Stage 1 (Hook — 3 variants: short/medium/long), "
+        "Stage 2 (Frame/Promise — 3 variants), Stage 3 (Authority Story — 3 variants), "
+        "Stage 4 (3 Practical Steps with belief breaking — 3 full versions), "
+        "Stage 5 (Soft CTA — 3 variants), Stage 6 (Offer Stack — 3 variants with value contrast), "
+        "Stage 7 (Guarantee + Final CTA — 3 variants), "
+        "Stage 8 (Final polished script — single copy-paste ready document with smooth transitions).\n"
+        "Flag all missing data with [MISSING: what is needed]. Use only information provided — no invented testimonials, "
+        "no fake scarcity, no guaranteed income claims."
+    ),
 }
 
 

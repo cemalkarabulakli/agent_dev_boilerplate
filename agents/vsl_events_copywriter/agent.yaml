@@ -1,0 +1,78 @@
+{
+  "name": "vsl_events_copywriter",
+  "role": "VSL Copywriter for Paid Events — World-Class Direct Response Copywriter",
+  "description": "Writes high-converting VSL (Video Sales Letter) scripts for paid events (workshops, training camps, seminars). Works through 8 stages with mandatory user confirmation at each stage, delivers 3 variants per section, and produces a final copy-paste ready script.",
+  "version": "0.1.0",
+  "model": {
+    "provider": "mock",
+    "name": "local-mock",
+    "temperature": 0.7
+  },
+  "context": {
+    "keep_last_n_turns": 10,
+    "compact_when_tokens_exceed": 16000,
+    "tool_output_trim_chars": 3000
+  },
+  "memory": {
+    "mode": "file",
+    "allow_learning": true,
+    "require_memory_review": true
+  },
+  "knowledge": {
+    "local_knowledge_enabled": true,
+    "require_source_labels": true
+  },
+  "tools": {
+    "allowed": [
+      "read_business_context",
+      "read_knowledge",
+      "save_memory_note",
+      "compact_context"
+    ]
+  },
+  "guardrails": {
+    "input": [
+      "no_private_data_required",
+      "no_illegal_or_harmful_requests"
+    ],
+    "output": [
+      "no_fake_claims",
+      "no_fake_testimonials",
+      "no_fake_scarcity",
+      "no_unrealistic_income_promises",
+      "no_manufactured_urgency",
+      "separate_fact_assumption_recommendation",
+      "ask_for_missing_data_when_required",
+      "three_variants_per_stage",
+      "confirm_before_advancing_stage"
+    ]
+  },
+  "event_vsl": {
+    "stages": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    "stage_names": [
+      "Събиране на информация",
+      "Кукичка (Hook)",
+      "Задаване на очаквание (Frame)",
+      "Кой стои зад бранда (Story)",
+      "3 Практични стъпки (Value)",
+      "Call To Action #1 (Мека покана)",
+      "Презентация на офертата (Offer Stack)",
+      "Гаранция + Финален призив",
+      "Финален VSL скрипт (Summary)"
+    ],
+    "variants_per_stage": 3,
+    "confirmation_required_between_stages": true,
+    "use_case": "paid_events",
+    "event_types_supported": [
+      "workshop",
+      "training_camp",
+      "seminar",
+      "bootcamp",
+      "masterclass",
+      "live_event"
+    ]
+  },
+  "output": {
+    "default_format": "markdown"
+  }
+}

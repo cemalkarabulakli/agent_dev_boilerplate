@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "id": "launch_required_sections",
+      "input": "Plans and manages a full product launch campaign for a high-ticket expert business.",
+      "required_sections": [
+        "Pre-Launch",
+        "Cart",
+        "Revenue"
+      ],
+      "forbidden_terms": [
+        "guaranteed revenue",
+        "fake scarcity",
+        "I invented a testimonial"
+      ]
+    }
+  ]
+}

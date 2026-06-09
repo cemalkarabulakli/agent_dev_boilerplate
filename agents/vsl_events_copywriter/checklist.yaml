@@ -1,0 +1,109 @@
+{
+  "items": [
+    {
+      "id": "stage_0_complete",
+      "category": "Process",
+      "description": "All required event info collected before advancing to Stage 1",
+      "severity": "critical",
+      "check": "phase_gate"
+    },
+    {
+      "id": "three_variants_per_stage",
+      "category": "Process",
+      "description": "Exactly 3 variants (short/medium/long or different angles) delivered at each stage",
+      "severity": "critical",
+      "check": "variant_count"
+    },
+    {
+      "id": "confirmation_between_stages",
+      "category": "Process",
+      "description": "Agent waits for user OK before advancing to the next stage",
+      "severity": "critical",
+      "check": "stage_gate"
+    },
+    {
+      "id": "hook_pattern_interrupt",
+      "category": "Stage 1 - Hook",
+      "description": "Hook identifies avatar role, pain, and desire in 1-2 sentences",
+      "severity": "critical",
+      "check": "hook_structure"
+    },
+    {
+      "id": "frame_promise_specific",
+      "category": "Stage 2 - Frame",
+      "description": "Frame includes specific time (X minutes), 3 steps, and a belief breaker (dори ако)",
+      "severity": "high",
+      "check": "frame_formula"
+    },
+    {
+      "id": "authority_micro_story",
+      "category": "Stage 3 - Story",
+      "description": "Story uses micro-narrative (pain → discovery → result), not a credential list",
+      "severity": "high",
+      "check": "story_structure"
+    },
+    {
+      "id": "three_steps_belief_breaking",
+      "category": "Stage 4 - Value",
+      "description": "Each of the 3 steps includes: name, why important, example/scene, belief break, conclusion",
+      "severity": "critical",
+      "check": "step_structure"
+    },
+    {
+      "id": "cta1_no_pressure",
+      "category": "Stage 5 - CTA",
+      "description": "First CTA uses soft invitation formula, no high-pressure language",
+      "severity": "high",
+      "check": "cta_tone"
+    },
+    {
+      "id": "offer_stack_result_not_content",
+      "category": "Stage 6 - Offer",
+      "description": "Offer bullets describe results/outcomes, not topics or module names",
+      "severity": "critical",
+      "check": "offer_framing"
+    },
+    {
+      "id": "offer_value_contrast",
+      "category": "Stage 6 - Offer",
+      "description": "Offer stack shows total value vs. actual investment price",
+      "severity": "critical",
+      "check": "price_contrast"
+    },
+    {
+      "id": "guarantee_type_chosen",
+      "category": "Stage 7 - Guarantee",
+      "description": "One of the three guarantee types is explicitly chosen and written out",
+      "severity": "critical",
+      "check": "guarantee_present"
+    },
+    {
+      "id": "scarcity_real_only",
+      "category": "Stage 7 - Guarantee",
+      "description": "Urgency/scarcity references real event seats or real deadline, not manufactured",
+      "severity": "critical",
+      "check": "no_fake_scarcity"
+    },
+    {
+      "id": "proof_from_real_data",
+      "category": "Ethics",
+      "description": "All proof, testimonials, and results reference data provided by the user, not invented",
+      "severity": "critical",
+      "check": "no_fake_claims"
+    },
+    {
+      "id": "final_script_formatted",
+      "category": "Stage 8 - Final",
+      "description": "Final script is a single, copy-paste ready document with smooth transitions between all stages",
+      "severity": "high",
+      "check": "final_output_format"
+    },
+    {
+      "id": "no_unnecessary_repetition",
+      "category": "Stage 8 - Final",
+      "description": "Final review removes repeated information and redundant sections",
+      "severity": "high",
+      "check": "deduplication"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "mem_vsl_init",
+    "type": "assumption",
+    "text": "No sessions run yet. Awaiting first business profiling conversation.",
+    "source": "agent",
+    "confidence": 1.0,
+    "created_at": "2026-06-09T00:00:00Z",
+    "updated_at": "2026-06-09T00:00:00Z",
+    "status": "candidate"
+  }
+]

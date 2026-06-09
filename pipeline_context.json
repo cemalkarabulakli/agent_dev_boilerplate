@@ -32,5 +32,18 @@
         "avatar_pain_researcher.Dream Outcome"
       ]
     }
+  },
+  "vsl_events_copywriter": {
+    "_meta": {
+      "completed_at": "2026-06-09T19:33:10Z",
+      "upstream_gaps": [
+        "avatar_pain_researcher.Specific Avatar",
+        "avatar_pain_researcher.Urgent Pain",
+        "avatar_pain_researcher.Dream Outcome",
+        "offer_architect.Core Promise",
+        "offer_architect.Unique Mechanism",
+        "offer_architect.Price"
+      ]
+    }
   }
 }

@@ -24,6 +24,7 @@ OUTPUT_TEMPLATES = {
     "case_study_writer": ("case_studies", "Client Case Study", ["Client Background", "Before State", "Transformation Journey", "Specific Results", "Key Numbers", "Objections Addressed", "Proof Validation", "Usage Rights", "Ethical Claims Rules"]),
     "youtube_strategy_agent": ("youtube_strategies", "YouTube Strategy — Turanlı Method", ["Niche Selection", "SEO Architecture", "Competitor Intelligence", "Content Calendar", "AI-Powered Production", "Channel Monetization", "Growth Metrics", "Thumbnail Strategy", "Title Formula", "Description Template"]),
     "launch_campaign_manager": ("launch_campaigns", "Launch Campaign Plan", ["Launch Timeline", "Pre-Launch Phase", "Cart Open Phase", "Cart Close Phase", "Email Sequence", "VSL / Webinar Plan", "Ad Strategy", "Landing Page Copy", "Post-Launch Debrief", "Revenue Target", "Launch KPIs"]),
+    "vsl_events_copywriter": ("vsl_events_scripts", "VSL Script for Paid Events", ["Event Info Summary", "Event Hook", "Frame / Promise", "Authority Story", "3 Practical Steps", "Soft CTA", "Event Offer Stack", "Guarantee + Final CTA", "Event Script"]),
 }
 
 # Dependency graph: what each agent reads from upstream agents and writes as structured output.
@@ -147,6 +148,13 @@ PIPELINE_SCHEMA: dict[str, dict[str, Any]] = {
             "vsl_copywriter": ["VSL Hook"],
         },
         "writes": ["Launch Timeline", "Revenue Target"],
+    },
+    "vsl_events_copywriter": {
+        "reads": {
+            "avatar_pain_researcher": ["Specific Avatar", "Urgent Pain", "Dream Outcome"],
+            "offer_architect": ["Core Promise", "Unique Mechanism", "Price"],
+        },
+        "writes": ["Event Hook", "Event Offer Stack", "Event Script"],
     },
 }
 

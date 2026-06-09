@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "id": "youtube_required_sections",
+      "input": "Builds and scales a YouTube channel using the Turanlı Method for a high-ticket expert business.",
+      "required_sections": [
+        "Niche",
+        "SEO",
+        "Content"
+      ],
+      "forbidden_terms": [
+        "guaranteed subscribers",
+        "buy views",
+        "guaranteed income result"
+      ]
+    }
+  ]
+}
