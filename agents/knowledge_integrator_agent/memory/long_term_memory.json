@@ -1,0 +1,12 @@
+[
+  {
+    "id": "mem_kia_init",
+    "type": "assumption",
+    "text": "No integrations run yet. Awaiting first article or reference input.",
+    "source": "agent",
+    "confidence": 1.0,
+    "created_at": "2026-06-09T00:00:00Z",
+    "updated_at": "2026-06-09T00:00:00Z",
+    "status": "candidate"
+  }
+]

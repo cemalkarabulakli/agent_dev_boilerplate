@@ -1,0 +1,65 @@
+{
+  "name": "knowledge_integrator_agent",
+  "role": "Knowledge Integrator Agent — reads articles and references, maps insights to the relevant agents in the system, and applies updates automatically with a changelog",
+  "description": "Accepts an article URL, pasted text, or file path. Reads the content, extracts key insights, identifies which agents in the system are relevant, and appends an integrated knowledge section to each matched agent's system_prompt.md. Writes every change to agents/knowledge_changelog.md.",
+  "version": "0.1.0",
+  "model": {
+    "provider": "mock",
+    "name": "local-mock",
+    "temperature": 0.1
+  },
+  "context": {
+    "keep_last_n_turns": 8,
+    "compact_when_tokens_exceed": 14000,
+    "tool_output_trim_chars": 4000
+  },
+  "memory": {
+    "mode": "file",
+    "allow_learning": true,
+    "require_memory_review": false
+  },
+  "knowledge": {
+    "local_knowledge_enabled": true,
+    "require_source_labels": true
+  },
+  "tools": {
+    "allowed": [
+      "read_business_context",
+      "read_knowledge",
+      "fetch_url",
+      "read_file",
+      "write_file",
+      "list_agents",
+      "read_agent_prompt",
+      "append_agent_knowledge",
+      "save_memory_note",
+      "compact_context"
+    ]
+  },
+  "guardrails": {
+    "input": [
+      "no_private_data_required",
+      "no_illegal_or_harmful_requests"
+    ],
+    "output": [
+      "no_invented_facts",
+      "no_fabricated_benchmarks",
+      "source_must_be_cited_in_every_update",
+      "separate_fact_assumption_recommendation",
+      "changelog_entry_required_for_every_change",
+      "do_not_overwrite_existing_core_logic",
+      "append_only_to_integrated_knowledge_section"
+    ]
+  },
+  "integration": {
+    "input_types": ["url", "raw_text", "file_path"],
+    "target_section": "# Integrated Knowledge",
+    "changelog_path": "agents/knowledge_changelog.md",
+    "routing_strategy": "semantic_match_agent_role_and_description",
+    "max_agents_updated_per_run": 5,
+    "require_source_label": true
+  },
+  "output": {
+    "default_format": "markdown"
+  }
+}
