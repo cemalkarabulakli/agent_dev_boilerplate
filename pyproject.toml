@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-forge"
+version = "0.1.0"
+description = "High-ticket business builder — AI agent pipeline CLI"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "anthropic>=0.40.0",
+    "typer>=0.12.0",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov"]
+
+[project.scripts]
+agent-forge = "agent_forge.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agent_forge*", "core*", "tools*", "scripts*"]
+
+[tool.setuptools.package-data]
+agent_forge = ["_template/**/*", "_template/**/.*"]
