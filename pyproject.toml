@@ -3,12 +3,39 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "agent-forge"
-version = "0.1.0"
+name = "agent-boilerplate"
+version = "0.1.2"
 description = "High-ticket business builder — AI agent pipeline CLI"
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Cemal Karabulaklı", email = "cemalkarabulakli@gmail.com" },
+]
+keywords = [
+    "ai",
+    "agent",
+    "cli",
+    "boilerplate",
+    "anthropic",
+    "claude",
+    "pipeline",
+    "automation",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Environment :: Console",
+]
 dependencies = [
     "anthropic>=0.40.0",
     "typer>=0.12.0",
@@ -17,6 +44,11 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "pytest-cov"]
+
+[project.urls]
+Homepage = "https://github.com/cemalkarabulakli/agent_dev_boilerplate"
+Repository = "https://github.com/cemalkarabulakli/agent_dev_boilerplate"
+Issues = "https://github.com/cemalkarabulakli/agent_dev_boilerplate/issues"
 
 [project.scripts]
 agent-forge = "agent_forge.cli:app"

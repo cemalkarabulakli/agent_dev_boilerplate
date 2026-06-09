@@ -6,6 +6,7 @@ Runs all agents in dependency order:
 
 Usage:
   python scripts/run_full_business_build.py
+  python scripts/run_full_business_build.py --mode api
   python scripts/run_full_business_build.py --skip-to offer_architect
   python scripts/run_full_business_build.py --only market_selector,avatar_pain_researcher
   python scripts/run_full_business_build.py --group foundation,offer
@@ -16,6 +17,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 import time
 from pathlib import Path
@@ -29,6 +31,7 @@ from core.business_context_schema import BusinessContext
 from core.memory_manager import MemoryManager
 from core.output_templates import render_mock_output, save_output, extract_structured_output, PIPELINE_SCHEMA
 from core.pipeline_context import PipelineContext
+from scripts._common_generation import _call_api, _format_context, _format_upstream, _TASK_PROMPTS
 
 
 # ── Pipeline definition ──────────────────────────────────────────────────────
@@ -86,26 +89,42 @@ def run_agent_step(
     context: BusinessContext,
     pipeline: PipelineContext,
     no_memory: bool,
+    use_api: bool = False,
+    model: str = "claude-sonnet-4-6",
 ) -> Path:
     schema = PIPELINE_SCHEMA.get(agent_name, {})
     deps, gaps = pipeline.read_deps(schema.get("reads", {}))
 
     loaded = load_agent(agent_name, ROOT)
-    markdown = render_mock_output(agent_name, context, deps, gaps)
+
+    if use_api:
+        task = _TASK_PROMPTS.get(
+            agent_name,
+            "Generate a comprehensive analysis and plan based on the business context above.",
+        )
+        upstream_section = _format_upstream(deps)
+        user_message = f"{upstream_section}{_format_context(context)}\n---\n\n{task}"
+        if gaps:
+            print(f"              [gaps] {', '.join(gaps)}")
+        markdown = _call_api(loaded.system_prompt, user_message, model=model)
+    else:
+        markdown = render_mock_output(agent_name, context, deps, gaps)
+
     path = save_output(ROOT, agent_name, markdown)
 
     structured = extract_structured_output(agent_name, context, deps)
     pipeline.write_output(agent_name, structured, gaps)
 
     if not no_memory:
+        mode_label = "api" if use_api else "mock"
         manager = MemoryManager(loaded.agent_dir)
         manager.append_raw_history(
             "agent",
             f"Generated {path.name}",
-            {"script": "run_full_business_build.py"},
+            {"script": "run_full_business_build.py", "mode": mode_label},
         )
         manager.save_candidate_memory(
-            "Generated mock output from business_context.yaml",
+            f"Generated {mode_label} output from business_context.yaml",
             "assumption", "agent", 0.4,
         )
     return path
@@ -152,6 +171,14 @@ examples:
         help="Path to pipeline context JSON for inter-agent data flow (default: pipeline_context.json)",
     )
     p.add_argument(
+        "--mode", choices=["api", "mock"], default="mock",
+        help="api: call Claude API (requires ANTHROPIC_API_KEY). mock: local placeholder output.",
+    )
+    p.add_argument(
+        "--model", default="claude-sonnet-4-6",
+        help="Claude model to use in api mode (default: claude-sonnet-4-6)",
+    )
+    p.add_argument(
         "--skip-to", metavar="AGENT",
         help="Skip all stages before AGENT and start from AGENT",
     )
@@ -178,6 +205,10 @@ examples:
     p.add_argument(
         "--list", action="store_true",
         help="List all pipeline stages and exit",
+    )
+    p.add_argument(
+        "--confirm", action="store_true",
+        help="Skip the api-mode cost confirmation prompt",
     )
     return p.parse_args()
 
@@ -251,6 +282,13 @@ def main() -> int:
         print(f"[ERROR] Context file not found: {context_path}")
         return 1
 
+    # ── API mode setup ────────────────────────────────────────────────────────
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    use_api = args.mode == "api" and bool(api_key)
+    if args.mode == "api" and not api_key:
+        print("[ERROR] --mode api requires ANTHROPIC_API_KEY to be set.")
+        return 1
+
     # ── Header ───────────────────────────────────────────────────────────────
     print(_sep("="))
     print("  FULL BUSINESS BUILD PIPELINE")
@@ -258,10 +296,20 @@ def main() -> int:
     print(f"  Context  : {context_path.name}")
     print(f"  Pipeline : {args.pipeline}")
     print(f"  Stages   : {len(stages)} / {len(PIPELINE)}")
+    print(f"  Mode     : {'API — ' + args.model if use_api else 'mock (local)'}")
     print(f"  Memory   : {'disabled' if args.no_memory else 'enabled'}")
     if args.dry_run:
-        print("  Mode    : DRY RUN -- nothing will be written")
+        print("  Dry run  : nothing will be written")
     print(_sep("="))
+
+    if use_api and not args.dry_run and not args.confirm:
+        print(f"\n  Running {len(stages)} agent(s) via Claude API.")
+        print("  Each agent makes one API call. Costs apply.")
+        answer = input("  Continue? [y/N] ").strip().lower()
+        if answer != "y":
+            print("  Aborted.")
+            return 0
+        print()
 
     # ── Dry run ───────────────────────────────────────────────────────────────
     if args.dry_run:
@@ -295,7 +343,7 @@ def main() -> int:
 
         t0 = time.perf_counter()
         try:
-            path = run_agent_step(stage.agent, context, pipeline, args.no_memory)
+            path = run_agent_step(stage.agent, context, pipeline, args.no_memory, use_api, args.model)
             elapsed = time.perf_counter() - t0
             relative = path.relative_to(ROOT)
             print(f"\r  {counter}  {label_col} OK   ({elapsed:.1f}s)  -> {relative}")
