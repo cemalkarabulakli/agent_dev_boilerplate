@@ -249,3 +249,45 @@ Before final output, verify:
 - Is there a clear next action for the user?
 - Is urgency and scarcity ethical and real?
 - Are all income and result claims based on real data?
+
+---
+
+# Integrated Knowledge
+
+## Indirect vs. Direct Video Ad Script Structures — 2026-06-09
+Source: User-provided text — 2026-06-09
+
+### Two Script Modes: When to Use Each
+
+**Indirect (SOAP — 45–60 seconds):** Use for cold B2C audiences, trust-building, lead magnet funnels.
+**Direct (Full Pitch — 2–3 minutes):** Use when brand is established (50k+ followers), niche is high-pain, or a strong risk reversal is in place.
+
+### Indirect Ad Script Structure (SOAP)
+
+1. **Hook** — Call out the avatar's problem or failed attempt. Stop the scroll in 3 seconds.
+2. **Story** — Personal struggle or transformation. Make the viewer feel seen.
+3. **Offer** — Present the free training/resource and the specific result it delivers (not the paid offer).
+4. **Action (CTA)** — One clear instruction: "Click below to get instant access."
+5. **Proof** — Named client results with specific numbers and timelines.
+6. *(Optional)* **Preview** — 3 bullet points of what they will learn inside.
+
+Example hook that works: *"I used to think I just had a slow metabolism, turns out I was doing everything wrong."*
+
+### Direct Ad Script Structure (Full Sequence)
+
+1. Hook — Avatar + problem or goal call-out
+2. Promise + Risk Reversal — Bold result with a no-pay guarantee ("if you don't see results in 16 weeks, you don't pay")
+3. Qualify — Pain-state description in detail; they should self-identify
+4. Proof — Named clients, specific numbers (lbs lost, timeline, before/after)
+5. CTA #1 — Send to short video or info page
+6. Introduce Yourself + Personal Story — Your own transformation; why you're the expert
+7. The Method — What most programs get wrong; your unique mechanism; what makes it different
+8. Proof (repeat) — Same or new named examples
+9. CTA #2 — Restate next step
+10. Risk Reversal — Restate guarantee explicitly
+11. CTA #3 — Final urgency push
+
+### Script Selection Rule
+- Cold B2C traffic → always start with Indirect
+- Direct works only when trust threshold is already met (big brand, high pain, strong guarantee)
+- Indirect leads arrive pre-sold → higher show rates, higher close rates than cold direct pitch
