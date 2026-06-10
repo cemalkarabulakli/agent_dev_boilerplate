@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "funnel_diagnostic_agent_structure",
+      "category": "Agent",
+      "description": "Funnel Diagnostic Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}
