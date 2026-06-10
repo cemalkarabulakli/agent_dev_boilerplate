@@ -91,7 +91,7 @@ SOURCE: launch_campaign_manager knowledge base
 ## Platform-Specific Notes
 
 ### Meta Ads (Facebook + Instagram)
-- Best for: consumer-facing high-ticket ($1,000–$10,000), B2C coaching, courses
+- Best for: consumer-facing high-ticket ($1,000–$10,000), B2C expert services, courses, done-with-you programs
 - Pre-launch: Advantage+ Leads campaign or manual leads campaign with broad targeting
 - Cart open retargeting: Manual campaign with custom audiences (not ASC — you need tight retargeting control during launch)
 - Creative: short-form video (Reels-format) outperforms static in cold traffic; testimonial static/carousel works well in retargeting

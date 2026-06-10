@@ -57,16 +57,16 @@ Where is the viewer in their journey?
 Two ads are conceptually SAME if they share the same P+D+A triplet.
 Two ads are conceptually DIFFERENT if they differ on at least two dimensions.
 
-**Example mapping for a fitness coaching business:**
+**Example mapping for a high-ticket expert business (adapt to your offer):**
 | Creative | P | D | A |
 | --- | --- | --- | --- |
-| "Tired of generic programs?" | Skeptic | Transformation | Problem-aware |
-| "How I lost 18kg in 4 months" | Beginner | Transformation | Solution-aware |
-| "Join 500+ men who already..." | Status seeker | Confidence | Product-aware |
-| "No gym required — 20 min/day" | Convenience buyer | Ease | Solution-aware |
-| "Results guaranteed or free" | Skeptic | Risk elimination | Product-aware |
+| "Tired of wasting time on the wrong strategy?" | Skeptic | Transformation | Problem-aware |
+| "How I went from zero to my first $50k client" | Beginner | Transformation | Solution-aware |
+| "Join 300+ experts who already scaled this way" | Status seeker | Confidence | Product-aware |
+| "Done-for-you — no guesswork, no trial and error" | Convenience buyer | Ease | Solution-aware |
+| "Results or your money back" | Skeptic | Risk elimination | Product-aware |
 
-All five occupy distinct P.D.A. positions = genuine diversity.
+All five occupy distinct P.D.A. positions = genuine diversity. Replace the specifics with your own offer's transformation promise and avatar language.
 
 ## The 50/30/20 Creative Portfolio Rule
 

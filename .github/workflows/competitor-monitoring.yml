@@ -6,7 +6,15 @@
         "cron": "31 5 * * 2"
       }
     ],
-    "workflow_dispatch": {}
+    "workflow_dispatch": {
+      "inputs": {
+        "query": {
+          "description": "Competitor search query. Leave blank to read market_name from business_context.yaml.",
+          "required": false,
+          "default": ""
+        }
+      }
+    }
   },
   "jobs": {
     "competitor-monitoring": {
@@ -26,8 +34,13 @@
           "run": "pip install -r requirements.txt"
         },
         {
+          "name": "Resolve competitor query",
+          "id": "resolve_query",
+          "run": "INPUT_QUERY=\"${{ github.event.inputs.query }}\"\nif [ -n \"$INPUT_QUERY\" ]; then\n  echo \"query=$INPUT_QUERY\" >> $GITHUB_OUTPUT\nelse\n  MARKET=$(python -c \"import json,sys; d=json.load(open('business_context.yaml')); print(d.get('market',{}).get('market_name','') or '')\")\n  if [ -n \"$MARKET\" ]; then\n    echo \"query=$MARKET\" >> $GITHUB_OUTPUT\n  else\n    echo \"query=high ticket expert offer\" >> $GITHUB_OUTPUT\n  fi\nfi"
+        },
+        {
           "name": "Run competitor monitoring",
-          "run": "python scripts/monitor_competitors.py --query \"high ticket business coaching\""
+          "run": "python scripts/monitor_competitors.py --query \"${{ steps.resolve_query.outputs.query }}\""
         },
         {
           "name": "Upload competitor monitoring artifacts",

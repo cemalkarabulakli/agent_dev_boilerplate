@@ -4,8 +4,8 @@
   "enabled": true,
   "mode": "mock",
   "queries": [
-    "high ticket business coaching",
-    "AI automation agency Bulgaria"
+    "high ticket expert offer",
+    "premium service business [your niche]"
   ],
   "collection": {
     "max_results_per_query": 20,

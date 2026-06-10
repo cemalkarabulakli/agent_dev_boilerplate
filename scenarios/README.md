@@ -1,41 +1,42 @@
 # Scenarios
 
-Pre-filled `business_context.yaml` files for three different niches.
-Each scenario is ready to drop into the pipeline.
+Example `business_context.example.yaml` files for different niches showing what a filled context looks like.
+
+**`business_context.yaml` files are gitignored** — your real data stays local and is never committed. Only the `.example` files are committed to the repo.
 
 ## How to use
 
-1. Copy the scenario's `business_context.yaml` to the project root (or pass it via `--context`):
+1. Copy the scenario's example file as a starting point:
 
-```bash
-# Option A — replace root context
-copy scenarios\fitness_coaching\business_context.yaml business_context.yaml
+   ```bash
+   # macOS/Linux
+   cp scenarios/ai_automation_balkans/business_context.example.yaml business_context.yaml
 
-# Option B — pass directly (non-destructive)
-python scripts/run_full_business_build.py --context scenarios\fitness_coaching\business_context.yaml
-```
+   # Windows PowerShell
+   Copy-Item scenarios\ai_automation_balkans\business_context.example.yaml business_context.yaml
 
-2. Run any individual agent or the full pipeline:
+   # Or pass directly without touching root context
+   python scripts/run_full_business_build.py --context scenarios\ai_automation_balkans\business_context.yaml
+   ```
 
-```bash
-# Full pipeline (mock, free)
-python scripts/run_full_business_build.py --context scenarios\fitness_coaching\business_context.yaml
+2. Fill in your real data in `business_context.yaml` — it will never be committed.
 
-# Full pipeline (real Claude API)
-python scripts/run_full_business_build.py --context scenarios\fitness_coaching\business_context.yaml --mode api
+3. Run any individual agent or the full pipeline:
 
-# Single agent
-python scripts/generate_market_scorecard.py --context scenarios\fitness_coaching\business_context.yaml
-```
+   ```bash
+   python scripts/run_full_business_build.py --mode mock
+   python scripts/run_full_business_build.py --mode api
+   python scripts/generate_market_scorecard.py
+   ```
 
-3. See each scenario's `use_case.md` for niche-specific CLI recipes.
+4. See each scenario's `use_case.md` for niche-specific CLI recipes.
 
 ---
 
 ## Scenarios
 
-| Folder | Niche | Ideal for |
-|---|---|---|
-| `fitness_coaching/` | Online fitness coaching for busy professionals | Trainers, nutrition coaches, wellness experts |
-| `b2b_sales_training/` | B2B SaaS sales training for founders & AEs | Ex-enterprise sellers, sales coaches, GTM advisors |
-| `ecommerce_scaling/` | E-commerce brand scaling (Shopify $10k → $100k/mo) | DTC operators, brand builders, e-com consultants |
+| Folder                      | Niche                            | Ideal for                                                    |
+| --------------------------- | -------------------------------- | ------------------------------------------------------------ |
+| `ai_automation_balkans/`    | AI process automation for SMBs   | Software engineers, automation specialists, ops consultants  |
+
+Add your own scenario by creating a new folder with `business_context.example.yaml` and `use_case.md`.

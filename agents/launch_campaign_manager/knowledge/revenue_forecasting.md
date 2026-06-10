@@ -120,7 +120,7 @@ Use three scenarios for every launch:
 
 | Niche | Conservative RPL | Strong RPL |
 |-------|----------------|-----------|
-| Business coaching / consulting | $3–$5 | $10–$20 |
+| Expert services (consulting, advisory, done-with-you, agency) | $3–$5 | $10–$20 |
 | Health and wellness (high-ticket) | $2–$4 | $8–$15 |
 | Online marketing / courses | $1–$3 | $5–$12 |
 | Real estate investing | $3–$6 | $12–$25 |

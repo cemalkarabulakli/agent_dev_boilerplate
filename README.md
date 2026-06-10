@@ -67,7 +67,17 @@ pip install -e ".[dev]"
 
 ### 1. Fill In The Business Context
 
-`business_context.yaml` is the shared source of truth for every pipeline stage. It is JSON-compatible YAML and starts with blank fields.
+`business_context.yaml` is the shared source of truth for every pipeline stage. It is JSON-compatible YAML and is **gitignored** — your real data stays local and is never committed (same pattern as `.env`).
+
+Copy the example file to get started:
+
+```bash
+# macOS/Linux
+cp business_context.example.yaml business_context.yaml
+
+# Windows PowerShell
+Copy-Item business_context.example.yaml business_context.yaml
+```
 
 Inspect it:
 

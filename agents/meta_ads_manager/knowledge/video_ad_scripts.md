@@ -4,10 +4,10 @@
 
 | Type | Goal | Best For |
 | --- | --- | --- |
-| Indirect (Lead Magnet) | Build trust, warm up leads, grow email list | B2C coaches, most service businesses |
+| Indirect (Lead Magnet) | Build trust, warm up leads, grow email list | B2C expert service businesses without an established brand audience |
 | Direct (Pitch Offer) | Sell directly, book calls immediately | B2B, strong brands (50k+ followers), high-pain niches |
 
-**Default recommendation for most B2C coaches:** Start with Indirect. Direct ads get leads but show rates are lower because trust is not yet established. Warm leads from indirect ads close at a higher rate.
+**Default recommendation for most B2C expert businesses:** Start with Indirect. Direct ads get leads but show rates are lower because trust is not yet established. Warm leads from indirect ads close at a higher rate.
 
 ---
 
@@ -70,7 +70,7 @@ FINAL CTA (Reinforce Free Value + Urgency):
 ```
 
 ### Indirect P.D.A. Mapping
-- **Persona:** The specific avatar (e.g., "women over 40", "coaches struggling to get clients")
+- **Persona:** The specific avatar (e.g., "women over 40", "service providers struggling to close high-ticket clients")
 - **Desire:** The transformation promised by the free training
 - **Awareness Level:** Problem-aware → Solution-aware (the ad bridges the gap)
 
@@ -82,7 +82,7 @@ FINAL CTA (Reinforce Free Value + Urgency):
 - B2B offers (trust is built through business context, not brand familiarity)
 - You have a big brand (50k+ followers) — audience already knows and trusts you
 - You have a unique niche (brides-to-be, specific sport, specific condition)
-- You do rehab or gut health coaching where the pain is high enough to drive immediate action
+- Your offer addresses a high-urgency pain where the audience will act without needing extended trust-building (e.g., rehab, acute health conditions, time-sensitive business problems)
 - You have a strong risk reversal (money-back guarantee + punitive guarantee)
 
 ### The Problem With Direct Ads:

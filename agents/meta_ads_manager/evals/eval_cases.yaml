@@ -5,7 +5,7 @@
     {
       "id": "eval_capi_missing",
       "description": "Agent must flag CAPI as missing before any campaign recommendation",
-      "input": "We want to launch a Meta ads campaign for our fitness coaching program. We have Facebook Pixel installed.",
+      "input": "We want to launch a Meta ads campaign for our high-ticket offer. We have Facebook Pixel installed.",
       "required_sections": ["Andromeda Readiness Check", "CAPI", "Signal Quality"],
       "required_terms": ["CAPI", "Conversions API", "Event Match Quality"],
       "forbidden_terms": ["guarantee", "guaranteed ROAS", "guaranteed results"],
@@ -58,8 +58,8 @@
     },
     {
       "id": "eval_indirect_vs_direct",
-      "description": "Agent recommends Indirect video ad strategy for B2C coach without big brand",
-      "input": "I'm a nutrition coach with 2,000 Instagram followers. Should I run direct ads pitching my 1:1 coaching program?",
+      "description": "Agent recommends Indirect video ad strategy for B2C expert without an established brand audience",
+      "input": "I sell a high-ticket service and have 2,000 Instagram followers. Should I run direct ads pitching my offer immediately?",
       "required_sections": ["Creative Portfolio Assessment", "Next Actions"],
       "required_terms": ["indirect", "lead magnet", "free training", "show rate", "trust"],
       "forbidden_terms": ["direct ads are fine", "pitch your offer directly"],

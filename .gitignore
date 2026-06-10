@@ -1,6 +1,10 @@
 .env
 .env.*
 !.env.example
+
+# Personal business context — never commit real data (treat like .env)
+business_context.yaml
+scenarios/*/business_context.yaml
 .venv/
 venv/
 __pycache__/
