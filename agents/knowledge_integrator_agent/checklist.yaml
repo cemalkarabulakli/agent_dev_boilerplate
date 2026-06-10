@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "knowledge_integrator_structure",
+      "category": "Agent",
+      "description": "Knowledge Integrator Agent structure exists",
+      "severity": "critical",
+      "check": "agent_structure"
+    }
+  ]
+}

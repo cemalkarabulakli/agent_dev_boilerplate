@@ -1,0 +1,112 @@
+{
+  "expert": {
+    "niche": "",
+    "expertise": "",
+    "years_experience": "",
+    "credibility_assets": [],
+    "audience_size": "",
+    "current_channels": [],
+    "delivery_strengths": [],
+    "unique_experience": ""
+  },
+  "market": {
+    "market_name": "",
+    "market_size_assumption": "",
+    "urgency_level": "",
+    "ability_to_pay": "",
+    "accessibility": "",
+    "current_spending_behavior": "",
+    "competitors": [],
+    "market_risks": []
+  },
+  "customer": {
+    "target_customer": "",
+    "specific_avatar": "",
+    "current_situation": "",
+    "main_problem": "",
+    "expensive_problem": "",
+    "dream_outcome": "",
+    "emotional_pain": "",
+    "logical_pain": "",
+    "objections": [],
+    "alternatives": [],
+    "awareness_level": "",
+    "buying_triggers": []
+  },
+  "offer": {
+    "current_offer": "",
+    "current_price": "",
+    "delivery_model": "",
+    "core_promise": "",
+    "unique_mechanism": "",
+    "included_assets": [],
+    "bonuses": [],
+    "guarantee": "",
+    "proof_assets": [],
+    "risk_reversal": "",
+    "urgency_reason": ""
+  },
+  "business": {
+    "current_products": [],
+    "current_revenue_range": "",
+    "business_model": "",
+    "delivery_capacity": "",
+    "team_size": "",
+    "current_bottleneck": ""
+  },
+  "acquisition": {
+    "current_lead_sources": [],
+    "current_content_channels": [],
+    "current_ads": "",
+    "outbound_system": "",
+    "partnerships": "",
+    "email_list_size": "",
+    "conversion_problem": ""
+  },
+  "sales": {
+    "sales_process": "",
+    "application_form": "",
+    "sales_call_required": true,
+    "close_rate": "",
+    "common_objections": [],
+    "follow_up_process": ""
+  },
+  "delivery": {
+    "onboarding_process": "",
+    "milestones": [],
+    "client_success_metrics": [],
+    "support_model": "",
+    "fulfillment_risks": [],
+    "case_study_collection": ""
+  },
+  "retention": {
+    "upsell_paths": [],
+    "continuity_offer": "",
+    "community": "",
+    "referral_system": ""
+  },
+  "constraints": {
+    "budget": "",
+    "time_available": "",
+    "delivery_capacity": "",
+    "ethical_constraints": [],
+    "legal_constraints": []
+  },
+  "metrics": {
+    "leads_per_month": "",
+    "booked_calls_per_month": "",
+    "show_up_rate": "",
+    "close_rate": "",
+    "average_order_value": "",
+    "customer_lifetime_value": "",
+    "refund_rate": "",
+    "lead_cost": "",
+    "cost_per_call": "",
+    "sales_cycle_length": ""
+  },
+  "notes": {
+    "assumptions": [],
+    "open_questions": [],
+    "rejected_ideas": []
+  }
+}

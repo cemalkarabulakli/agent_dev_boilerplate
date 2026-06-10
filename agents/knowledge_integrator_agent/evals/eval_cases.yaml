@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {
+      "id": "knowledge_integrator_required_sections",
+      "input": "Integrates knowledge from articles into the agent system.",
+      "required_sections": [
+        "Source",
+        "Key Insights",
+        "Agents Updated"
+      ],
+      "forbidden_terms": [
+        "invented facts",
+        "fabricated benchmarks"
+      ]
+    }
+  ]
+}

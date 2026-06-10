@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "id": "funnel_diagnostic_required_sections",
+      "input": "Diagnoses e-commerce funnels for Bulgarian physical-product stores.",
+      "required_sections": [
+        "Funnel Health Score",
+        "Zone Diagnostics",
+        "Next Actions"
+      ],
+      "forbidden_terms": [
+        "guaranteed ROAS",
+        "guaranteed CPA",
+        "fake scarcity"
+      ]
+    }
+  ]
+}
