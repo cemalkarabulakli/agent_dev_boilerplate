@@ -29,7 +29,8 @@ if ($Remove) {
     exit 0
 }
 
-$Python = (Get-Command python -ErrorAction SilentlyContinue)?.Source
+$PythonCmd = Get-Command python -ErrorAction SilentlyContinue
+$Python = if ($PythonCmd) { $PythonCmd.Source } else { $null }
 if (-not $Python) {
     Write-Error "python not found in PATH. Install Python 3.11+ and retry."
     exit 1
