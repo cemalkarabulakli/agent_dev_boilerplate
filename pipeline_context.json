@@ -1,1 +1,10 @@
-{}
+{
+  "offer_architect": {
+    "_meta": {
+      "completed_at": "2026-06-10T12:10:18Z",
+      "upstream_gaps": [
+        "avatar_pain_researcher (not completed)"
+      ]
+    }
+  }
+}

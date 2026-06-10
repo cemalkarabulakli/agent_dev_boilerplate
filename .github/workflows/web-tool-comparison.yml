@@ -1,0 +1,29 @@
+name: Web Tool Comparison
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "19 6 * * 3"
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+      - name: Run web tool comparison (mock-safe)
+        env:
+          WEB_TOOLS_MODE: ${{ secrets.WEB_TOOLS_MODE || 'mock' }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY || '' }}
+          SEARXNG_BASE_URL: ${{ secrets.SEARXNG_BASE_URL || '' }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY || '' }}
+        run: python scripts/compare_web_tools.py --query "AI automation agency Bulgaria"
+      - name: Upload comparison report
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-tool-comparison
+          path: outputs/tool_comparisons/

@@ -1,16 +1,13 @@
-import type { WebSearchResult } from "../types/web_search_result";
+import type { SearchOptions } from "../types/search_options";
+import type { SearchResponse } from "../types/search_response";
 
-export interface WebSearchOptions {
-  maxResults?: number;
-  includeNews?: boolean;
-  country?: string;
-  language?: string;
-}
+/** @deprecated Use SearchOptions from types/search_options */
+export type WebSearchOptions = SearchOptions;
 
 export interface WebSearchTool {
-  search(query: string, options?: WebSearchOptions): Promise<WebSearchResult[]>;
-  searchNews(query: string, options?: WebSearchOptions): Promise<WebSearchResult[]>;
-  findCompetitors(companyOrNicheOrUrl: string, options?: WebSearchOptions): Promise<WebSearchResult[]>;
-  findLatest(query: string, options?: WebSearchOptions): Promise<WebSearchResult[]>;
+  search(query: string, options?: SearchOptions): Promise<SearchResponse>;
+  findLatest(query: string, options?: SearchOptions): Promise<SearchResponse>;
+  findCompetitors(query: string, options?: SearchOptions): Promise<SearchResponse>;
+  /** @deprecated Prefer findLatest() for latest content */
+  searchNews(query: string, options?: SearchOptions): Promise<SearchResponse>;
 }
-
