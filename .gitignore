@@ -3,6 +3,7 @@
 !.env.example
 
 scenarios/*/business_context.yaml
+DASHBOARD.md
 .venv/
 venv/
 __pycache__/
