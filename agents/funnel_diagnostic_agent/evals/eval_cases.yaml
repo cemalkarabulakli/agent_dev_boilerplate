@@ -2,7 +2,7 @@
   "cases": [
     {
       "id": "funnel_diagnostic_required_sections",
-      "input": "Diagnoses e-commerce funnels for Bulgarian physical-product stores.",
+      "input": "Diagnoses e-commerce funnels for physical-product stores.",
       "required_sections": [
         "Funnel Health Score",
         "Zone Diagnostics",

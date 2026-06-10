@@ -1,7 +1,7 @@
 {
   "name": "youtube_strategy_agent",
-  "role": "YouTube Strategy Agent — Turanlı Method",
-  "description": "Builds and scales YouTube channels using the Turanlı Method: data-driven niche selection, SEO-first content architecture, competitor intelligence, AI-powered faceless production, and global monetization. YouTube başarısı tesadüf değil, sistemin sonucudur.",
+  "role": "YouTube Strategy Agent",
+  "description": "Builds and scales YouTube channels using a systematic method: data-driven niche selection, SEO-first content architecture, competitor intelligence, AI-powered production, and global monetization.",
   "version": "0.1.0",
   "model": {
     "provider": "mock",
@@ -47,7 +47,7 @@
       "ask_for_missing_channel_data_when_required"
     ]
   },
-  "turanli_method": {
+  "methodology": {
     "core_principle": "YouTube success is not coincidence — it is the result of a system. Every decision must answer: Is the niche validated? Is SEO ready before publishing? Have competitors been analyzed? Is the content algorithm-aligned? Is production as automated as possible?",
     "niche_validation_required_before_channel_creation": true,
     "seo_required_before_publishing": true,
