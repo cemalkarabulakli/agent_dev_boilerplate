@@ -142,6 +142,152 @@ def get_stats():
     }
 
 
+PIPELINE_ORDER = [
+    "market_selector", "avatar_pain_researcher", "offer_architect",
+    "value_stack_builder", "pricing_guarantee_optimizer", "proof_engine_builder",
+    "acquisition_strategy_agent", "content_authority_agent", "funnel_builder",
+    "sales_script_builder", "objection_handler", "delivery_system_designer",
+    "retention_upsell_agent", "business_scorecard_agent", "meta_ads_manager",
+    "vsl_copywriter", "vsl_events_copywriter", "case_study_writer",
+    "youtube_strategy_agent", "launch_campaign_manager",
+]
+
+PIPELINE_LABELS = {
+    "market_selector": "Market Analysis",
+    "avatar_pain_researcher": "Avatar & Pain Research",
+    "offer_architect": "Offer Architecture",
+    "value_stack_builder": "Value Stack",
+    "pricing_guarantee_optimizer": "Pricing & Guarantee",
+    "proof_engine_builder": "Proof Engine",
+    "acquisition_strategy_agent": "Acquisition Strategy",
+    "content_authority_agent": "Content Authority",
+    "funnel_builder": "Funnel Map",
+    "sales_script_builder": "Sales Script",
+    "objection_handler": "Objection Bank",
+    "delivery_system_designer": "Delivery System",
+    "retention_upsell_agent": "Retention & Upsell",
+    "business_scorecard_agent": "Business Scorecard",
+    "meta_ads_manager": "Meta Ads Plan",
+    "vsl_copywriter": "VSL Script",
+    "vsl_events_copywriter": "VSL (Events)",
+    "case_study_writer": "Case Study",
+    "youtube_strategy_agent": "YouTube Strategy",
+    "launch_campaign_manager": "Launch Campaign",
+}
+
+AGENT_SCRIPTS = {
+    "market_selector": "scripts/generate_market_scorecard.py",
+    "avatar_pain_researcher": "scripts/generate_avatar_research.py",
+    "offer_architect": "scripts/generate_offer_audit.py",
+    "value_stack_builder": "scripts/generate_value_stack.py",
+    "pricing_guarantee_optimizer": "scripts/generate_pricing_guarantee_review.py",
+    "proof_engine_builder": "scripts/generate_proof_engine.py",
+    "acquisition_strategy_agent": "scripts/generate_acquisition_plan.py",
+    "content_authority_agent": "scripts/generate_content_plan.py",
+    "funnel_builder": "scripts/generate_funnel_map.py",
+    "sales_script_builder": "scripts/generate_sales_script.py",
+    "objection_handler": "scripts/generate_objection_bank.py",
+    "delivery_system_designer": "scripts/generate_delivery_system.py",
+    "retention_upsell_agent": "scripts/run_agent.py --agent retention_upsell_agent",
+    "business_scorecard_agent": "scripts/generate_business_scorecard.py",
+    "meta_ads_manager": "scripts/generate_meta_ads_plan.py",
+    "vsl_copywriter": "scripts/generate_vsl_script.py",
+    "vsl_events_copywriter": "scripts/generate_vsl_events_script.py",
+    "case_study_writer": "scripts/generate_case_study.py",
+    "youtube_strategy_agent": "scripts/generate_youtube_strategy.py",
+    "launch_campaign_manager": "scripts/generate_launch_campaign.py",
+}
+
+
+def get_notifications():
+    notifications = []
+    pipeline_ctx = load_json(ROOT / "pipeline_context.json")
+    biz_ctx = load_json(ROOT / "business_context.yaml")
+    completed = set(pipeline_ctx.keys())
+
+    # Next pending pipeline stage
+    pending = [a for a in PIPELINE_ORDER if a not in completed]
+    if pending:
+        next_agent = pending[0]
+        script = AGENT_SCRIPTS.get(next_agent, f"scripts/run_agent.py --agent {next_agent}")
+        notifications.append({
+            "id": f"next_stage_{next_agent}",
+            "type": "action",
+            "level": "info",
+            "title": f"Next: {PIPELINE_LABELS.get(next_agent, next_agent)}",
+            "body": f"Run to continue the build",
+            "cmd": f"python {script}",
+            "group": "Pipeline",
+        })
+
+    # Upstream gaps per completed agent
+    for agent, data in pipeline_ctx.items():
+        gaps = (data.get("_meta") or {}).get("upstream_gaps", [])
+        for gap in gaps:
+            notifications.append({
+                "id": f"gap_{agent}_{gap}",
+                "type": "gap",
+                "level": "warning",
+                "title": f"Missing: {gap}",
+                "body": f"Required by {PIPELINE_LABELS.get(agent, agent)}",
+                "cmd": None,
+                "group": "Data Gaps",
+            })
+
+    # Empty fields in business_context.yaml
+    empty_fields = []
+    for section in ["expert", "market", "customer", "offer"]:
+        sec = biz_ctx.get(section) or {}
+        for key, val in sec.items():
+            if val in ("", [], None):
+                empty_fields.append(f"{section}.{key}")
+
+    if empty_fields:
+        notifications.append({
+            "id": "empty_fields",
+            "type": "data",
+            "level": "warning",
+            "title": f"{len(empty_fields)} empty fields in business_context.yaml",
+            "body": "Fill these to improve agent output quality",
+            "cmd": None,
+            "group": "Business Context",
+            "detail": empty_fields[:20],
+        })
+
+    # Open questions
+    notes = biz_ctx.get("notes") or {}
+    questions = notes.get("open_questions") or []
+    for i, q in enumerate(questions):
+        notifications.append({
+            "id": f"question_{i}",
+            "type": "question",
+            "level": "info",
+            "title": q,
+            "body": "Open question in business_context.yaml",
+            "cmd": None,
+            "group": "Open Questions",
+        })
+
+    # Assumptions to validate
+    assumptions = notes.get("assumptions") or []
+    for i, a in enumerate(assumptions):
+        notifications.append({
+            "id": f"assumption_{i}",
+            "type": "assumption",
+            "level": "info",
+            "title": a,
+            "body": "Assumption that needs validation",
+            "cmd": None,
+            "group": "Assumptions",
+        })
+
+    return {
+        "items": notifications,
+        "count": len(notifications),
+        "warnings": sum(1 for n in notifications if n["level"] == "warning"),
+    }
+
+
 def get_research_sources():
     sources = []
     if not RESEARCH_DIR.exists():
@@ -206,10 +352,11 @@ class DashboardHandler(BaseHTTPRequestHandler):
         path = urlparse(self.path).path.rstrip("/") or "/"
 
         routes = {
-            "/api/stats":     lambda: self.send_json(get_stats()),
-            "/api/agents":    lambda: self.send_json(get_agents()),
-            "/api/research":  lambda: self.send_json(get_research_sources()),
-            "/api/scripts":   lambda: self.send_json(get_scripts()),
+            "/api/stats":         lambda: self.send_json(get_stats()),
+            "/api/agents":        lambda: self.send_json(get_agents()),
+            "/api/research":      lambda: self.send_json(get_research_sources()),
+            "/api/scripts":       lambda: self.send_json(get_scripts()),
+            "/api/notifications": lambda: self.send_json(get_notifications()),
         }
 
         if path in ("/", "/index.html"):
