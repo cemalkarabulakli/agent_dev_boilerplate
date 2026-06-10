@@ -15,7 +15,7 @@ export function loadWebToolsConfig(env: Record<string, string | undefined> = pro
   const mode = env.WEB_TOOLS_MODE === "live" ? "live" : "mock";
   return {
     mode,
-    searchProvider: mode === "live" && env.TAVILY_API_KEY ? "tavily" : "mock",
+    searchProvider: mode === "live" && env.TAVILY_API_KEY ? "tavily" : mode === "live" && env.SERPAPI_API_KEY ? "serpapi" : "mock",
     extractorProvider: mode === "live" && env.FIRECRAWL_API_KEY ? "firecrawl" : "mock",
     browserProvider: mode === "live" ? "playwright" : "mock",
     crawlerProvider: mode === "live" ? "scrapy" : "mock",

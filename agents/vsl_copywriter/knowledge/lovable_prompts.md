@@ -5,7 +5,7 @@ Source: VSL Copywriter Agent — Lovable Integration Framework
 ## Usage Rules
 
 - Give ONE prompt at a time. Wait for confirmation before the next.
-- After each prompt: "Готово ли е? Искаш ли промяна, преди да продължим?"
+- After each prompt: "Is it done? Would you like any changes before we continue?"
 - Fill in all placeholders with the specific user data — never leave generic placeholders in the final prompts.
 
 ---
@@ -15,7 +15,7 @@ Source: VSL Copywriter Agent — Lovable Integration Framework
 Confirm color palette before writing this prompt. Replace all [PLACEHOLDER] values with actual user data.
 
 ```
-Create a high-converting landing page in Bulgarian language.
+Create a high-converting landing page in the target language.
 
 DESIGN:
 - Style: modern, premium, minimalist
@@ -29,13 +29,13 @@ STRUCTURE (top to bottom):
 1. HERO SECTION:
 - Headline (H1): "[HEADLINE_CHOSEN_BY_USER]"
 - Subheadline: "[SUBHEADLINE_CHOSEN_BY_USER]"
-- Below subheadline: video placeholder (16:9 aspect ratio) with text "VSL ще бъде добавено тук"
-- Below video: small text "Гледай до края, преди да кликнеш бутона."
+- Below subheadline: video placeholder (16:9 aspect ratio) with text "VSL will be added here"
+- Below video: small text "Watch to the end before clicking the button."
 
 2. CTA BUTTON:
 - Large, prominent button below the video
-- Text on button: "Кандидатствай за безплатна консултация"
-- Below button: "Без обещания. Без натиск. Само разговор."
+- Text on button: "Apply for a free consultation"
+- Below button: "No promises. No pressure. Just a conversation."
 - Button should NOT link anywhere yet — we'll connect it in the next step.
 
 3. FOOTER:
@@ -66,16 +66,16 @@ CREATE:
 QUIZ STRUCTURE:
 The quiz should be a multi-step form (one question at a time, with progress bar).
 
-Questions in Bulgarian:
+Questions:
 [QUESTION_1]
 [QUESTION_2]
 [QUESTION_3]
 [QUESTION_4]
 
 Final step:
-- Име
-- Имейл
-- Телефон
+- Name
+- Email
+- Phone
 
 DATA STORAGE:
 - Use Supabase (built into Lovable)
@@ -93,7 +93,7 @@ UX:
 - Progress bar at top
 - "Next" and "Back" buttons
 - After final submission, redirect to "/calendar" page
-- Show a brief "Благодаря, [Име]!" message before redirect
+- Show a brief "Thank you, [Name]!" message before redirect
 
 DESIGN:
 - Match the style of the landing page
@@ -104,7 +104,7 @@ DESIGN:
 
 ## Prompt 3: Calendar
 
-Before writing this prompt, ask the user: "Какви часове искаш да са налични за консултации? Например: понеделник-петък, 10:00-17:00, по 30 минути на слот."
+Before writing this prompt, ask the user: "What hours do you want available for consultations? For example: Monday–Friday, 10:00–17:00, 30-minute slots."
 
 Fill in the availability before sending.
 
@@ -118,7 +118,7 @@ FUNCTIONALITY:
 1. Show available time slots for the next 14 days
 2. Available hours: [USER_SPECIFIED_HOURS — e.g. Mon-Fri, 10:00-17:00, 30-min slots]
 3. User selects a slot
-4. After selection, show confirmation: "Резервацията ти е потвърдена за [дата и час]"
+4. After selection, show confirmation: "Your booking is confirmed for [date and time]"
 
 DATA STORAGE:
 - Add a new table "bookings" in Supabase:
@@ -153,25 +153,25 @@ WHEN A BOOKING IS CONFIRMED:
 REQUIREMENTS:
 - Use Zoom API (the user will need to add Zoom credentials in environment variables)
 - Email should include: date, time, Zoom link, brief reminder of the consultation
-- Email should be in Bulgarian language
+- Email should be in the expert's target language
 
-EMAIL TEMPLATE (Bulgarian):
-Subject: "Резервацията ти е потвърдена — [дата]"
+EMAIL TEMPLATE:
+Subject: "Your booking is confirmed — [date]"
 Body:
-"Здрасти [Име],
+"Hey [Name],
 
-Резервацията ти за безплатна консултация е потвърдена.
+Your free consultation booking is confirmed.
 
-Дата: [дата]
-Час: [час]
-Zoom линк: [zoom link]
+Date: [date]
+Time: [time]
+Zoom link: [zoom link]
 
-До скоро,
+See you soon,
 [EXPERT_NAME]"
 
 NOTE: If Zoom API setup is complex, alternatively create a manual flow:
 - Save booking
-- Send email with placeholder text saying "Ще получиш Zoom линк до 24 часа"
+- Send email with placeholder text saying "You will receive a Zoom link within 24 hours"
 - Notify the admin ([EXPERT_EMAIL]) via email about new booking
 ```
 

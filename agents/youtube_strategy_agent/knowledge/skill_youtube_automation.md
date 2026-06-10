@@ -1,7 +1,6 @@
 # Skill: YouTube Automation
 
-Source: Serkan Turanlı Method — "Sıfırdan AI ile YouTube Otomasyonu" framework
-Reference: https://www.youtube.com/watch?v=ku70EQ3KD_M
+Source: YouTube Strategy Agent — Automation Pipeline Framework
 
 ## When to Activate This Skill
 
@@ -13,8 +12,7 @@ Use this skill:
 
 ## The Automation-First Mindset
 
-> "Kamera önüne geçmeden, stüdyo kurmadan, sadece doğru strateji ve YouTube otomasyonu ile sürdürülebilir bir gelir modeli oluşturmak mümkündür."
-> *(Without appearing on camera, without setting up a studio, with just the right strategy and YouTube automation, it is possible to build a sustainable income model.)*
+> Without appearing on camera, without setting up a studio, with just the right strategy and YouTube automation, it is possible to build a sustainable income model.
 
 Automation does not mean low quality. It means removing the creator as the bottleneck in the production pipeline.
 

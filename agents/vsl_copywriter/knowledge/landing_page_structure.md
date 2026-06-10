@@ -10,11 +10,11 @@ A single-page funnel designed to move one type of visitor to one action: applyin
 
 ## Sections (Fixed Order)
 
-### 1. Headline (Обръщение към аудиторията)
+### 1. Headline (Audience Address)
 
 One sentence that tells the visitor WHO this page is for.
 
-Template: "За [тип човек], който [болка]"
+Template: "For [type of person] who [pain]"
 
 Rules:
 - Maximum 1-2 lines
@@ -24,11 +24,11 @@ Rules:
 
 ---
 
-### 2. Subheadline (Голямо обещание)
+### 2. Subheadline (Big Promise)
 
 1-2 sentences. Specific result + specific timeframe + without what pain/obstacle.
 
-Template: "Открий как да [конкретен резултат] в [конкретно време], без [без какво]"
+Template: "Discover how to [specific result] in [specific timeframe], without [what they don't need]"
 
 Rules:
 - Must include a measurable or observable result
@@ -42,7 +42,7 @@ Rules:
 ### 3. VSL Embed
 
 - 16:9 video placeholder
-- Under the placeholder: "Гледай до края, преди да кликнеш бутона."
+- Under the placeholder: "Watch to the end before clicking the button."
 - Purpose: hold attention before CTA
 
 ---
@@ -50,8 +50,8 @@ Rules:
 ### 4. CTA Button
 
 - Large, prominent, single button
-- Default text: "Кандидатствай за безплатна консултация"
-- Below button: "Без обещания. Без натиск. Само разговор."
+- Default text: "Apply for a free consultation"
+- Below button: "No promises. No pressure. Just a conversation."
 - Button links to: /apply page
 
 Rules:
@@ -66,27 +66,27 @@ Rules:
 Questions to qualify applicants before they book a call. One question per screen with progress bar.
 
 **For Beginner or small offer:**
-1. Какво правиш в момента?
-2. Какъв е най-големият ти проблем точно сега?
-3. Какво си опитвал досега?
-4. Кога искаш да започнеш?
+1. What do you do right now?
+2. What is your biggest problem right now?
+3. What have you tried so far?
+4. When do you want to start?
 
 **For Medium or high-ticket offer:**
-1. Какво правиш в момента и какъв оборот?
-2. Колко можеш да инвестираш в развитие?
-3. Какво си опитвал досега?
-4. Кога искаш да видиш резултат?
+1. What do you do right now and what is your revenue?
+2. How much can you invest in development?
+3. What have you tried so far?
+4. When do you want to see results?
 
-Always end with: Име, Имейл, Телефон
+Always end with: Name, Email, Phone
 
-After submission: redirect to /calendar with a brief "Благодаря, [Име]!" message.
+After submission: redirect to /calendar with a brief "Thank you, [Name]!" message.
 
 ---
 
 ### 6. Calendar (/calendar page)
 
 - Shows available slots for the next 14 days
-- After slot selection: "Резервацията ти е потвърдена за [дата и час]"
+- After slot selection: "Your booking is confirmed for [date and time]"
 - After confirmation: Zoom link sent via email
 - Data stored in Supabase bookings table
 

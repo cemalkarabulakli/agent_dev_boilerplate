@@ -16,7 +16,7 @@ Target length: 3-5 minutes of spoken content.
 
 Start with a provocation, paradox, or concrete result. Frame it for the exact ideal client.
 
-Template: "Ако си [идеален клиент] и [болка] — следващите 4 минути ще променят начина, по който мислиш за [темата]."
+Template: "If you are [ideal client] and [pain] — the next 4 minutes will change the way you think about [topic]."
 
 Rules:
 - Must reference the specific pain or situation, not a generic problem.
@@ -29,7 +29,7 @@ Rules:
 
 Qualify the viewer. Make non-ideal clients self-select out.
 
-Template: "Ако ти познаваш това чувство [конкретна болка], ако си се опитвал [алтернатива], но [защо не работи] — продължи да гледаш."
+Template: "If you recognize this feeling [specific pain], if you've tried [alternative], but [why it doesn't work] — keep watching."
 
 Rules:
 - Name exactly one type of person with exactly one problem.
@@ -64,7 +64,7 @@ Rules:
 
 One concrete example from Question 3 (real client, real result).
 
-Template: "[Клиент тип X] дойде при мен с [конкретен проблем]. Направихме [конкретна стъпка]. Резултатът беше [конкретен измерим резултат]."
+Template: "[Client type X] came to me with [specific problem]. We did [specific step]. The result was [specific measurable result]."
 
 Rules:
 - One example, real, with real numbers or observable outcomes.
@@ -77,7 +77,7 @@ Rules:
 
 Invite to click the button and apply for a free consultation.
 
-Template: "Ако искаш да обсъдим как това да се случи и при теб — кликни бутона по-долу. Ще ти задам няколко въпроса, за да разбера дали мога да помогна. Ако да — ще си запазиш кратък разговор с мен. Без обещания, без натиск. Само разговор."
+Template: "If you want to discuss how this could happen for you — click the button below. I'll ask you a few questions to understand if I can help. If yes — you'll book a short call with me. No promises, no pressure. Just a conversation."
 
 Rules:
 - Reduce friction: no promises, no pressure.
@@ -90,11 +90,11 @@ Rules:
 
 Real limitation on consultation slots.
 
-Template: "Имам време само за [X] разговора този месец. Ако виждаш себе си в това, което казах — действай сега."
+Template: "I only have time for [X] conversations this month. If you see yourself in what I said — act now."
 
 Rules:
 - Only use real scarcity. Do not invent fake urgency.
-- If no real limit exists — use a soft version: "Предпочитам да работя с малко хора наведнъж, за да мога да дам реален резултат."
+- If no real limit exists — use a soft version: "I prefer to work with a small number of people at a time, to be able to deliver a real result."
 
 ---
 

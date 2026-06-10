@@ -31,7 +31,7 @@
     {
       "id": "frame_promise_specific",
       "category": "Stage 2 - Frame",
-      "description": "Frame includes specific time (X minutes), 3 steps, and a belief breaker (dори ако)",
+      "description": "Frame includes specific time (X minutes), 3 steps, and a belief breaker (even if…)",
       "severity": "high",
       "check": "frame_formula"
     },

@@ -50,15 +50,15 @@
   "event_vsl": {
     "stages": [0, 1, 2, 3, 4, 5, 6, 7, 8],
     "stage_names": [
-      "Събиране на информация",
-      "Кукичка (Hook)",
-      "Задаване на очаквание (Frame)",
-      "Кой стои зад бранда (Story)",
-      "3 Практични стъпки (Value)",
-      "Call To Action #1 (Мека покана)",
-      "Презентация на офертата (Offer Stack)",
-      "Гаранция + Финален призив",
-      "Финален VSL скрипт (Summary)"
+      "Information Gathering",
+      "Hook (Pattern Interrupt)",
+      "Frame (Promise)",
+      "Story (Authority Snapshot)",
+      "3 Practical Steps (Value)",
+      "Call To Action #1 (Soft Invitation)",
+      "Offer Presentation (Offer Stack)",
+      "Guarantee + Final Push",
+      "Final VSL Script (Summary)"
     ],
     "variants_per_stage": 3,
     "confirmation_required_between_stages": true,

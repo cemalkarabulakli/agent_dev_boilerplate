@@ -1,6 +1,6 @@
 # Content Strategy
 
-Source: Turanlı Method, YouTube Creator Academy, C.T.R. Framework
+Source: YouTube Creator Academy, C.T.R. Framework
 
 ## The C.T.R. Content Framework
 
@@ -45,7 +45,7 @@ Does the video lead viewers to watch more content?
 | **Documentary / Deep Dive** | Authority, long-form watch time | 15–40 min | Medium | High |
 | **Shorts (< 60 sec)** | Discovery, subscriber growth | 15–60 sec | N/A (swipe) | Low |
 
-**Turanlı Method default:** Tutorial + Listicle formats for new channels — highest SEO and Browse traffic potential with lowest production barrier.
+**Recommended default:** Tutorial + Listicle formats for new channels — highest SEO and Browse traffic potential with lowest production barrier.
 
 ## The Content Calendar Architecture
 

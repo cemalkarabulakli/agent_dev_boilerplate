@@ -8,7 +8,7 @@ class BGMammaAdapter(BaseSourceAdapter):
     language = "bg"
 
     def mock_snippet(self, query: str, index: int) -> str:
-        return f"Mock BG-Mamma сигнал за '{query}'. Оригинален български откъс със загриженост, възражение или локален проблем. Variant {index + 1}."
+        return f"Mock BG-Mamma signal for '{query}'. Original Bulgarian-language snippet with concern, objection, or local issue. Variant {index + 1}."
 
     def extract_insight(self, signal: RawSignal) -> str:
         return f"Bulgarian customer-language candidate signal: {signal.snippet}"

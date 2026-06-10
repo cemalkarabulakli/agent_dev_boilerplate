@@ -4,19 +4,19 @@ Source: VSL Copywriter Agent — Offer Selection Framework
 
 ## Stage Assessment
 
-### Beginner (Начинаещ)
+### Beginner
 - 0 paid clients
 - Theoretical knowledge only, or learned from courses
 - Has helped people for free or friends/family only
 - Not yet confident in own value
 
-### Intermediate (Среден)
+### Intermediate
 - Has paid clients, but unpredictably
 - Has delivered results, but no consistent flow
 - Has some testimonials, but not enough
 - Knows the work, unsure about the business
 
-### Proven (Доказан)
+### Proven
 - Many paid clients
 - Visible results, testimonials, reputation
 - Established in the market
@@ -103,7 +103,7 @@ Source: VSL Copywriter Agent — Offer Selection Framework
 ## Naming Rules
 
 - Name offers after the result or transformation, not "Program 1" or generic labels.
-- Examples: "Финансова Свобода в 90 дни", "Breakthrough Sprint", "Архитект на Продажбите"
+- Examples: "Financial Freedom in 90 Days", "Breakthrough Sprint", "Sales Architect"
 - Match the name to the niche language — what would the ideal client call their goal?
 
 ## Pricing Rules

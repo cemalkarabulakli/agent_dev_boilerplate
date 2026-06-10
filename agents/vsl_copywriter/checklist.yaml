@@ -24,7 +24,7 @@
     {
       "id": "offer_names_specific",
       "category": "Offer",
-      "description": "Offer names are specific to the niche, not generic ('Програма 1')",
+      "description": "Offer names are specific to the niche, not generic ('Program 1')",
       "severity": "high",
       "check": "naming_convention"
     },

@@ -1,96 +1,96 @@
-# High-Ticket Expert Growth System — Başlangıç Rehberi
+# High-Ticket Expert Growth System — Getting Started Guide
 
-> Bu rehber, sistemi ilk kez kullananlar için yazılmıştır. Kurulumdan gerçek iş kararlarına kadar tüm senaryoları örneklerle ele alır.
-
----
-
-## İçindekiler
-
-- [Bu Sistem Ne Yapar?](#bu-sistem-ne-yapar)
-- [Kurulum](#kurulum)
-- [İlk Adım: business_context.yaml'ı Doldurmak](#i̇lk-adım-business_contextyamli-doldurmak)
-- [Senaryo 1 — Sıfırdan Pazar Seçmek](#senaryo-1--sıfırdan-pazar-seçmek)
-- [Senaryo 2 — Avatar ve Acı Araştırması](#senaryo-2--avatar-ve-acı-araştırması)
-- [Senaryo 3 — Yüksek Biletli Teklif Tasarlamak](#senaryo-3--yüksek-biletli-teklif-tasarlamak)
-- [Senaryo 4 — Değer Yığını ve Fiyatlandırma](#senaryo-4--değer-yığını-ve-fiyatlandırma)
-- [Senaryo 5 — Müşteri Kazanım Stratejisi](#senaryo-5--müşteri-kazanım-stratejisi)
-- [Senaryo 6 — Otorite İçerik Planı](#senaryo-6--otorite-i̇çerik-planı)
-- [Senaryo 7 — Satış Hunisi Haritası](#senaryo-7--satış-hunisi-haritası)
-- [Senaryo 8 — Satış Senaryosu ve İtiraz Yönetimi](#senaryo-8--satış-senaryosu-ve-i̇tiraz-yönetimi)
-- [Senaryo 9 — Meta Reklam Yönetimi](#senaryo-9--meta-reklam-yönetimi)
-- [Senaryo 10 — VSL (Video Satış Mektubu) Yazmak](#senaryo-10--vsl-video-satış-mektubu-yazmak)
-- [Senaryo 11 — Müşteri Vaka Çalışması](#senaryo-11--müşteri-vaka-çalışması)
-- [Senaryo 12 — YouTube Kanal Stratejisi](#senaryo-12--youtube-kanal-stratejisi)
-- [Senaryo 13 — Lansman Kampanyası Planlamak](#senaryo-13--lansman-kampanyası-planlamak)
-- [Senaryo 14 — Pazar Araştırması ve Rakip Takibi](#senaryo-14--pazar-araştırması-ve-rakip-takibi)
-- [Senaryo 15 — İş Puan Kartı ve Darboğaz Tespiti](#senaryo-15--i̇ş-puan-kartı-ve-darboğaz-tespiti)
-- [Senaryo 16 — Yeni Agent Eklemek](#senaryo-16--yeni-agent-eklemek)
-- [Senaryo 17 — Tam Döngü: Sıfırdan Ölçeğe](#senaryo-17--tam-döngü-sıfırdan-ölçeğe)
-- [Dashboard Kullanımı](#dashboard-kullanımı)
-- [Kalite ve Test Komutları](#kalite-ve-test-komutları)
-- [Sık Yapılan Hatalar](#sık-yapılan-hatalar)
+> This guide is written for first-time users. It covers all scenarios from setup to real business decisions with examples.
 
 ---
 
-## Bu Sistem Ne Yapar?
+## Table of Contents
 
-Bu sistem, uzmanlığını yüksek biletli (high-ticket) bir işe dönüştürmek isteyen profesyoneller için tasarlanmış **yerel, modüler bir AI agent fabrikasıdır**.
-
-**Hedef kullanıcı örnekleri:**
-
-- Danışmanlık yapan bir finans uzmanı → müşteri kazanım sistemini otomatize etmek istiyor
-- Kurs satmaya başlayan bir fitness koçu → teklifini ve satış huniyi yapılandırmak istiyor
-- Freelancer olmaktan çıkıp ajans kurmak isteyen bir dijital pazarlamacı
-- Bilgisini paketleyip online satmak isteyen herhangi bir uzman
-
-**Sistem şunları yapmaz:**
-- ChatGPT gibi sohbet robotu değildir
-- API anahtarı gerektirmez (mock/yerel modda tamamen çalışır)
-- Otomatik karar almaz; her strateji güncellemesi insan onayı ister
-
-**Sistem şunları yapar:**
-- Pazar → Avatar → Teklif → Kanıt → Kazanım → Satış → Teslimat → Tutundurma → Ölçek zincirini aşama aşama işler
-- Her aşama için yapılandırılmış Markdown çıktılar üretir
-- Araştırma sinyallerini kaynağa dayalı depolar, referans ister
-- Etik kuralları sistem düzeyinde uygular (sahte iddia, sahte referans, sahte kıtlık yok)
+- [What Does This System Do?](#what-does-this-system-do)
+- [Installation](#installation)
+- [First Step: Filling Out business_context.yaml](#first-step-filling-out-business_contextyaml)
+- [Scenario 1 — Choosing a Market from Scratch](#scenario-1--choosing-a-market-from-scratch)
+- [Scenario 2 — Avatar and Pain Research](#scenario-2--avatar-and-pain-research)
+- [Scenario 3 — Designing a High-Ticket Offer](#scenario-3--designing-a-high-ticket-offer)
+- [Scenario 4 — Value Stack and Pricing](#scenario-4--value-stack-and-pricing)
+- [Scenario 5 — Client Acquisition Strategy](#scenario-5--client-acquisition-strategy)
+- [Scenario 6 — Authority Content Plan](#scenario-6--authority-content-plan)
+- [Scenario 7 — Sales Funnel Map](#scenario-7--sales-funnel-map)
+- [Scenario 8 — Sales Script and Objection Handling](#scenario-8--sales-script-and-objection-handling)
+- [Scenario 9 — Meta Ads Management](#scenario-9--meta-ads-management)
+- [Scenario 10 — Writing a VSL (Video Sales Letter)](#scenario-10--writing-a-vsl-video-sales-letter)
+- [Scenario 11 — Client Case Study](#scenario-11--client-case-study)
+- [Scenario 12 — YouTube Channel Strategy](#scenario-12--youtube-channel-strategy)
+- [Scenario 13 — Planning a Launch Campaign](#scenario-13--planning-a-launch-campaign)
+- [Scenario 14 — Market Research and Competitor Tracking](#scenario-14--market-research-and-competitor-tracking)
+- [Scenario 15 — Business Scorecard and Bottleneck Detection](#scenario-15--business-scorecard-and-bottleneck-detection)
+- [Scenario 16 — Adding a New Agent](#scenario-16--adding-a-new-agent)
+- [Scenario 17 — Full Cycle: From Scratch to Scale](#scenario-17--full-cycle-from-scratch-to-scale)
+- [Dashboard Usage](#dashboard-usage)
+- [Quality and Test Commands](#quality-and-test-commands)
+- [Common Mistakes](#common-mistakes)
 
 ---
 
-## Kurulum
+## What Does This System Do?
+
+This system is a **local, modular AI agent factory** designed for professionals who want to turn their expertise into a high-ticket business.
+
+**Example target users:**
+
+- A finance consultant doing advisory work → wants to automate the client acquisition system
+- A fitness coach starting to sell courses → wants to structure their offer and sales funnel
+- A digital marketer transitioning from freelancer to agency owner
+- Any expert who wants to package and sell their knowledge online
+
+**What the system does NOT do:**
+- It is not a chatbot like ChatGPT
+- It does not require an API key (runs fully in mock/local mode)
+- It does not make autonomous decisions; every strategy update requires human approval
+
+**What the system DOES do:**
+- Processes the Market → Avatar → Offer → Proof → Acquisition → Sales → Delivery → Retention → Scale chain step by step
+- Produces structured Markdown outputs for each stage
+- Stores research signals with source labels, requires references
+- Applies ethical rules at the system level (no fake claims, no fake testimonials, no fake scarcity)
+
+---
+
+## Installation
 
 ```bash
-# Repoyu klonla
-git clone https://github.com/kullaniciadi/agent-dev-boilerplate.git
+# Clone the repo
+git clone https://github.com/yourusername/agent-dev-boilerplate.git
 cd agent-dev-boilerplate
 
-# Bağımlılıkları yükle
+# Install dependencies
 pip install -r requirements.txt
 
-# Sistem sağlıklı mı kontrol et
+# Check system health
 python -m pytest
 
-# Agent yapısını doğrula
+# Validate agent structure
 python scripts/validate_agent_structure.py
 
-# Dashboard'u başlat (isteğe bağlı)
+# Start the dashboard (optional)
 python dashboard/server.py
-# Tarayıcıda aç: http://localhost:8765
+# Open in browser: http://localhost:8765
 ```
 
-Herhangi bir API anahtarı gerekmez. Sistem mock modda tamamen çalışır.
+No API key required. The system runs fully in mock mode.
 
 ---
 
-## İlk Adım: business_context.yaml'ı Doldurmak
+## First Step: Filling Out business_context.yaml
 
-`business_context.yaml` sistemin beynidir. Tüm agent'lar bu dosyadan okur.
+`business_context.yaml` is the brain of the system. All agents read from this file.
 
-**Kurallar:**
-- Bilmediğin alanları boş bırak (sistem "bilinmiyor" olarak etiketler)
-- Tahminleri not alanına yaz
-- Gerçek olmayan iddia ekleme
+**Rules:**
+- Leave fields you don't know empty (the system labels them as "unknown")
+- Write estimates in the notes field
+- Do not add claims that aren't true
 
-### Örnek: Fitness Koçu
+### Example: Fitness Coach
 
 ```yaml
 {
@@ -98,121 +98,121 @@ Herhangi bir API anahtarı gerekmez. Sistem mock modda tamamen çalışır.
     "niche": "online fitness coaching for busy professionals",
     "expertise": "strength training and habit formation",
     "years_experience": "7",
-    "credibility_assets": ["NSCA-CPT sertifikası", "500+ müşteri", "Transformasyon fotoğrafları"],
-    "audience_size": "8000 Instagram takipçisi",
-    "current_channels": ["Instagram", "e-posta listesi"],
-    "delivery_strengths": ["birebir koçluk", "grup programları"],
-    "unique_experience": "9-5 çalışırken 35 kilo verdim ve 6 yıldır koruyorum"
+    "credibility_assets": ["NSCA-CPT certification", "500+ clients", "Transformation photos"],
+    "audience_size": "8000 Instagram followers",
+    "current_channels": ["Instagram", "email list"],
+    "delivery_strengths": ["1-on-1 coaching", "group programs"],
+    "unique_experience": "Lost 35 kg while working 9-5 and maintained it for 6 years"
   },
   "market": {
     "market_name": "online fitness coaching",
-    "urgency_level": "yüksek — sağlık sorunu veya görünüm kaygısı",
-    "ability_to_pay": "orta-yüksek — kurumsal çalışanlar",
-    "competitors": ["Caliber", "Future", "yerel gym koçları"]
+    "urgency_level": "high — health issue or appearance concern",
+    "ability_to_pay": "mid-to-high — corporate professionals",
+    "competitors": ["Caliber", "Future", "local gym coaches"]
   },
   "customer": {
-    "target_customer": "35-50 yaş kurumsal çalışan",
-    "specific_avatar": "Mehmet, 42, yazılım yöneticisi, haftada 60+ saat çalışıyor, 15 kilo fazlası var, daha önce 3 diyeti bıraktı",
-    "main_problem": "disiplinli kalmak için zamanı ve enerjisi yok",
-    "expensive_problem": "sağlık sorunları ve enerji eksikliği kariyer ve aile hayatını etkiliyor",
-    "dream_outcome": "6 ayda 15 kilo vermek, sabahları enerjik uyanmak",
-    "objections": ["zamanım yok", "daha önce denemedim olmadı", "çok pahalı"]
+    "target_customer": "35-50 year old corporate professional",
+    "specific_avatar": "Alex, 42, software manager, works 60+ hours/week, 15 kg overweight, quit 3 diets before",
+    "main_problem": "no time and energy to stay disciplined",
+    "expensive_problem": "health issues and lack of energy affecting career and family life",
+    "dream_outcome": "lose 15 kg in 6 months, wake up energized in the mornings",
+    "objections": ["I don't have time", "I've tried before and it didn't work", "too expensive"]
   },
   "offer": {
-    "current_offer": "3 aylık birebir online koçluk programı",
-    "current_price": "3000 TL",
-    "core_promise": "90 günde minimum 8 kilo, ya da para iadesi",
-    "guarantee": "90 gün sonuç garantisi"
+    "current_offer": "3-month 1-on-1 online coaching program",
+    "current_price": "3000 USD",
+    "core_promise": "minimum 8 kg in 90 days, or money back",
+    "guarantee": "90-day results guarantee"
   }
 }
 ```
 
-### Örnek: B2B Danışman
+### Example: B2B Consultant
 
 ```yaml
 {
   "expert": {
-    "niche": "SaaS şirketleri için müşteri başarısı danışmanlığı",
-    "expertise": "churn azaltma ve NPS iyileştirme",
+    "niche": "customer success consulting for SaaS companies",
+    "expertise": "churn reduction and NPS improvement",
     "years_experience": "12",
-    "credibility_assets": ["Türkiye'nin ilk 3 unicorn'unda CSO görevleri", "2 yayınlanan vaka çalışması"],
-    "current_channels": ["LinkedIn", "referanslar"],
-    "unique_experience": "Churn'ü %34'ten %8'e indirdiğim 3 şirket var"
+    "credibility_assets": ["CSO roles at 3 leading SaaS companies", "2 published case studies"],
+    "current_channels": ["LinkedIn", "referrals"],
+    "unique_experience": "I have 3 companies where I reduced churn from 34% to 8%"
   },
   "customer": {
-    "target_customer": "10-100 çalışanlı SaaS şirketi kurucusu",
-    "expensive_problem": "yüksek churn şirket değerini düşürüyor, yatırımcı güvenini sarsıyor",
-    "dream_outcome": "12 ayda churn'ü yarıya indirmek, ARR'yi %40 büyütmek"
+    "target_customer": "SaaS company founder with 10-100 employees",
+    "expensive_problem": "high churn reduces company valuation and undermines investor confidence",
+    "dream_outcome": "cut churn in half in 12 months, grow ARR by 40%"
   },
   "offer": {
     "current_price": "15000 USD",
-    "current_offer": "6 aylık CS dönüşüm programı"
+    "current_offer": "6-month CS transformation program"
   }
 }
 ```
 
 ---
 
-## Senaryo 1 — Sıfırdan Pazar Seçmek
+## Scenario 1 — Choosing a Market from Scratch
 
-**Durum:** Birden fazla niş fikrin var ama hangisini seçeceğini bilmiyorsun.
+**Situation:** You have multiple niche ideas but don't know which to choose.
 
-**Kullanılan agent:** `market_selector`
+**Agent used:** `market_selector`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
-# Pazar puan kartını çalıştır
+# Run the market scorecard
 python scripts/generate_market_scorecard.py \
   --agent market_selector \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/market_scorecards/` klasörüne bir Markdown raporu üretir.
+**Output:** Produces a Markdown report in the `outputs/market_scorecards/` folder.
 
-**Rapor şunları içerir:**
-- Pazar acı skoru (1-10)
-- Ödeme gücü değerlendirmesi
-- Ulaşılabilirlik notu
-- Rekabet yoğunluğu analizi
-- Genel pazar skoru
+**The report includes:**
+- Market pain score (1-10)
+- Ability to pay assessment
+- Reachability score
+- Competition intensity analysis
+- Overall market score
 
-### Gerçek Kullanım Örneği
+### Real Usage Example
 
-Diyelim ki üç pazar fikrin var:
-1. Online İngilizce eğitimi
-2. SaaS şirketleri için LinkedIn outreach ajansı
-3. E-ticaret mağazaları için reklam yönetimi
+Suppose you have three market ideas:
+1. Online English language coaching
+2. LinkedIn outreach agency for SaaS companies
+3. Ad management for e-commerce stores
 
-`business_context.yaml`'a her birini sırayla gir, puan kartını çalıştır, karşılaştır.
+Enter each one into `business_context.yaml` in turn, run the scorecard, compare.
 
-**İyi pazar sinyalleri:**
-- İnsanlar bu problemi çözmek için zaten para harcıyor
-- Problem, ertelenmesi pahalıya patlayan türden
-- Hedef kitleye ulaşmak mümkün (LinkedIn, YouTube, özel topluluklar)
-- Rakipler var ama hiçbiri net lider değil
+**Good market signals:**
+- People are already paying to solve this problem
+- The problem is the kind that gets expensive if delayed
+- The target audience is reachable (LinkedIn, YouTube, specific communities)
+- Competitors exist but none is a clear market leader
 
-**Kötü pazar sinyalleri:**
-- Herkes "harika fikir" diyor ama kimse para ödemiyor
-- Hedef kitle dağınık ve ulaşılamıyor
-- Problem bir lüks, zorunluluk değil
+**Bad market signals:**
+- Everyone says "great idea" but nobody pays
+- The audience is scattered and unreachable
+- The problem is a luxury, not a necessity
 
 ```bash
-# Agent'ı doğrudan sorgulamak için
+# To query the agent directly
 python scripts/run_agent.py \
   --agent market_selector \
-  --message "Online İngilizce koçluğu ile SaaS LinkedIn outreach ajansı arasında seçim yapıyorum. Hangisi daha güçlü bir pazar?"
+  --message "I'm choosing between online English coaching and a SaaS LinkedIn outreach agency. Which is the stronger market?"
 ```
 
 ---
 
-## Senaryo 2 — Avatar ve Acı Araştırması
+## Scenario 2 — Avatar and Pain Research
 
-**Durum:** Pazarı seçtin ama müşterini net tanımlamıyorsun. "Herkes hedef kitlem" tuzağına düşmek istemiyorsun.
+**Situation:** You've chosen your market but haven't clearly defined your customer. You don't want to fall into the "everyone is my target" trap.
 
-**Kullanılan agent:** `avatar_pain_researcher`
+**Agent used:** `avatar_pain_researcher`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_avatar_research.py \
@@ -220,46 +220,46 @@ python scripts/generate_avatar_research.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/avatar_research/` → spesifik avatar profili, acı haritası, satın alma tetikleyicileri, müşteri dili örnekleri.
+**Output:** `outputs/avatar_research/` → specific avatar profile, pain map, buying triggers, customer language examples.
 
-### Örnek: Koçluk İşi
+### Example: Coaching Business
 
-**Zayıf avatar (kaçın):**
-> "30-50 yaş arası çalışan kadınlar"
+**Weak avatar (avoid):**
+> "Working women aged 30-50"
 
-**Güçlü avatar:**
-> "Ayşe, 38, İstanbul'da orta düzey yönetici, 2 çocuğu var. Sabah 7'de ofiste, akşam 7'de evde. Her ay biri diyete başlayıp biri bitiyor. Temel korkusu: 40'a geldiğinde annesi gibi şeker hastası olmak. Pazar sabahı kahvaltısında diyetisyen Instagram'larına bakıyor ama hiçbirinin 'onun gibi' biri olmadığını düşünüyor."
+**Strong avatar:**
+> "Sarah, 38, mid-level manager in London, 2 kids. In the office by 7am, home by 7pm. Starts a new diet every month and quits it. Core fear: becoming diabetic like her mother by the time she's 40. Sunday mornings she browses dietitian Instagram accounts but thinks none of them are 'like her'."
 
-Bu avatar tanımıyla yazdığın içerik, reklam ve satış senaryosu çok daha spesifik olur.
+With this avatar definition, your content, ads, and sales scripts become far more specific.
 
-### Araştırma ile Avatar Doğrulamak
+### Validating the Avatar with Research
 
 ```bash
-# Reddit'ten gerçek müşteri dili topla
+# Collect real customer language from Reddit
 python scripts/collect_source.py \
   --source reddit \
   --query "busy professional struggling to lose weight"
 
-# Rakip reklamları analiz et
+# Analyze competitor ads
 python scripts/collect_source.py \
   --source facebook_ad_library \
   --query "online fitness coaching"
 
-# Çapraz kaynak analizi
+# Cross-source analysis
 python scripts/analyze_cross_source_signals.py
 ```
 
-Toplanan sinyaller `research/sources/` altına kaydedilir. Her sinyal kaynakla etiketlenir; tek kaynaktan gelen sinyal "aday", birden fazla kaynaktan doğrulanmış sinyal "doğrulanmış" olarak işaretlenir.
+Collected signals are saved under `research/sources/`. Each signal is labeled with its source; signals from a single source are marked "candidate", signals validated from multiple sources are marked "validated".
 
 ---
 
-## Senaryo 3 — Yüksek Biletli Teklif Tasarlamak
+## Scenario 3 — Designing a High-Ticket Offer
 
-**Durum:** Avatar'ın net. Şimdi onların gerçekten satın alacağı bir teklif tasarlaman gerekiyor.
+**Situation:** Your avatar is clear. Now you need to design an offer they will actually buy.
 
-**Kullanılan agent:** `offer_architect`
+**Agent used:** `offer_architect`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_offer_audit.py \
@@ -267,108 +267,108 @@ python scripts/generate_offer_audit.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/offer_audits/` → teklif güçlü/zayıf yönleri, mekanizma netliği, değer denklemine göre değerlendirme.
+**Output:** `outputs/offer_audits/` → offer strengths/weaknesses, mechanism clarity, value equation assessment.
 
-### Teklif Anatomisi
+### Offer Anatomy
 
-Sistem teklifinizi şu beş boyutta değerlendirir (Hormozi'nin değer denklemi):
+The system evaluates your offer on five dimensions (Hormozi's value equation):
 
-| Boyut | Soru | Örnek |
+| Dimension | Question | Example |
 |---|---|---|
-| **Sonuç** | Müşteri ne elde ediyor? | 90 günde 12 kilo |
-| **Olasılık** | Müşteri başarıya ne kadar inanıyor? | 3 müşteri vaka çalışması |
-| **Süre** | Ne kadar sürede? | 90 gün, haftada 3 saat |
-| **Efor** | Ne kadar çaba gerekiyor? | Sadece alışveriş listesi ve 30 dk antrenman |
-| **Risk** | Sonuç gelmezse ne olur? | Tam iade garantisi |
+| **Outcome** | What does the client get? | 12 kg in 90 days |
+| **Probability** | How much does the client believe in success? | 3 client case studies |
+| **Time** | In how long? | 90 days, 3 hours/week |
+| **Effort** | How much work is required? | Just a shopping list and 30 min workout |
+| **Risk** | What if results don't come? | Full money-back guarantee |
 
-### Örnek: Zayıf vs. Güçlü Teklif
+### Example: Weak vs. Strong Offer
 
-**Zayıf:**
-> "3 aylık online fitness koçluğu — 3000 TL"
+**Weak:**
+> "3-month online fitness coaching — $3,000"
 
-**Güçlü:**
-> "Meşgul Profesyoneller İçin 90 Günlük Vücut Dönüşüm Programı: Haftada 3x30 dakika ile 8-15 kilo ver, ya da her kuruşunu iade ederim. 23 müşteriden 21'i hedefine ulaştı."
+**Strong:**
+> "90-Day Body Transformation for Busy Professionals: Lose 8-15 kg with 3×30 minutes per week, or I refund every cent. 21 out of 23 clients reached their goal."
 
-Sistem şunları sorgular:
-- Mekanizma spesifik mi ve kopyalanamaz mı?
-- İddialar desteklenmiş mi?
-- Risk tersine çevrilmiş mi?
-- Aceleyi meşrulaştıran bir neden var mı?
+The system asks:
+- Is the mechanism specific and hard to copy?
+- Are the claims supported?
+- Is risk reversed?
+- Is there a reason to act urgently?
 
 ```bash
-# Teklifle ilgili spesifik soru sor
+# Ask a specific question about your offer
 python scripts/run_agent.py \
   --agent offer_architect \
-  --message "Teklifimde garantiyi nasıl güçlendiririm? Şu an '90 gün sonuç yoksa iade' var ama kimse ciddiye almıyor."
+  --message "How do I strengthen the guarantee in my offer? Right now I have 'money back if no results in 90 days' but no one takes it seriously."
 ```
 
 ---
 
-## Senaryo 4 — Değer Yığını ve Fiyatlandırma
+## Scenario 4 — Value Stack and Pricing
 
-**Durum:** Teklifin var ama fiyatı nasıl belirleyeceğini ve değer algısını nasıl yükselteceğini bilmiyorsun.
+**Situation:** You have an offer but don't know how to set the price or raise perceived value.
 
-**Kullanılan agentlar:** `value_stack_builder`, `pricing_guarantee_optimizer`
+**Agents used:** `value_stack_builder`, `pricing_guarantee_optimizer`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
-# Değer yığını oluştur
+# Build the value stack
 python scripts/generate_value_stack.py \
   --agent value_stack_builder \
   --context business_context.yaml
 
-# Fiyatlandırma ve garanti değerlendirmesi
+# Pricing and guarantee assessment
 python scripts/generate_pricing_guarantee_review.py \
   --agent pricing_guarantee_optimizer \
   --context business_context.yaml
 ```
 
-### Değer Yığını Örneği
+### Value Stack Example
 
-Diyelim ki online fitness koçluğu satıyorsun. 3000 TL fiyatı "pahalı" hissettiriyor çünkü değer yığını eksik.
+Suppose you're selling online fitness coaching. The $3,000 price "feels expensive" because the value stack is missing.
 
-**Zayıf teklif paketi:**
-- 3 aylık koçluk: 3000 TL
+**Weak offer package:**
+- 3-month coaching: $3,000
 
-**Güçlü değer yığını:**
+**Strong value stack:**
 
-| Eleman | Algılanan Değer |
+| Element | Perceived Value |
 |---|---|
-| 12 haftalık kişiselleştirilmiş program | 2400 TL |
-| Haftalık 1:1 check-in çağrıları (12 seans) | 1800 TL |
-| Kişisel beslenme planı | 600 TL |
-| WhatsApp destek erişimi | 900 TL |
-| **Bonus:** Alışveriş listesi ve meal-prep rehberi | 300 TL |
-| **Bonus:** Yolculuk antrenman paketi | 200 TL |
-| **Garanti:** 90 günde 8 kilo yoksa tam iade | Sınırsız |
-| **Toplam algılanan değer** | **6200 TL** |
-| **Gerçek fiyat** | **3000 TL** |
+| 12-week personalized program | $2,400 |
+| Weekly 1:1 check-in calls (12 sessions) | $1,800 |
+| Personal nutrition plan | $600 |
+| WhatsApp support access | $900 |
+| **Bonus:** Shopping list and meal-prep guide | $300 |
+| **Bonus:** Travel workout pack | $200 |
+| **Guarantee:** 8 kg in 90 days or full refund | Unlimited |
+| **Total perceived value** | **$6,200** |
+| **Real price** | **$3,000** |
 
-Sistem şunları kontrol eder:
-- Fiyat pazar benchmarklarına uygun mu?
-- Ödeme planı seçeneği olmalı mı?
-- Garanti türü (sonuç garantisi mi, memnuniyet mi, karma mı?) doğru seçilmiş mi?
+The system checks:
+- Is the price in line with market benchmarks?
+- Should a payment plan option be offered?
+- Is the guarantee type (results guarantee, satisfaction, or hybrid?) correctly chosen?
 
-### Fiyatlandırma Rehberi
+### Pricing Guide
 
 ```
-Düşük bilet: 1000 TL altı → volüm gerekir, birebir ölçeklenmez
-Orta bilet: 1000-10.000 TL → karma ölçek mümkün
-Yüksek bilet: 10.000 TL+ → az müşteri, yüksek dönüşüm gerekir
+Low ticket: Under $1,000 → requires volume, doesn't scale 1-on-1
+Mid ticket: $1,000-$10,000 → hybrid scale possible
+High ticket: $10,000+ → fewer clients, higher conversion required
 ```
 
-Sistem, fiyatı müşterinin "pahalı bir problem" yaşayıp yaşamadığına göre değerlendirir.
+The system evaluates the price based on whether the customer is experiencing an "expensive problem."
 
 ---
 
-## Senaryo 5 — Müşteri Kazanım Stratejisi
+## Scenario 5 — Client Acquisition Strategy
 
-**Durum:** Teklifin hazır. Şimdi potansiyel müşteri nereden gelecek?
+**Situation:** Your offer is ready. Now where do clients come from?
 
-**Kullanılan agent:** `acquisition_strategy_agent`
+**Agent used:** `acquisition_strategy_agent`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_acquisition_plan.py \
@@ -376,45 +376,45 @@ python scripts/generate_acquisition_plan.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/acquisition_plans/` → haftalık kazanım aksiyonları, kanal öncelikleri, maliyet-fayda değerlendirmesi.
+**Output:** `outputs/acquisition_plans/` → weekly acquisition actions, channel priorities, cost-benefit assessment.
 
-### Kazanım Kanalları
+### Acquisition Channels
 
-Sistem şu kanalları değerlendirir:
+The system evaluates these channels:
 
-| Kanal | Avantajı | Dezavantajı |
+| Channel | Advantage | Disadvantage |
 |---|---|---|
-| **Organik içerik** (LinkedIn, Instagram) | Ücretsiz, otorite inşa eder | Yavaş, tutarlılık ister |
-| **Ücretli reklamlar** (Meta, Google) | Hızlı, ölçeklenebilir | Bütçe gerektirir, kırılgan |
-| **Outbound** (DM, e-posta) | Anında, kontrollü | Emek yoğun |
-| **Ortaklıklar** | Leverage, güven transferi | İlişki kurma süresi |
-| **Topluluk** (webinar, etkinlik) | Yüksek güven | Uzun dönemli |
-| **Referans** | En yüksek kapanma oranı | Başlangıçta az |
+| **Organic content** (LinkedIn, Instagram) | Free, builds authority | Slow, requires consistency |
+| **Paid ads** (Meta, Google) | Fast, scalable | Requires budget, fragile |
+| **Outbound** (DM, email) | Immediate, controlled | Labor intensive |
+| **Partnerships** | Leverage, trust transfer | Relationship-building time |
+| **Community** (webinar, event) | High trust | Long-term |
+| **Referral** | Highest close rate | Few at the start |
 
-### Örnek: B2B Danışman İçin Kazanım Planı
+### Example: Acquisition Plan for a B2B Consultant
 
 ```bash
 python scripts/run_agent.py \
   --agent acquisition_strategy_agent \
-  --message "SaaS şirketleri için CS danışmanlığı yapıyorum. Henüz hiç reklam vermedim, LinkedIn profilim var ama aktif değilim. Haftada 10 saatim var. Nereden başlamalıyım?"
+  --message "I do CS consulting for SaaS companies. I haven't run any ads yet, I have a LinkedIn profile but it's inactive. I have 10 hours/week. Where should I start?"
 ```
 
-**Sistem önerisi (örnek çıktı):**
-1. LinkedIn profilini 72 saatte optimize et (hedef kitleye yönelik başlık ve özet)
-2. Hafta 1-4: Günlük 1 içerik (müşteri dönüşüm hikayesi, churn insight, Q&A)
-3. Haftada 15 hedefli DM: "CS ekibinizi nasıl yapılandırdığınızı merak ettim…"
-4. Ay 2: Bir webinar: "SaaS'ta Churn Azaltmanın 3 Matematik Hatası"
-5. Ay 3: İlk müşteriden referans sistemi kur
+**System recommendation (example output):**
+1. Optimize LinkedIn profile in 72 hours (headline and summary targeting your audience)
+2. Week 1-4: 1 post/day (client transformation story, churn insight, Q&A)
+3. 15 targeted DMs per week: "I was curious about how you structure your CS team…"
+4. Month 2: A webinar: "3 Math Mistakes in SaaS Churn Reduction"
+5. Month 3: Build a referral system from your first client
 
 ---
 
-## Senaryo 6 — Otorite İçerik Planı
+## Scenario 6 — Authority Content Plan
 
-**Durum:** Nişinde otorite olmak istiyorsun ama ne içerik üreteceğini bilmiyorsun.
+**Situation:** You want to become an authority in your niche but don't know what content to produce.
 
-**Kullanılan agent:** `content_authority_agent`
+**Agent used:** `content_authority_agent`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_content_plan.py \
@@ -422,38 +422,38 @@ python scripts/generate_content_plan.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/content_plans/` → içerik kategorileri, örnek başlıklar, yayın takvimi.
+**Output:** `outputs/content_plans/` → content categories, example headlines, publishing calendar.
 
-### İçerik Kategorileri
+### Content Categories
 
-Sistem içeriği beş amaca göre organize eder:
+The system organizes content by five purposes:
 
-| Kategori | Amaç | Örnek |
+| Category | Purpose | Example |
 |---|---|---|
-| **Otorite** | "Bu konuyu biliyor" algısı | "12 yılda 47 danışman müşteriden öğrendiğim şey" |
-| **Kanıt** | Gerçek sonuçlar | "Mehmet, 42: 90 günde 14 kilo nasıl verdi?" |
-| **İtiraz** | Engelleri kaldır | "Zamanın olmadığı için değil, sistem kurmadığın için" |
-| **Talep Yaratma** | Farkındalık aç | "Şeker hastalarının %80'i 40'tan önce uyarı alıyordu" |
-| **CTA** | Harekete geçir | "90 günlük programım için 5 yer kaldı" |
+| **Authority** | "This person knows their stuff" perception | "What I learned from 47 consulting clients in 12 years" |
+| **Proof** | Real results | "Alex, 42: How he lost 14 kg in 90 days" |
+| **Objection** | Remove barriers | "It's not because you lack time, it's because you haven't built a system" |
+| **Demand Creation** | Open awareness | "80% of diabetics received a warning before age 40" |
+| **CTA** | Drive action | "5 spots left in my 90-day program" |
 
-### Örnek İçerik Takvimi (Haftalık)
+### Example Content Calendar (Weekly)
 
-| Gün | Tür | Örnek Başlık |
+| Day | Type | Example Headline |
 |---|---|---|
-| Pazartesi | Otorite | Sektörden karşı-sezgisel bir insight |
-| Çarşamba | Kanıt | Müşteri hikayesi (rakamlarla) |
-| Cuma | İtiraz | En yaygın itirazı ele al |
-| Pazar | Kişisel | Senin hikayenden bir sahne |
+| Monday | Authority | Counter-intuitive industry insight |
+| Wednesday | Proof | Client story (with numbers) |
+| Friday | Objection | Address the most common objection |
+| Sunday | Personal | A scene from your own story |
 
 ---
 
-## Senaryo 7 — Satış Hunisi Haritası
+## Scenario 7 — Sales Funnel Map
 
-**Durum:** İçeriğin var, ama potansiyel müşterileri nasıl toplayacağın ve satışa taşıyacağın belli değil.
+**Situation:** You have content, but it's unclear how to collect leads and move them to a sale.
 
-**Kullanılan agent:** `funnel_builder`
+**Agent used:** `funnel_builder`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_funnel_map.py \
@@ -461,111 +461,111 @@ python scripts/generate_funnel_map.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/funnel_maps/` → lead magnet önerisi, uygulama hunisi, e-posta sırası, webinar/workshop planı.
+**Output:** `outputs/funnel_maps/` → lead magnet suggestion, application funnel, email sequence, webinar/workshop plan.
 
-### Huni Akışı Örneği
+### Funnel Flow Example
 
 ```
-FARKINDALILIK
-  └── Instagram reels / LinkedIn makaleleri
+AWARENESS
+  └── Instagram reels / LinkedIn articles
         ↓
-LEAD MAGNET (bedava değer)
-  └── "Meşgul Profesyoneller İçin 7 Günlük Hızlı Başlangıç Rehberi" (PDF)
+LEAD MAGNET (free value)
+  └── "7-Day Quick Start Guide for Busy Professionals" (PDF)
         ↓
-E-POSTA SERİSİ (7-10 e-posta)
-  └── E-posta 1: Hoş geldin + rehber
-  └── E-posta 3: Mehmet'in hikayesi (vaka çalışması)
-  └── E-posta 5: "Neden diyet çalışmıyor?" (itiraz içeriği)
-  └── E-posta 7: Programın açıklaması
-  └── E-posta 9: Başvuru daveti
+EMAIL SEQUENCE (7-10 emails)
+  └── Email 1: Welcome + guide
+  └── Email 3: Alex's story (case study)
+  └── Email 5: "Why diets don't work" (objection content)
+  └── Email 7: Program description
+  └── Email 9: Application invitation
         ↓
-BAŞVURU FORMU
-  └── Sağlık durumu, hedef, bütçe sorularıyla ön nitelendirme
+APPLICATION FORM
+  └── Pre-qualification with health status, goal, budget questions
         ↓
-KEŞIF ÇAĞRISI (15-20 dk)
-  └── Fit mi değil mi? → Devam et
+DISCOVERY CALL (15-20 min)
+  └── Is it a fit? → Continue
         ↓
-SATIŞ ÇAĞRISI (45-60 dk)
-  └── Karar
+SALES CALL (45-60 min)
+  └── Decision
 ```
 
-### Lead Magnet Seçimi
+### Lead Magnet Selection
 
 ```bash
 python scripts/run_agent.py \
   --agent funnel_builder \
-  --message "SaaS CS danışmanlığı için hangi lead magnet en iyi çalışır? Webinar mı, PDF rehber mi, yoksa ücretsiz audit mi?"
+  --message "What lead magnet works best for SaaS CS consulting? Webinar, PDF guide, or free audit?"
 ```
 
-Sistem her seçeneği şu kriterlere göre puanlar: teslim kolaylığı, nitelendirme değeri, algılanan değer, hızlı kazanım potansiyeli.
+The system scores each option on: ease of delivery, qualification value, perceived value, fast acquisition potential.
 
 ---
 
-## Senaryo 8 — Satış Senaryosu ve İtiraz Yönetimi
+## Scenario 8 — Sales Script and Objection Handling
 
-**Durum:** Keşif çağrıları yapıyorsun ama kapama oranın düşük ya da itirazlarla nasıl başa çıkacağını bilmiyorsun.
+**Situation:** You're doing discovery calls but your close rate is low, or you don't know how to handle objections.
 
-**Kullanılan agentlar:** `sales_script_builder`, `objection_handler`
+**Agents used:** `sales_script_builder`, `objection_handler`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
-# Satış senaryosu
+# Sales script
 python scripts/generate_sales_script.py \
   --agent sales_script_builder \
   --context business_context.yaml
 
-# İtiraz bankası
+# Objection bank
 python scripts/generate_objection_bank.py \
   --agent objection_handler \
   --context business_context.yaml
 ```
 
-### Satış Çağrısı Yapısı
+### Sales Call Structure
 
-Sistem etik bir satış çağrısı için beş aşama üretir:
+The system produces five stages for an ethical sales call:
 
 ```
-1. RAPOR KURMA (5 dk)
-   — Neden bu çağrıya katıldıklarını sor
+1. RAPPORT (5 min)
+   — Ask why they joined this call
 
-2. KEŞİF (15-20 dk)
-   — Şu anda neredesiniz?
-   — Bu değişmeseydi 1 yıl sonra ne olurdu?
-   — Daha önce ne denediniz?
-   — Bu sorunu çözmek sizi nereye götürür?
+2. DISCOVERY (15-20 min)
+   — Where are you right now?
+   — What would happen in 1 year if nothing changed?
+   — What have you tried before?
+   — Where would solving this problem take you?
 
-3. TEKLİF SUNUMU (10 dk)
-   — Programı anlat
-   — Adım adım ne olacağını göster
+3. OFFER PRESENTATION (10 min)
+   — Explain the program
+   — Show step by step what will happen
 
-4. KARAR ÇERÇEVELEME (5 dk)
-   — "Bu sizin için mantıklı görünüyor mu?"
-   — İtirazları dinle ve ele al
+4. DECISION FRAMING (5 min)
+   — "Does this make sense for you?"
+   — Listen to objections and address them
 
-5. SONUÇ (5 dk)
-   — Net bir sonuca ulaş
-   — Takip planını belirle
+5. CLOSE (5 min)
+   — Reach a clear outcome
+   — Establish follow-up plan
 ```
 
-### İtiraz Bankası Örnekleri
+### Objection Bank Examples
 
-| İtiraz | Etik Yanıt |
+| Objection | Ethical Response |
 |---|---|
-| "Çok pahalı" | "Bütçe mi kısıtlayıcı yoksa değer konusunda belirsizlik mi var?" |
-| "Zamanım yok" | "Bu program haftada kaç saatinizi alıyor dersiniz?" |
-| "Eşimle konuşmam lazım" | "Tabii ki. Bu kararı birlikte almak için sizi yarın arayabilir miyim?" |
-| "Önce biraz düşüneyim" | "Tabii. Ne üzerinde düşünmek istediğinizi sorabilir miyim?" |
+| "Too expensive" | "Is it the budget that's limiting, or is there uncertainty about the value?" |
+| "I don't have time" | "How many hours per week do you think this program takes?" |
+| "I need to talk to my spouse" | "Of course. Could I call you both tomorrow to make this decision together?" |
+| "Let me think about it" | "Of course. May I ask what you'd like to think about?" |
 
 ---
 
-## Senaryo 9 — Meta Reklam Yönetimi
+## Scenario 9 — Meta Ads Management
 
-**Durum:** Organik büyüme yavaş, reklamla hızlanmak istiyorsun ama Meta reklamlarında kayboluyorsun.
+**Situation:** Organic growth is slow, you want to accelerate with ads but you're getting lost in Meta ads.
 
-**Kullanılan agent:** `meta_ads_manager`
+**Agent used:** `meta_ads_manager`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_meta_ads_plan.py \
@@ -573,69 +573,69 @@ python scripts/generate_meta_ads_plan.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/meta_ads_plans/` → kampanya yapısı, creative brief'leri, P.D.A. matrisi, bütçe önerileri.
+**Output:** `outputs/meta_ads_plans/` → campaign structure, creative briefs, P.D.A. matrix, budget recommendations.
 
-### Andromeda-First Yaklaşım
+### Andromeda-First Approach
 
-Bu agent'ın temel felsefesi Meta'nın kendi açıkladığı gerçeğe dayanır: **"Creative IS targeting."** Andromeda (Meta'nın AI motoru) kime reklam göstereceğini senin hedefleme ayarlarından değil, creative içeriğinden öğrenir.
+This agent's core philosophy is based on a reality Meta itself stated: **"Creative IS targeting."** Andromeda (Meta's AI engine) learns who to show ads to not from your targeting settings, but from the creative content.
 
-**Yanlış yaklaşım:**
-- Dar kitle hedefleme (25-35, İstanbul, fitness ilgisi, spor salonu gitmiş)
-- 2-3 creative varyant
-- Haftalık kampanya değişiklikleri
+**Wrong approach:**
+- Narrow audience targeting (25-35, London, fitness interest, gym-goer)
+- 2-3 creative variants
+- Weekly campaign changes
 
-**Doğru yaklaşım:**
-- Geniş hedefleme (sadece dil + coğrafya)
-- 15-20 kavramsal olarak farklı creative
-- Öğrenme fazını koru: 50 dönüşüme kadar dokunma
+**Right approach:**
+- Broad targeting (only language + geography)
+- 15-20 conceptually different creatives
+- Protect the learning phase: don't touch until 50 conversions
 
-### P.D.A. Creative Matrisi
+### P.D.A. Creative Matrix
 
-Her creative üç boyutta farklılaşmalı:
+Each creative must differ on three dimensions:
 
-| Boyut | Seçenekler |
+| Dimension | Options |
 |---|---|
-| **P — Persona** | Bütçe odaklı, statü odaklı, kolaylık odaklı, başlangıç seviyesi, uzman, şüpheci |
-| **D — Arzu** | Hız, tasarruf, statü, güven, dönüşüm, kolaylık |
-| **A — Farkındalık** | Problem farkında, çözüm farkında, ürün farkında |
+| **P — Persona** | Budget-focused, status-focused, convenience-focused, beginner, expert, skeptic |
+| **D — Desire** | Speed, savings, status, trust, transformation, convenience |
+| **A — Awareness** | Problem-aware, solution-aware, product-aware |
 
-**Örnek Creative Briefingi:**
-
-```
-Creative #1: Persona=Başlangıç, Arzu=Hız, Farkındalık=Problem
-Hook: "3 diyeti bıraktıysanız bu sizin hatanız değil"
-Format: UGC tarzı telefon videosu
-CTA: "Sistemi gör"
-
-Creative #2: Persona=Uzman, Arzu=Dönüşüm, Farkındalık=Ürün
-Hook: "Neden 90 gün garanti veriyorum?"
-Format: Talking head, stüdyo
-CTA: "Başvur"
-```
-
-### Haftalık Reklam Döngüsü
+**Example Creative Brief:**
 
 ```
-PAZARTESİ: Metrikler gözden geçir (CTR, CPL, kalite sıralaması)
-ÇARŞAMBA: Öğrenme fazı tamamlananları değerlendir
-CUMA: Yeni creative brief hazırla
-PAZARTESİ: Yeni creative'leri yükle
+Creative #1: Persona=Beginner, Desire=Speed, Awareness=Problem
+Hook: "If you've quit 3 diets, it's not your fault"
+Format: UGC-style phone video
+CTA: "See the system"
+
+Creative #2: Persona=Expert, Desire=Transformation, Awareness=Product
+Hook: "Why I give a 90-day guarantee"
+Format: Talking head, studio
+CTA: "Apply"
 ```
 
-**Dokunma kuralları:**
-- Öğrenme fazında olan kampanyaya DOKUNMA
-- Bütçeyi %20'den fazla bir seferde değiştirme
-- Creative değiştirme ≠ kitle değiştirme
+### Weekly Ad Cycle
+
+```
+MONDAY: Review metrics (CTR, CPL, quality ranking)
+WEDNESDAY: Evaluate campaigns that completed learning phase
+FRIDAY: Prepare new creative brief
+MONDAY: Upload new creatives
+```
+
+**Touch rules:**
+- DO NOT touch a campaign in the learning phase
+- Do not change budget by more than 20% at once
+- Changing creative ≠ changing audience
 
 ---
 
-## Senaryo 10 — VSL (Video Satış Mektubu) Yazmak
+## Scenario 10 — Writing a VSL (Video Sales Letter)
 
-**Durum:** Satış sayfan ya da reklam videolarında izleyiciyi satışa taşıyacak güçlü bir script istiyorsun.
+**Situation:** You want a strong script for your sales page or ad videos that moves viewers to a sale.
 
-**Kullanılan agent:** `vsl_copywriter`
+**Agent used:** `vsl_copywriter`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_vsl_script.py \
@@ -643,44 +643,46 @@ python scripts/generate_vsl_script.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/vsl_scripts/` → beş fazlı VSL scripti, landing page taslağı.
+**Output:** `outputs/vsl_scripts/` → 5-phase VSL script, landing page draft.
 
-### VSL'nin 5 Fazı
+### The 5 Phases of a VSL
 
 ```
-FAZ 1 — PROFİLLEME
-  Senaryo: Kim için? → Tek bir spesifik kişiyi seç
-  Örnek: "Bu video sadece 35-50 yaş, haftada 50+ saat çalışan ve daha önce en az iki diyeti bırakan kişiler için"
+PHASE 1 — PROFILING
+  Script: Who is this for? → Choose one specific person
+  Example: "This video is only for people aged 35-50, working 50+ hours per week,
+  who have quit at least two diets before"
 
-FAZ 2 — AÇILIŞ (İlk 30 saniye kritik)
-  Hook: Acı veya paradoks
-  Örnek: "Dünyanın her yerinde araştırmalar aynı şeyi söylüyor: disiplin sorunu değil, sistem sorunu. Ve bugün size o sistemi göstereceğim."
+PHASE 2 — OPENING (First 30 seconds are critical)
+  Hook: Pain or paradox
+  Example: "Research everywhere says the same thing: it's not a discipline problem,
+  it's a systems problem. And today I'm going to show you that system."
 
-FAZ 3 — TEKLİF
-  — Problem → Pahalı hale getir → Çözüm sun
-  — Rakiplerden farkını bir cümleyle söyle (mekanizma)
-  — Değer yığınını görsel olarak listele
+PHASE 3 — OFFER
+  — Problem → Make it expensive → Present solution
+  — State your difference from competitors in one sentence (mechanism)
+  — List the value stack visually
 
-FAZ 4 — KAPANIŞ
-  — Fiyatı değer yığınından sonra aç
-  — Garantiyi net ifade et
-  — Kıtlık/aciliyet (gerçekse): "Bu ay 5 yer kaldı"
+PHASE 4 — CLOSE
+  — Reveal price after the value stack
+  — State the guarantee clearly
+  — Scarcity/urgency (if real): "5 spots left this month"
 
-FAZ 5 — LANDING PAGE YAPISI
-  — Headline: Kimin için + sonuç + süre
-  — Sosyal kanıt: Vaka çalışmaları
-  — CTA: Net bir eylem
+PHASE 5 — LANDING PAGE STRUCTURE
+  — Headline: Who it's for + result + timeframe
+  — Social proof: Case studies
+  — CTA: One clear action
 ```
 
 ---
 
-## Senaryo 11 — Müşteri Vaka Çalışması
+## Scenario 11 — Client Case Study
 
-**Durum:** Müşterilerinden harika sonuçlar aldın ama bunu nasıl içeriğe dönüştüreceğini bilmiyorsun.
+**Situation:** You've gotten great results from clients but don't know how to turn them into content.
 
-**Kullanılan agent:** `case_study_writer`
+**Agent used:** `case_study_writer`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_case_study.py \
@@ -688,54 +690,54 @@ python scripts/generate_case_study.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/case_studies/` → Hormozi tarzı yüksek dönüşümlü vaka çalışması.
+**Output:** `outputs/case_studies/` → Hormozi-style high-converting case study.
 
-### Hormozi Vaka Çalışması Formatı
+### Hormozi Case Study Format
 
-Vague hikayeler güven yaratmaz. Spesifik rakamlar güven yaratır.
+Vague stories don't build trust. Specific numbers build trust.
 
-**Zayıf:**
-> "Mehmet ile çalıştık ve çok memnun kaldı."
+**Weak:**
+> "We worked with Alex and he was very satisfied."
 
-**Güçlü:**
+**Strong:**
 ```
-BAŞLIK: "42 yaşında yazılım müdürü Mehmet, 
-         91 günde 14.3 kilo verdi ve sabah 5:30'da uyanmaya başladı"
+TITLE: "Software manager Alex, 42,
+        lost 14.3 kg in 91 days and started waking up at 5:30am"
 
-BAŞLANGIÇ DURUMU:
-- Mehmet, 87 kg, 174 cm
-- Önceki 4 yılda 3 farklı diyet: ortalama 6 hafta sonra bırakmış
-- Günlük enerji: "akşam toplantılara zor giriyorum"
+STARTING SITUATION:
+- Alex, 87 kg, 174 cm
+- 3 different diets in the past 4 years: quit on average after 6 weeks
+- Daily energy: "I can barely make it through evening meetings"
 
-MÜDAHALEMİZ:
-- 12 haftalık kişisel program
-- Haftada 3x30 dk antrenman (toplantı öncesi 7:00-7:30)
-- Haftalık check-in her Pazartesi 8:00
+OUR INTERVENTION:
+- 12-week personalized program
+- 3×30 min workouts per week (7:00-7:30 before morning meetings)
+- Weekly check-in every Monday at 8:00
 
-SONUÇLAR (91. gün):
-- Ağırlık: 87 kg → 72.7 kg (−14.3 kg)
-- Sabah kalkma saati: 07:30 → 05:30
-- Müşteri yorumu: "İlk kez bir programı bitirdim"
+RESULTS (day 91):
+- Weight: 87 kg → 72.7 kg (−14.3 kg)
+- Morning wake time: 07:30 → 05:30
+- Client comment: "First time I finished a program"
 
-ANAHTAR KARAR: 
-"Pazartesi sabahı toplantıdan önce spor yapınca motivasyon 
-toplantıya girdi — akşam yapıyordum, her zaman iptal ediyordum"
+KEY DECISION:
+"When I worked out before Monday morning meetings, the motivation carried
+into the meeting — I always cancelled when I tried evenings"
 ```
 
-**Kurallara dikkat:**
-- Gerçek olmayan rakam kullanma
-- Müşteri onayı al
-- "Tipik sonuç değildir" disclaimerını ekle
+**Important rules:**
+- Do not use numbers that aren't real
+- Get client approval
+- Add "results are not typical" disclaimer
 
 ---
 
-## Senaryo 12 — YouTube Kanal Stratejisi
+## Scenario 12 — YouTube Channel Strategy
 
-**Durum:** YouTube'da niş otoritesi olmak istiyorsun ama nasıl başlayacağını bilmiyorsun.
+**Situation:** You want to become a niche authority on YouTube but don't know how to start.
 
-**Kullanılan agent:** `youtube_strategy_agent`
+**Agent used:** `youtube_strategy_agent`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_youtube_strategy.py \
@@ -743,51 +745,51 @@ python scripts/generate_youtube_strategy.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/youtube_strategies/` → kanal stratejisi, SEO planı, içerik takvimi.
+**Output:** `outputs/youtube_strategies/` → channel strategy, SEO plan, content calendar.
 
-### Turanlı Method'un Özü
+### Core Principles
 
-Bu agent, SEO-first, AI-destekli faceless (yüzsüz) prodüksiyon yaklaşımıyla çalışır.
+This agent works with an SEO-first, AI-assisted production approach.
 
-**Temel prensipler:**
-1. Kanal ilk günden nişe yönelik olmalı
-2. Her video bir arama terimi etrafında inşa edilmeli
-3. Title > Thumbnail (önce başlık kur, sonra thumbnail tasarla)
-4. İlk 48 saat abone tabanına push → algoritma kararı orada verilir
+**Core principles:**
+1. Channel must be niche-focused from day one
+2. Every video must be built around a search term
+3. Title > Thumbnail (build the title first, then design the thumbnail)
+4. First 48 hours: push to subscriber base → algorithm decision is made there
 
-**İçerik Türleri:**
+**Content Types:**
 
-| Tür | Amaç | Frekans |
+| Type | Purpose | Frequency |
 |---|---|---|
-| **Evergreen SEO** | Uzun vadeli arama trafiği | Haftada 2-3 |
-| **Trend** | Kısa vadeli patlama | Fırsata göre |
-| **Otorite** | "Bu adamı takip etmeliyim" | Ayda 2 |
+| **Evergreen SEO** | Long-term search traffic | 2-3 per week |
+| **Trend** | Short-term spike | When opportunity arises |
+| **Authority** | "I should follow this person" | 2 per month |
 
-**Örnek Kanal Planı (Fitness Koç):**
+**Example Channel Plan (Fitness Coach):**
 
 ```
-Hafta 1-4: Temel SEO videoları
-  — "Evde 30 dakika ile nasıl kilo verilir" (çok aranan)
-  — "Sabah mı akşam mı antrenman daha iyi" (tartışmalı = tıklama)
-  — "Diyet yapmadan kilo verdiren 5 alışkanlık"
+Week 1-4: Core SEO videos
+  — "How to lose weight at home in 30 minutes" (high search volume)
+  — "Morning vs. evening workouts — which is better" (controversial = clicks)
+  — "5 habits that help you lose weight without dieting"
 
-Hafta 5-8: Otorite videoları
-  — "42 yaşında 14 kilo veren müşterimin hikayesi"
-  — "Neden çoğu fitness koçu yanlış öğretiyor"
+Week 5-8: Authority videos
+  — "The story of my client who lost 14 kg at age 42"
+  — "Why most fitness coaches teach it wrong"
 
-Sürekli: Topluluk tabanlı
-  — "Sorularınızı yanıtlıyorum" formatı
+Ongoing: Community-based
+  — "Answering your questions" format
 ```
 
 ---
 
-## Senaryo 13 — Lansman Kampanyası Planlamak
+## Scenario 13 — Planning a Launch Campaign
 
-**Durum:** Yeni bir program ya da ürün piyasaya çıkarmak istiyorsun. Haftalarca sürecek bir lansman sürecini nasıl yöneteceğini bilmiyorsun.
+**Situation:** You want to launch a new program or product. You don't know how to manage a launch process that spans weeks.
 
-**Kullanılan agent:** `launch_campaign_manager`
+**Agent used:** `launch_campaign_manager`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_launch_campaign.py \
@@ -795,108 +797,108 @@ python scripts/generate_launch_campaign.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/launch_campaigns/` → ön lansman planı, sepet açık/kapanış takvimi, e-posta dizisi, reklam planı, lansman debrifi.
+**Output:** `outputs/launch_campaigns/` → pre-launch plan, cart open/close calendar, email sequence, ad plan, launch debrief.
 
-### Lansman Takvimi Örneği (4 Haftalık)
+### Launch Calendar Example (4 Weeks)
 
 ```
-HAFTA 1 — ÖN LANSMAN: Farkındalık
-  — İçerik: Avatar'ın acılarını işle
-  — E-posta: "Yakında büyük bir şey geliyor" + beklenti listesi
-  — Reklam: Traffic kampanyası, video görüntüleme
+WEEK 1 — PRE-LAUNCH: Awareness
+  — Content: Address avatar's pains
+  — Email: "Something big is coming" + waitlist
+  — Ads: Traffic campaign, video views
 
-HAFTA 2 — ÖN LANSMAN: Değer Teslimi
-  — İçerik: Ücretsiz mini eğitim (YouTube, canlı)
-  — E-posta: Vaka çalışması serisi (3 e-posta)
-  — Reklam: Retargeting başlat (video izleyenlere)
+WEEK 2 — PRE-LAUNCH: Value Delivery
+  — Content: Free mini-training (YouTube, live)
+  — Email: Case study series (3 emails)
+  — Ads: Start retargeting (to video viewers)
 
-HAFTA 3 — SEPET AÇIK (5-7 gün)
-  — E-posta Günlük (launch sequence):
-    — Gün 1: Açılış + değer
-    — Gün 2: Vaka çalışması
-    — Gün 3: İtirazları ele al
-    — Gün 4: Soru-cevap
-    — Gün 5: Son gün bildirimi
-    — Gün 6: Kapanış e-postası (sabah + akşam)
-  — Reklam: Dönüşüm kampanyası, retargeting ağırlıklı
+WEEK 3 — CART OPEN (5-7 days)
+  — Daily email (launch sequence):
+    — Day 1: Opening + value
+    — Day 2: Case study
+    — Day 3: Address objections
+    — Day 4: Q&A
+    — Day 5: Last day notice
+    — Day 6: Closing email (morning + evening)
+  — Ads: Conversion campaign, retargeting heavy
 
-HAFTA 4 — DEBRİF
-  — Satış rakamlarını not al
-  — Nelerin çalışmadığını belgele
-  — Sıradaki lansmanı planla
+WEEK 4 — DEBRIEF
+  — Record sales numbers
+  — Document what didn't work
+  — Plan the next launch
 ```
 
 ---
 
-## Senaryo 14 — Pazar Araştırması ve Rakip Takibi
+## Scenario 14 — Market Research and Competitor Tracking
 
-**Durum:** Pazarın gerçekten ne düşündüğünü, rakiplerin ne söylediğini öğrenmek istiyorsun.
+**Situation:** You want to learn what the market actually thinks and what competitors are saying.
 
-**Adımlar:**
+**Steps:**
 
 ```bash
-# Reddit'ten müşteri dili topla
+# Collect customer language from Reddit
 python scripts/collect_source.py \
   --source reddit \
   --query "online coaching scam expensive"
 
-# Facebook reklam kütüphanesinden rakip reklamları
+# Competitor ads from Facebook Ad Library
 python scripts/collect_source.py \
   --source facebook_ad_library \
-  --query "online fitness coaching Turkey"
+  --query "online fitness coaching"
 
-# Google Trends ile talep yönü
+# Demand direction with Google Trends
 python scripts/collect_source.py \
   --source google_trends \
-  --query "online koçluk"
+  --query "online coaching"
 
-# YouTube ile içerik trendleri
+# Content trends with YouTube
 python scripts/collect_source.py \
   --source youtube \
   --query "high ticket coaching funnel"
 
-# Rakip web sitelerini analiz et
+# Analyze competitor websites
 python scripts/monitor_competitors.py \
-  --query "online fitness coaching Turkey"
+  --query "online fitness coaching"
 
-# Tüm sinyalleri çapraz analiz et
+# Cross-analyze all signals
 python scripts/analyze_cross_source_signals.py
 ```
 
-### Araştırma Güven Sistemi
+### Research Trust System
 
-Her araştırma sinyali otomatik etiketlenir:
+Each research signal is automatically labeled:
 
-| Durum | Anlam | Aksiyon |
+| Status | Meaning | Action |
 |---|---|---|
-| `candidate` | Tek kaynaktan geldi | Strateji kararı verme |
-| `validated` | Birden fazla kaynaktan doğrulandı | Strateji güncelleme için kullanabilirsin |
-| `is_mock: true` | Gerçek veriye bakma, mock | Test ortamında göz ardı et |
+| `candidate` | Came from a single source | Do not make strategy decisions |
+| `validated` | Confirmed from multiple sources | Can use for strategy updates |
+| `is_mock: true` | Don't treat as real data, it's mock | Ignore in test environment |
 
-**Önemli kural:** Mock araştırma sinyallerini gerçek pazar verisi gibi kullanma. Sistem bunu zorla etiketler.
+**Important rule:** Do not use mock research signals as real market data. The system forcibly labels these.
 
-### Haftalık Araştırma Döngüsü
+### Weekly Research Cycle
 
 ```bash
-# Tek komutla tüm haftalık araştırmayı çalıştır
+# Run all weekly research with a single command
 python scripts/run_weekly_research.py
 ```
 
-Bu komut şunları yapar:
-1. Tüm etkin kaynakları toplar
-2. Sinyalleri işler
-3. Çapraz kaynak raporu üretir
-4. Tüm referansları `research/index/collected_references.jsonl`'e yazar
+This command:
+1. Collects from all active sources
+2. Processes signals
+3. Produces cross-source report
+4. Writes all references to `research/index/collected_references.jsonl`
 
 ---
 
-## Senaryo 15 — İş Puan Kartı ve Darboğaz Tespiti
+## Scenario 15 — Business Scorecard and Bottleneck Detection
 
-**Durum:** İşin hangi aşamasında takıldığını anlamak istiyorsun.
+**Situation:** You want to understand which stage of your business you're stuck at.
 
-**Kullanılan agent:** `business_scorecard_agent`
+**Agent used:** `business_scorecard_agent`
 
-**Adımlar:**
+**Steps:**
 
 ```bash
 python scripts/generate_business_scorecard.py \
@@ -904,86 +906,86 @@ python scripts/generate_business_scorecard.py \
   --context business_context.yaml
 ```
 
-**Çıktı:** `outputs/business_scorecards/` → darboğaz analizi, öncelik sırası, haftanın bir numaralı odak noktası.
+**Output:** `outputs/business_scorecards/` → bottleneck analysis, priority order, the number one focus for the week.
 
-### Darboğaz Tespiti
+### Bottleneck Detection
 
-Sistem şu aşamaları puanlar:
-
-```
-TRAFIK: Yeterli potansiyel müşteri geliyor mu?
-  ↓
-LEAD KALITE: Gelen kişiler doğru avatar mı?
-  ↓
-BAŞVURU: Başvuru formu yeterince nitelendiriyor mu?
-  ↓
-GÖSTER: Çağrılara katılım oranı nedir?
-  ↓
-KAPAMA: Satış çağrısında kaçta kaçı kapatıyorsun?
-  ↓
-TESLİMAT: Müşteriler sonuç alıyor mu?
-  ↓
-TUTUNDURMA: Yeniden satın alıyor / referans veriyor mu?
-```
-
-**Örnek Darboğaz Teşhisi:**
+The system scores these stages:
 
 ```
-Trafik: 1000 kişi/ay → İYİ
-Lead kalite: %60 doğru avatar → ORTA
-Başvuru: %8 form dolduruyor → ZAYIF ← DARBOĞAZ BURASI
-Görüşme: %70 katılıyor → İYİ
-Kapama: %30 kapanıyor → ORTA
+TRAFFIC: Are enough potential clients coming in?
+  ↓
+LEAD QUALITY: Are the people coming the right avatar?
+  ↓
+APPLICATION: Is the application form qualifying well enough?
+  ↓
+SHOW UP: What is the call attendance rate?
+  ↓
+CLOSE: How many are you closing on sales calls?
+  ↓
+DELIVERY: Are clients getting results?
+  ↓
+RETENTION: Are they buying again / giving referrals?
+```
 
-Öneri: Başvuru formunu nitelendirme soruları ekleyerek güçlendir.
-       Lead magnet ile daha iyi filtrele.
+**Example Bottleneck Diagnosis:**
+
+```
+Traffic: 1000 people/month → GOOD
+Lead quality: 60% correct avatar → MEDIUM
+Application: 8% fill out form → WEAK ← BOTTLENECK IS HERE
+Show up: 70% attend → GOOD
+Close: 30% closed → MEDIUM
+
+Recommendation: Strengthen application form with qualification questions.
+               Filter better with lead magnet.
 ```
 
 ---
 
-## Senaryo 16 — Yeni Agent Eklemek
+## Scenario 16 — Adding a New Agent
 
-**Durum:** Mevcut agent'lar yetmiyor, sisteme özel bir agent eklemek istiyorsun.
+**Situation:** The existing agents aren't enough, you want to add a custom agent to the system.
 
-**Örnek:** Satış sayfası yazım agent'ı eklemek.
+**Example:** Adding a sales page writing agent.
 
 ```bash
-# Şablondan yeni agent oluştur
+# Create a new agent from template
 python scripts/create_agent.py \
   --name sales_page_reviewer \
   --role "Sales Page Reviewer"
 ```
 
-Bu komut şu dosyaları otomatik oluşturur:
+This command automatically creates these files:
 
 ```
 agents/sales_page_reviewer/
-  agent.yaml              ← Konfigürasyon
-  system_prompt.md        ← Agent davranışı (bunu yaz)
-  checklist.yaml          ← Kalite kontrol kuralları
-  knowledge/              ← Agent'a özel bilgi
-  memory/                 ← Konuşma belleği
-  outputs/                ← Üretilen dosyalar
+  agent.yaml              ← Configuration
+  system_prompt.md        ← Agent behavior (you write this)
+  checklist.yaml          ← Quality control rules
+  knowledge/              ← Agent-specific knowledge
+  memory/                 ← Conversation memory
+  outputs/                ← Generated files
 ```
 
-**Ardından:**
+**Then:**
 
-1. `system_prompt.md` dosyasını düzenle → agent'ın rolünü, çalışma prensiplerini, çıktı formatını yaz
-2. `checklist.yaml`'a kalite kurallarını ekle
-3. `agent.yaml`'da izin verilen araçları belirle
-4. Test et:
+1. Edit `system_prompt.md` → write the agent's role, operating principles, output format
+2. Add quality rules to `checklist.yaml`
+3. Set allowed tools in `agent.yaml`
+4. Test it:
 
 ```bash
 python scripts/run_agent.py \
   --agent sales_page_reviewer \
-  --message "Bu satış sayfasını incele: [URL ya da metin]"
+  --message "Review this sales page: [URL or text]"
 ```
 
 **Checklist:**
-- Mock modda çalışıyor mu?
-- Sahte iddia üretmiyor mu?
-- Çıktı formatı tanımlı mı?
-- Eval case'leri yazıldı mı?
+- Does it work in mock mode?
+- Is it not producing fake claims?
+- Is the output format defined?
+- Were eval cases written?
 
 ```bash
 python scripts/validate_agent_structure.py
@@ -992,115 +994,115 @@ python -m pytest
 
 ---
 
-## Senaryo 17 — Tam Döngü: Sıfırdan Ölçeğe
+## Scenario 17 — Full Cycle: From Scratch to Scale
 
-Bu senaryo, tüm sistemi sırayla kullanan bir uzmanın tam yolculuğunu gösterir.
+This scenario shows the complete journey of an expert using the entire system in sequence.
 
-### Kullanılan Profil
+### Profile Used
 
-> **Zeynep, 34, serbest çalışan UX tasarımcısı**
-> 8 yıldır freelance yapıyor, saatlik 150 TL alıyor. Gelirini katlamak ve daha az ama daha değerli müşteriyle çalışmak istiyor. Hedefi: 6 ayda 3x aylık gelir.
+> **Zoe, 34, freelance UX designer**
+> Has been freelancing for 8 years, charges $150/hour. Wants to multiply her income and work with fewer but higher-value clients. Goal: 3x monthly income in 6 months.
 
 ---
 
-### Hafta 1-2: Temel Kurulum
+### Week 1-2: Foundation Setup
 
 ```bash
-# 1. Projeyi kur
+# 1. Set up the project
 pip install -r requirements.txt
 
-# 2. business_context.yaml'ı doldur
-# niche: "UX danışmanlığı SaaS startup'ları için"
-# avatar: "B2B SaaS kurucusu, kullanıcı kaybediyor ama nedenini bilmiyor"
-# offer: "UX audit + roadmap paketi"
-# price: "5000 TL"
+# 2. Fill out business_context.yaml
+# niche: "UX consulting for SaaS startups"
+# avatar: "B2B SaaS founder, losing users but doesn't know why"
+# offer: "UX audit + roadmap package"
+# price: "5000 USD"
 
-# 3. Pazar değerlendir
+# 3. Evaluate the market
 python scripts/generate_market_scorecard.py \
   --agent market_selector \
   --context business_context.yaml
 
-# 4. Avatar derinleştir
+# 4. Deepen the avatar
 python scripts/generate_avatar_research.py \
   --agent avatar_pain_researcher \
   --context business_context.yaml
 ```
 
-**Bulgu:** Sistem, SaaS startup'larının UX sorununun "pahalı problem" kategorisinde olduğunu doğruluyor: kötü UX = yüksek churn = yatırımcı sorunu.
+**Finding:** The system confirms that the UX problem for SaaS startups is in the "expensive problem" category: bad UX = high churn = investor problem.
 
 ---
 
-### Hafta 3-4: Teklif ve Fiyat
+### Week 3-4: Offer and Pricing
 
 ```bash
-# 5. Teklifi güçlendir
+# 5. Strengthen the offer
 python scripts/generate_offer_audit.py \
   --agent offer_architect \
   --context business_context.yaml
 
-# 6. Değer yığını oluştur
+# 6. Build the value stack
 python scripts/generate_value_stack.py \
   --agent value_stack_builder \
   --context business_context.yaml
 
-# 7. Fiyatlandırmayı optimize et
+# 7. Optimize pricing
 python scripts/generate_pricing_guarantee_review.py \
   --agent pricing_guarantee_optimizer \
   --context business_context.yaml
 ```
 
-**Bulgu:** 5000 TL fiyat çok düşük; pazar benchmarkları ve "pahalı problem" analizi 15.000-25.000 TL aralığını destekliyor. Sistem değer yığını eklemesini öneriyor.
+**Finding:** $5,000 price is too low; market benchmarks and "expensive problem" analysis support the $15,000-$25,000 range. The system recommends adding a value stack.
 
-**Yeni teklif paketi:**
-- UX Audit (2 hafta) → 8000 TL algılanan değer
-- Öncelikli İyileştirme Roadmap → 5000 TL
-- 3 aylık uygulama desteği → 6000 TL
-- Kullanıcı testi kolaylaştırması → 3000 TL
-- **Toplam algılanan değer: 22.000 TL**
-- **Gerçek fiyat: 15.000 TL**
+**New offer package:**
+- UX Audit (2 weeks) → $8,000 perceived value
+- Priority Improvement Roadmap → $5,000
+- 3-month implementation support → $6,000
+- User testing facilitation → $3,000
+- **Total perceived value: $22,000**
+- **Real price: $15,000**
 
 ---
 
-### Hafta 5-6: Kazanım ve İçerik
+### Week 5-6: Acquisition and Content
 
 ```bash
-# 8. Kazanım stratejisi
+# 8. Acquisition strategy
 python scripts/generate_acquisition_plan.py \
   --agent acquisition_strategy_agent \
   --context business_context.yaml
 
-# 9. İçerik planı
+# 9. Content plan
 python scripts/generate_content_plan.py \
   --agent content_authority_agent \
   --context business_context.yaml
 
-# 10. LinkedIn ve Reddit araştırması
+# 10. LinkedIn and Reddit research
 python scripts/collect_source.py \
   --source reddit \
   --query "SaaS UX problems user retention"
 ```
 
-**Öncelikli kanal:** LinkedIn (B2B SaaS kurucuları LinkedIn'de)
-**İlk 30 günlük plan:**
-- Günlük 1 LinkedIn içerik (UX hatası analizi, vaka, Q&A)
-- Haftada 10 hedefli DM: "Ürününüzün onboarding akışında bir gözlemim var…"
+**Primary channel:** LinkedIn (B2B SaaS founders are on LinkedIn)
+**First 30-day plan:**
+- 1 LinkedIn post/day (UX mistake analysis, case study, Q&A)
+- 10 targeted DMs/week: "I noticed something about your product's onboarding flow…"
 
 ---
 
-### Hafta 7-8: Huni ve Satış
+### Week 7-8: Funnel and Sales
 
 ```bash
-# 11. Huni haritası
+# 11. Funnel map
 python scripts/generate_funnel_map.py \
   --agent funnel_builder \
   --context business_context.yaml
 
-# 12. Satış senaryosu
+# 12. Sales script
 python scripts/generate_sales_script.py \
   --agent sales_script_builder \
   --context business_context.yaml
 
-# 13. İtiraz bankası
+# 13. Objection bank
 python scripts/generate_objection_bank.py \
   --agent objection_handler \
   --context business_context.yaml
@@ -1108,25 +1110,25 @@ python scripts/generate_objection_bank.py \
 
 ---
 
-### Ay 3+: Reklam, Kanıt ve Ölçek
+### Month 3+: Ads, Proof and Scale
 
 ```bash
-# 14. İlk müşteri vaka çalışması
+# 14. First client case study
 python scripts/generate_case_study.py \
   --agent case_study_writer \
   --context business_context.yaml
 
-# 15. Meta reklam planı
+# 15. Meta ads plan
 python scripts/generate_meta_ads_plan.py \
   --agent meta_ads_manager \
   --context business_context.yaml
 
-# 16. YouTube stratejisi (otorite için)
+# 16. YouTube strategy (for authority)
 python scripts/generate_youtube_strategy.py \
   --agent youtube_strategy_agent \
   --context business_context.yaml
 
-# 17. İş puan kartı — her ay
+# 17. Business scorecard — every month
 python scripts/generate_business_scorecard.py \
   --agent business_scorecard_agent \
   --context business_context.yaml
@@ -1134,105 +1136,106 @@ python scripts/generate_business_scorecard.py \
 
 ---
 
-## Dashboard Kullanımı
+## Dashboard Usage
 
 ```bash
-# Dashboard'u başlat
+# Start the dashboard
 python dashboard/server.py
 
-# Tarayıcıda aç
+# Open in browser
 # http://localhost:8765
 ```
 
-Dashboard şunları gösterir:
-- Tüm agent'ların durumu
-- Her agent'ın bellek dosyaları
-- Son üretilen çıktılar
+The dashboard shows:
+- Status of all agents
+- Memory files for each agent
+- Recently generated outputs
 
-API anahtarı gerekmez. Sadece yerel çalışır.
+No API key required. Runs locally only.
 
 ---
 
-## Kalite ve Test Komutları
+## Quality and Test Commands
 
 ```bash
-# Tüm testleri çalıştır
+# Run all tests
 python -m pytest
 
-# Tüm checklists'i çalıştır
+# Run all checklists
 python scripts/run_checklist.py --all
 
-# Spesifik agent'ı doğrula
+# Validate a specific agent
 python scripts/run_checklist.py --agent offer_architect
 
-# YAML geçerliliğini kontrol et
+# Check YAML validity
 python scripts/validate_yaml.py
 
-# Agent yapısını doğrula
+# Validate agent structure
 python scripts/validate_agent_structure.py
 
-# Context'i sıkıştır (büyük konuşmalardan sonra)
+# Compact context (after long conversations)
 python scripts/compact_context.py --agent offer_architect
 python scripts/compact_context.py --all
 
-# Eval'ları çalıştır
+# Run evals
 python scripts/run_evals.py --all
 ```
 
 ---
 
-## Sık Yapılan Hatalar
+## Common Mistakes
 
-### 1. Araştırma sinyalini doğrulanmış gibi kullanmak
-
-```
-YANLIŞ: Reddit'teki bir yoruma dayanarak tüm stratejiyi değiştirmek
-DOĞRU: Sinyal "candidate" ise, birden fazla kaynaktan doğrulanana kadar bekle
-```
-
-### 2. Avatar'ı geniş tutmak
+### 1. Using a research signal as validated
 
 ```
-YANLIŞ: "30-50 yaş çalışan kadınlar"
-DOĞRU: "Ayşe, 38, İstanbul finans sektörü yöneticisi, 2 çocuk, kronik yorgunluk"
+WRONG: Changing your entire strategy based on a single Reddit comment
+RIGHT: If the signal is "candidate", wait until it's confirmed from multiple sources
 ```
 
-### 3. Öğrenme fazında kampanyaya dokunmak
+### 2. Keeping the avatar broad
 
 ```
-YANLIŞ: Reklam 3 günde sonuç vermedi, değiştir
-DOĞRU: ~50 dönüşüm toplanana kadar bekle. Dokunursan sıfırdan başlarsın.
+WRONG: "Working women aged 30-50"
+RIGHT: "Sarah, 38, finance sector manager in London, 2 kids, chronic fatigue"
 ```
 
-### 4. Fiyatı değer yığınından önce söylemek
+### 3. Touching a campaign in the learning phase
 
 ```
-YANLIŞ: "Programım 15.000 TL..."
-DOĞRU: Önce değer yığınını göster (22.000 TL algılanan değer),
-       sonra "ancak bugün 15.000 TL"
+WRONG: Ad didn't produce results in 3 days, change it
+RIGHT: Wait until ~50 conversions are collected. Touching it resets from zero.
 ```
 
-### 5. Vaka çalışmasında vague kalmak
+### 4. Revealing the price before the value stack
 
 ```
-YANLIŞ: "Müşterim çok memnun kaldı"
-DOĞRU: "91 günde 14.3 kilo, sabah 5:30'da uyanmaya başladı, 3 ay önceki son takımı artık giyiyor"
+WRONG: "My program is $15,000..."
+RIGHT: First show the value stack ($22,000 perceived value),
+       then "but today only $15,000"
 ```
 
-### 6. Mock veriyi gerçek pazar verisi saymak
+### 5. Being vague in a case study
 
-Sistem mock araştırma sonuçlarına `is_mock: true` ekler ve `mock://` URL'si kullanır. Bunları gerçek veriymiş gibi yorumlama.
+```
+WRONG: "My client was very satisfied"
+RIGHT: "91 days, 14.3 kg, started waking up at 5:30am, now fits into clothes
+       from 3 months ago"
+```
+
+### 6. Treating mock data as real market data
+
+The system adds `is_mock: true` to mock research results and uses `mock://` URLs. Do not interpret these as real data.
 
 ---
 
-## Sonraki Adımlar
+## Next Steps
 
-Sistemi canlı veriyle çalıştırmak istediğinde [README.md](README.md) dosyasındaki "How To Add Real Providers Later" bölümüne bak. Gerçek API'ları aynı interface'ler arkasına ekleyebilirsin:
+When you want to run the system with live data, see the "How To Add Real Providers Later" section in [README.md](README.md). You can add real APIs behind the same interfaces:
 
-- `TAVILY_API_KEY` → web araştırması
-- `FIRECRAWL_API_KEY` → web sayfası çıkarma
-- `REDDIT_CLIENT_ID` + `REDDIT_CLIENT_SECRET` → Reddit araştırması
-- `YOUTUBE_API_KEY` → YouTube içerik analizi
-- `FACEBOOK_AD_LIBRARY_TOKEN` → reklam kütüphanesi
+- `TAVILY_API_KEY` → web research
+- `FIRECRAWL_API_KEY` → web page extraction
+- `REDDIT_CLIENT_ID` + `REDDIT_CLIENT_SECRET` → Reddit research
+- `YOUTUBE_API_KEY` → YouTube content analysis
+- `FACEBOOK_AD_LIBRARY_TOKEN` → ad library
 
-Tüm bu değişkenler `.env.example` dosyasında belgelenmiştir.
+All these variables are documented in the `.env.example` file.

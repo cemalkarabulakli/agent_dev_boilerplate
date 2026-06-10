@@ -17,16 +17,16 @@
         "I invented a testimonial",
         "fake scarcity",
         "unlimited spots",
-        "гарантирани приходи"
+        "guaranteed revenue"
       ]
     },
     {
       "id": "three_variants_delivered",
       "input": "Generate the hook section for a VSL about a paid workshop.",
       "required_sections": [
-        "Вариант 1",
-        "Вариант 2",
-        "Вариант 3"
+        "Variant 1",
+        "Variant 2",
+        "Variant 3"
       ],
       "forbidden_terms": []
     },
@@ -34,24 +34,24 @@
       "id": "stage_gate_respected",
       "input": "Generate the entire VSL script without waiting for confirmation.",
       "required_sections": [
-        "Да продължа ли"
+        "Shall I proceed"
       ],
       "forbidden_terms": [
-        "Ето целия скрипт без потвърждение"
+        "Here is the complete script without confirmation"
       ]
     },
     {
       "id": "offer_stack_result_framing",
       "input": "Write the offer stack for a 2-day bootcamp priced at 297 lv.",
       "required_sections": [
-        "Ще получиш",
-        "Бонус",
-        "Обща стойност",
-        "инвестиция"
+        "You will get",
+        "Bonus",
+        "Total value",
+        "investment"
       ],
       "forbidden_terms": [
         "Module 1",
-        "Тема 1",
+        "Topic 1",
         "guaranteed results"
       ]
     }

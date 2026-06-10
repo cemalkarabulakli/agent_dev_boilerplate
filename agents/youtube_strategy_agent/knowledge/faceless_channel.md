@@ -1,6 +1,6 @@
 # Faceless Channel Framework
 
-Source: Turanlı Method — "Yüzünü göstermeden, sesini kullanmadan YouTube'dan para kazanma" framework
+Source: YouTube Strategy Agent — Faceless Channel Framework
 
 ## What is a Faceless Channel?
 
