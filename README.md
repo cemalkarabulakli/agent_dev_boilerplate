@@ -2,18 +2,23 @@
 
 Local-first AI agent pipeline for designing, validating, and operating a high-ticket expert business.
 
-Agent Forge turns structured business context into a sequence of market, offer, acquisition, delivery, and launch artifacts. It runs without API keys in deterministic mock mode and can use the Anthropic API for generated strategy documents.
+Agent Forge turns structured business context into a sequence of market, offer, acquisition, delivery, and launch artifacts. It runs without API keys in deterministic mock mode and uses the Anthropic API for generated strategy documents.
+
+Current version: 0.1.4
 
 ## What It Includes
 
-- A packaged `agent-forge` CLI
-- A dependency-aware 19-stage business pipeline
+- A packaged `agent-forge` CLI with 19 registered pipeline stages
+- 23 agent directories covering market through launch (19 in the orchestrated CLI, 4 additional specialists)
 - File-based agent prompts, knowledge, memory, checklists, and evals
-- Mock mode for local development and CI
+- Mock mode for local development and CI — no API keys required
 - Claude API mode for generated outputs
-- Source-linked market research and competitor monitoring
+- Multi-source research engine (Reddit, YouTube, Google Trends, Facebook Ad Library, and 7 more)
+- ResearchIndex RAG layer — SQLite FTS5 full-text search over collected references, no embedding API required
+- Web tools layer with swappable providers (Tavily, Exa, Firecrawl, Playwright, Scrapy)
+- Screenshot capture for competitor and funnel monitoring
+- Morning briefing dashboard (Windows and macOS)
 - Context compaction and structured inter-agent state
-- A local dashboard for inspecting agents and research sources
 - Guardrails against fabricated claims, testimonials, scarcity, and income promises
 
 The intended business flow is:
@@ -37,11 +42,13 @@ Clone the repository and install it in editable mode:
 ```bash
 git clone https://github.com/cemalkarabulakli/agent_dev_boilerplate.git
 cd agent_dev_boilerplate
-
-python -m venv .venv
 ```
 
-Activate the environment:
+Create and activate a virtual environment:
+
+```bash
+python -m venv .venv
+```
 
 ```bash
 # macOS/Linux
@@ -63,11 +70,18 @@ For development and tests:
 pip install -e ".[dev]"
 ```
 
+Verify the install:
+
+```bash
+agent-forge version
+agent-forge list
+```
+
 ## Quick Start
 
 ### 1. Fill In The Business Context
 
-`business_context.yaml` is the shared source of truth for every pipeline stage. It is JSON-compatible YAML and is **gitignored** — your real data stays local and is never committed (same pattern as `.env`).
+`business_context.yaml` is the shared source of truth for every pipeline stage. It is JSON-compatible YAML and is **gitignored** — your real data stays local and is never committed.
 
 Copy the example file to get started:
 
@@ -127,7 +141,7 @@ The status view shows:
 
 ### 5. Run With Claude
 
-The runtime reads credentials from the process environment. `.env.example` documents the supported variables but is not loaded automatically.
+The runtime reads credentials from the process environment. `.env.example` documents all supported variables but is not loaded automatically.
 
 ```bash
 # macOS/Linux
@@ -150,6 +164,16 @@ agent-forge build --mode api --group offer --confirm
 ```
 
 API mode makes one model call per selected stage. Omit `--confirm` to receive an interactive cost prompt.
+
+## Scenarios
+
+The `scenarios/` directory contains step-by-step guides for common use patterns:
+
+- AI automation consultant starting from scratch
+- Validating a niche before building an offer
+- Running research-first before pipeline stages
+- Diagnosing a stalled funnel with `funnel_diagnostic_agent`
+- Launching a Meta Ads campaign after the offer is locked
 
 ## CLI Reference
 
@@ -179,7 +203,7 @@ Use `agent-forge COMMAND --help` for the full option list.
 
 ## Pipeline
 
-The public CLI pipeline contains 19 stages:
+The CLI pipeline contains 19 registered stages:
 
 | Group | Agents |
 | --- | --- |
@@ -191,7 +215,15 @@ The public CLI pipeline contains 19 stages:
 | Specialists | `meta_ads_manager`, `vsl_copywriter`, `case_study_writer`, `youtube_strategy_agent` |
 | Launch | `launch_campaign_manager` |
 
-Some additional agent directories are under development or support specialized workflows. `agent-forge list` is the source of truth for agents registered in the orchestrated CLI pipeline.
+Three additional agent directories exist outside the orchestrated pipeline and are available for direct use:
+
+| Agent | Purpose |
+| --- | --- |
+| `vsl_events_copywriter` | VSL copy for paid live events |
+| `funnel_diagnostic_agent` | Diagnose a live funnel bottleneck |
+| `knowledge_integrator_agent` | Ingest external articles into agent knowledge bases |
+
+`agent-forge list` is the source of truth for agents registered in the CLI pipeline.
 
 ### Inter-Agent Data Flow
 
@@ -231,7 +263,7 @@ agents/<agent_name>/
 
 `agent.yaml` defines the role, model settings, context, allowed tools, guardrails, and output format. Long-term memory entries remain candidates until reviewed; generated assumptions are not automatically promoted to business facts.
 
-Create another agent from the template:
+Create a new agent from the template:
 
 ```bash
 python scripts/create_agent.py \
@@ -288,11 +320,14 @@ Run the weekly workflow locally:
 python scripts/run_weekly_research.py
 ```
 
-Monitor competitors:
+Monitor competitors and capture screenshots:
 
 ```bash
 python scripts/monitor_competitors.py \
   --query "AI automation consulting"
+
+python scripts/screenshot_page.py \
+  --url "https://competitor.example.com"
 ```
 
 Research artifacts are separated by purpose:
@@ -305,7 +340,69 @@ research/index/                        References, run log, signal index
 research/insights/                     Candidate/validated/rejected insights
 ```
 
-Every collected signal should retain a reference ID. Mock references use `mock://` URLs and `is_mock: true`. A one-source signal remains a candidate; strategy changes require independent validation and human review.
+Every collected signal retains a reference ID. Mock references use `mock://` URLs and `is_mock: true`. A one-source signal remains a candidate; strategy changes require independent validation and human review.
+
+## ResearchIndex — RAG Search
+
+`core/research_rag.py` exposes a `ResearchIndex` class backed by SQLite FTS5. It provides BM25-ranked keyword search over all entries in `research/index/collected_references.jsonl` without requiring an embedding API.
+
+```bash
+python scripts/search_research.py \
+  --query "B2B SaaS acquisition bottlenecks" \
+  --top-k 5
+```
+
+The index is rebuilt automatically when the JSONL file changes. Stats:
+
+```bash
+python scripts/search_research.py --stats
+```
+
+## Web Tools Layer
+
+The web tools layer routes search, extraction, crawl, and browser tasks to swappable provider implementations. Provider selection is controlled by environment variables.
+
+| Task type | Providers |
+| --- | --- |
+| Search | Tavily, SerpAPI, SearXNG, mock |
+| Semantic search | Exa, mock |
+| Extraction | Firecrawl, mock |
+| Browser automation | Playwright, mock |
+| Crawling | Scrapy, mock |
+
+TypeScript interface contracts live under `tools/web/interfaces/`. Python adapters under `tools/adapters/` implement those contracts. The runtime accesses web capabilities only through the task router (`core/web/web_task_router.py`), never by importing provider SDKs directly.
+
+Run a one-off search or extraction from the CLI:
+
+```bash
+python scripts/run_web_search.py \
+  --query "high-ticket coaching funnels" \
+  --provider tavily
+
+python scripts/extract_webpage.py \
+  --url "https://example.com/sales-page"
+
+python scripts/compare_web_tools.py \
+  --query "B2B lead generation"
+```
+
+## Morning Briefing
+
+A local morning briefing shows pipeline progress, open gaps, and next recommended actions.
+
+```bash
+python scripts/morning_briefing.py
+```
+
+Set up a scheduled daily trigger:
+
+```bash
+# Windows
+.\scripts\setup_morning_reminder.ps1
+
+# macOS
+bash scripts/setup_morning_reminder_macos.sh
+```
 
 ## Direct Script Usage
 
@@ -364,20 +461,23 @@ Open [http://localhost:8765](http://localhost:8765). An optional port can be pas
 python dashboard/server.py 9000
 ```
 
-The dashboard displays available agents, memory coverage, knowledge/eval status, research sources, and scripts.
+The dashboard displays available agents, pipeline progress, memory coverage, knowledge and eval status, research sources, notifications, and collected insights. See `DASHBOARD.md` for full documentation.
 
 ## Repository Map
 
 ```text
 agent_forge/     Typer CLI and project scaffolding
-agents/          Agent configurations, prompts, knowledge, memory, and evals
-core/            Loading, schemas, pipeline state, memory, research, and quality logic
-scripts/         Generator, orchestration, research, validation, and release commands
+agents/          Agent configurations, prompts, knowledge, memory, and evals (23 agents)
+core/            Loading, schemas, pipeline state, memory, research, RAG, and quality logic
+core/web/        Web task router, result normalizer, quality scorer, reference builder
+scripts/         Generator, orchestration, research, validation, web tools, and release commands
 tools/           Python source adapters and TypeScript web-tool contracts
+tools/web/       Provider implementations: Tavily, Exa, Firecrawl, Playwright, Scrapy
 research/        Source configuration, collected signals, references, and insights
 knowledge/       Shared business and ethics knowledge
 prompts/         Reusable prompt templates
 checklists/      Global YAML quality gates
+scenarios/       Step-by-step usage guides for common patterns
 outputs/         Generated artifacts
 dashboard/       Local HTTP dashboard
 tests/           Pytest suite
@@ -387,14 +487,22 @@ Most `.yaml` files in this repository are JSON-compatible and are parsed through
 
 ## Provider Configuration
 
-Supported environment variables are listed in `.env.example`:
+Supported environment variables (see `.env.example` for the full list):
 
 ```text
+# AI provider
 ANTHROPIC_API_KEY
 OPENAI_API_KEY
+DEFAULT_MODEL_PROVIDER=mock
+DEFAULT_MODEL_NAME=local-mock
+
+# Web search
 TAVILY_API_KEY
-SERPAPI_API_KEY
+EXA_API_KEY
 FIRECRAWL_API_KEY
+SEARXNG_BASE_URL=http://localhost:8080
+
+# Research sources
 YOUTUBE_API_KEY
 REDDIT_CLIENT_ID
 REDDIT_CLIENT_SECRET
@@ -402,11 +510,22 @@ REDDIT_USER_AGENT
 GITHUB_TOKEN
 FACEBOOK_AD_LIBRARY_TOKEN
 CLICKBANK_API_KEY
-RESEARCH_MODE
-WEB_TOOLS_MODE
+
+# Web tools provider selection
+DEFAULT_SEARCH_PROVIDER=tavily
+DEFAULT_SEMANTIC_SEARCH_PROVIDER=exa
+DEFAULT_EXTRACTOR_PROVIDER=firecrawl
+DEFAULT_BROWSER_PROVIDER=playwright
+DEFAULT_CRAWLER_PROVIDER=scrapy
+
+# Runtime modes
+RESEARCH_MODE=mock
+WEB_TOOLS_MODE=mock
+SEARCH_TIMEOUT_MS=30000
+AUTO_APPROVE_INSIGHTS=false
 ```
 
-The current generated-output API path uses Anthropic. Other keys support research adapters or future provider implementations. Agents should depend on the interfaces and registries under `tools/web/`, not import provider SDKs directly.
+The current generated-output API path uses Anthropic. Other keys support research adapters or web-tool providers. Agents should depend on the interfaces and registries under `tools/web/`, not import provider SDKs directly.
 
 ## Safety And Review Rules
 
